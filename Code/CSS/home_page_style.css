@@ -111,6 +111,7 @@ html {
         > .list_items {
           padding: 0 1.3rem;
           list-style: none;
+          /* display: none; */
           > .li_links::before {
             content: " ";
             width: 100%;
@@ -1260,4 +1261,15 @@ html {
       }
     }
   }
+}
+
+/* Adding some classes for special functions */
+.display_none {
+  display: none;
+}
+.display_flex {
+  display: flex;
+}
+.display_block {
+  display: block;
 }
