@@ -873,3 +873,5 @@ Array_of_li_names.forEach((list_name) => {
 });
 
 //<<<<<<<====                 Footer Section End           ====>>>>>
+
+// Task Completed version 1. further imporvements will be done in upcoming updates.
