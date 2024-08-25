@@ -649,3 +649,79 @@ testimonial_section_img.setAttribute("alt", "A you businessman picture");
 testimonial_section_img_container.appendChild(testimonial_section_img);
 
 //<<<<<<<                 Testimonials Section End   >>>>>
+
+//<<<<<<<                 Contact Section Start    >>>>>
+
+let contact_section = document.createElement("div");
+contact_section.classList.add("contact_section");
+main.appendChild(contact_section);
+
+let contact_section_container = document.createElement("div");
+contact_section_container.classList.add("contact_section_container");
+contact_section.appendChild(contact_section_container);
+
+let contact_section_text_container = document.createElement("div");
+contact_section_text_container.classList.add("contact_section_text_content");
+contact_section_container.appendChild(contact_section_text_container);
+
+let contact_section_main_heading = document.createElement("h2");
+contact_section_main_heading.classList.add("section_heading");
+contact_section_main_heading.textContent = "Need Help?";
+contact_section_text_container.appendChild(contact_section_main_heading);
+
+let contact_section_sub_heading = document.createElement("h3");
+contact_section_sub_heading.classList.add("section_sub_heading");
+contact_section_sub_heading.textContent = "Don't Forget to Contact With Us";
+contact_section_text_container.appendChild(contact_section_sub_heading);
+
+let contact_section_text = document.createElement("p");
+contact_section_text.classList.add("section_text");
+contact_section_text.textContent = ` Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Mollitia, cumque? Nobis repellat vel quas ab in cumque? Animi,
+              corporis architecto! Quibusdam sint laboriosam laudantium omnis in
+              recusandae eum ullam similique?`;
+contact_section_text_container.appendChild(contact_section_text);
+
+let contact_input_div = document.createElement("div");
+contact_input_div.classList.add("contact_div");
+contact_section_text_container.appendChild(contact_input_div);
+
+let contact_form = document.createElement("form");
+contact_form.classList.add("contact_form");
+contact_input_div.appendChild(contact_form);
+
+let input_data_array = [
+  {
+    type: "text",
+    placeholder: "Name",
+    name: "name_input",
+    id: "customer_name_input",
+  },
+  {
+    type: "email",
+    placeholder: "Email",
+    name: "email_input",
+    id: "customer_email_input",
+  },
+];
+
+input_data_array.forEach((data, index) => {
+  let data_input = document.createElement("input");
+  data_input.classList.add("contact_input");
+  data_input.type = `${data.type}`;
+  data_input.placeholder = `${data.placeholder}`;
+  data_input.name = `${data.name}`;
+  data_input.id = `${data.id}`;
+  data_input.spellcheck = `${data.spellcheck}`;
+  data_input.required = true;
+  data_input.spellcheck = false;
+  data_input.autocomplete = "off";
+  contact_form.appendChild(data_input);
+});
+
+let contact_form_submit_btn = document.createElement(`button`);
+contact_form_submit_btn.classList.add("form_btn");
+contact_form_submit_btn.textContent = "SUBMIT";
+contact_form.appendChild(contact_form_submit_btn);
+
+//<<<<<<<                 Contact Section Complete    >>>>>
