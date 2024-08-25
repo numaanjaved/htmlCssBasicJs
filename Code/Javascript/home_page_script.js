@@ -221,7 +221,7 @@ let sub_container_content = {
   ach_text: [
     "Successfully Completed Projects",
     "Highly Specialized Employees",
-    "Awards around the world",
+    "Awards <br />around the world",
   ],
   ach_des: [
     `Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolor eligendi iusto mollitia aperiam.`,
@@ -236,6 +236,7 @@ achievement_container.forEach((container, index) => {
   achievement_section_container.appendChild(container);
 
   //   Putting Data in sub container:
+
   let i_tag = document.createElement("i");
   i_tag.classList.add("icons");
   let i_tag_img = document.createElement("img");
@@ -253,12 +254,50 @@ achievement_container.forEach((container, index) => {
   achev_des.classList.add("achev_des");
 
   //   Putting inner HTML in elements of sub container
+
   achev_num.textContent = sub_container_content.ach_num[index];
-  achev_text.textContent = sub_container_content.ach_text[index];
+  achev_text.innerHTML = `${sub_container_content.ach_text[index]}`;
   achev_des.textContent = sub_container_content.ach_des[index];
+
   //   Appending Child in sub container
+
   container.appendChild(i_tag);
   container.appendChild(achev_num);
   container.appendChild(achev_text);
   container.appendChild(achev_des);
 });
+
+//<<<<<<<                 Achievements Section End      >>>>>>
+
+//<<<<<<<                 Creative Section Start      >>>>>>
+
+let creative_section = document.createElement("section");
+creative_section.classList.add("creative_section");
+main.appendChild(creative_section);
+
+let creative_section_container = document.createElement("div");
+creative_section_container.classList.add("creative_section_container");
+creative_section.appendChild(creative_section_container);
+
+let creative_section_slogan_text = document.createElement("h4");
+creative_section_slogan_text.classList.add("slogan_text");
+creative_section_slogan_text.textContent = `Let's Grow Together`;
+
+let creative_section_main_heading = document.createElement("h2");
+creative_section_main_heading.classList.add("section_heading");
+creative_section_main_heading.textContent = `We turn creative ideas into your business`;
+
+let creative_section_text = document.createElement("p");
+creative_section_text.classList.add("section_text");
+creative_section_text.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex fugit aliquam error excepturi veritatis alias ipsum facere nostrum quod non nobis officiis doloremque veniam.`;
+
+let creative_section_btn = document.createElement("button");
+creative_section_btn.classList.add("btn");
+creative_section_btn.textContent = "Read More";
+
+creative_section_container.appendChild(creative_section_slogan_text);
+creative_section_container.appendChild(creative_section_main_heading);
+creative_section_container.appendChild(creative_section_text);
+creative_section_container.appendChild(creative_section_btn);
+
+//<<<<<<<                 Creative Section End      >>>>>>
