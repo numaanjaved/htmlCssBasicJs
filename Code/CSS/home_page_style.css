@@ -726,6 +726,9 @@ html {
             -moz-border-radius: 200px;
             -ms-border-radius: 200px;
             -o-border-radius: 200px;
+            &:hover {
+              cursor: pointer;
+            }
           }
           > .work_links::before {
             content: "  ";

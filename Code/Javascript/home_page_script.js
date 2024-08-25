@@ -430,3 +430,116 @@ play_btn.classList.add("fa-play");
 img_btn.appendChild(play_btn);
 
 //<<<<<<<                 Our Services Section End     >>>>>>
+
+//<<<<<<<                 Our Recent Work Section start     >>>>>>
+
+let our_work_section = document.createElement("section");
+our_work_section.classList.add("work_section");
+main.appendChild(our_work_section);
+
+let work_section_container = document.createElement("div");
+work_section_container.classList.add("work_section_container");
+our_work_section.appendChild(work_section_container);
+
+// text content of work section:
+
+let work_section_text_content = document.createElement("div");
+work_section_text_content.classList.add("work_section_text_content");
+work_section_container.appendChild(work_section_text_content);
+
+let work_section_heading = document.createElement("h2");
+work_section_heading.classList.add("section_heading");
+work_section_heading.textContent = "Our Recent Work";
+work_section_text_content.appendChild(work_section_heading);
+
+let work_section_text = document.createElement("p");
+work_section_text.classList.add("section_text");
+work_section_text.textContent =
+  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi et sapiente porro asperiores accusantium quaerat numquam, nemo pariatur aliquam maxime iusto ducimus ut nisi, nihil quos, quasi non! Necessitatibus, inventore.sit am et conse adipisicingctetur elit.";
+work_section_text_content.appendChild(work_section_text);
+
+let work_list_ul = document.createElement("ul");
+work_list_ul.classList.add("work_list");
+work_section_text_content.appendChild(work_list_ul);
+
+let items_in_ul_array = ["Web Design", "Mobile App", "Branding", "Branding"];
+
+items_in_ul_array.forEach((li_item_name) => {
+  let list_item = document.createElement("li");
+  list_item.classList.add("work_list_items");
+
+  let list_item_link = document.createElement("a");
+  list_item_link.classList.add("work_links");
+  list_item_link.textContent = li_item_name;
+
+  list_item.appendChild(list_item_link);
+  work_list_ul.appendChild(list_item);
+});
+
+let work_section_images_main_container = document.createElement("div");
+work_section_images_main_container.classList.add("work_section_images");
+work_section_container.appendChild(work_section_images_main_container);
+
+let work_section_img_sub_container = document.createElement("div");
+work_section_img_sub_container.classList.add("work_section_images_container");
+work_section_images_main_container.appendChild(work_section_img_sub_container);
+
+let Array_of_product_containers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let data_of_product_images = [
+  {
+    src: "../../Project_Assets/N8_image.png",
+    alt: "N8 bottle Image",
+  },
+  {
+    src: "../../Project_Assets/MUG_image.png",
+    alt: "Mug Image",
+  },
+  {
+    src: "../../Project_Assets/Book_image.png",
+    alt: "Book Image",
+  },
+  {
+    src: "../../Project_Assets/Tshirt_image.png",
+    alt: "T-shirt Image",
+  },
+  {
+    src: "../../Project_Assets/Box_image.png",
+    alt: "Box Image",
+  },
+  {
+    src: "../../Project_Assets/Bottles_image.png",
+    alt: "N8 bottle Image",
+  },
+  {
+    src: "../../Project_Assets/tags_image.png",
+    alt: "Tags(lables) Image",
+  },
+  {
+    src: "../../Project_Assets/Handbag_image.png",
+    alt: "Hand bag(Shopping bag) Image",
+  },
+  {
+    src: "../../Project_Assets/sanitizer_image.png",
+    alt: "Sanitizer Image",
+  },
+];
+Array_of_product_containers.forEach((product_container, index) => {
+  product_container = document.createElement("div");
+  product_container.classList.add("product_img");
+
+  let product_img = document.createElement("img");
+
+  product_img.setAttribute("src", `${data_of_product_images[index].src}`);
+  product_img.setAttribute("alt", `${data_of_product_images[index].alt}`);
+
+  work_section_img_sub_container.appendChild(product_container);
+  product_container.appendChild(product_img);
+});
+
+let our_work_sec_btn = document.createElement("button");
+our_work_sec_btn.textContent = `Read More`;
+our_work_sec_btn.classList.add("btn");
+
+work_section_container.appendChild(our_work_sec_btn);
+
+//<<<<<<<                 Our Recent Work Section End    >>>>>>
