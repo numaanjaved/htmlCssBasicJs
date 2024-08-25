@@ -724,4 +724,35 @@ contact_form_submit_btn.classList.add("form_btn");
 contact_form_submit_btn.textContent = "SUBMIT";
 contact_form.appendChild(contact_form_submit_btn);
 
-//<<<<<<<                 Contact Section Complete    >>>>>
+//<<<<<<<                 Contact Section End    >>>>>
+
+//<<<<<<<                 Social Links Section Start   >>>>>
+
+let social_links_section = document.createElement("section");
+social_links_section.classList.add("social_links_section");
+main.appendChild(social_links_section);
+
+let social_links_container = document.createElement("div");
+social_links_container.classList.add("social_links_section_container");
+social_links_section.appendChild(social_links_container);
+
+let links_container = document.createElement("div");
+links_container.classList.add("links_container");
+social_links_container.appendChild(links_container);
+
+let social_links = [
+  { href: "/", link_name: "facebook" },
+  { href: "/", link_name: "twitter" },
+  { href: "/", link_name: "linkedin" },
+  { href: "/", link_name: "instagram" },
+  { href: "/", link_name: "behance" },
+];
+social_links.forEach((social_link_name, index) => {
+  social_link_name = document.createElement("a");
+  social_link_name.classList.add("social_links");
+  social_link_name.textContent = `${social_links[index].link_name}`;
+  social_link_name.setAttribute("href", `${social_links[index].href}`);
+  links_container.appendChild(social_link_name);
+});
+
+//<<<<<<<                 Social Links Section End  >>>>>
