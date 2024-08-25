@@ -206,3 +206,59 @@ branding_page_content_div.appendChild(branding_section_img_container);
 branding_section_img_container.appendChild(branding_section_img);
 
 //<<<<<<<                 Branding Section End        >>>>>>
+
+//<<<<<<<                 Achievements Section Start        >>>>>>
+let achievements_section = document.createElement("section");
+achievements_section.classList.add("achievement_section");
+main.appendChild(achievements_section);
+let achievement_section_container = document.createElement("div");
+achievement_section_container.classList.add("achievement_section_container");
+achievements_section.appendChild(achievement_section_container);
+
+let achievement_container = ["container1", "container2", "container3"];
+let sub_container_content = {
+  ach_num: ["500+", "254+", "45+"],
+  ach_text: [
+    "Successfully Completed Projects",
+    "Highly Specialized Employees",
+    "Awards around the world",
+  ],
+  ach_des: [
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolor eligendi iusto mollitia aperiam.`,
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolor eligendi iusto mollitia aperiam.`,
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolor eligendi iusto mollitia aperiam.`,
+  ],
+};
+achievement_container.forEach((container, index) => {
+  container = document.createElement("div");
+  container.classList.add("sub_containers");
+  container.classList.add(`cont${index + 1}`);
+  achievement_section_container.appendChild(container);
+
+  //   Putting Data in sub container:
+  let i_tag = document.createElement("i");
+  i_tag.classList.add("icons");
+  let i_tag_img = document.createElement("img");
+  i_tag_img.setAttribute("src", "../../Project_Assets/announcement.png");
+  i_tag_img.setAttribute("alt", "Announcement Icon");
+  i_tag.appendChild(i_tag_img);
+
+  let achev_num = document.createElement("p");
+  achev_num.classList.add("achev_num");
+
+  let achev_text = document.createElement("p");
+  achev_text.classList.add("achev_text");
+
+  let achev_des = document.createElement("span");
+  achev_des.classList.add("achev_des");
+
+  //   Putting inner HTML in elements of sub container
+  achev_num.textContent = sub_container_content.ach_num[index];
+  achev_text.textContent = sub_container_content.ach_text[index];
+  achev_des.textContent = sub_container_content.ach_des[index];
+  //   Appending Child in sub container
+  container.appendChild(i_tag);
+  container.appendChild(achev_num);
+  container.appendChild(achev_text);
+  container.appendChild(achev_des);
+});
