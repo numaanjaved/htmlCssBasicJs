@@ -301,3 +301,132 @@ creative_section_container.appendChild(creative_section_text);
 creative_section_container.appendChild(creative_section_btn);
 
 //<<<<<<<                 Creative Section End      >>>>>>
+
+//<<<<<<<                 Our Services Section Start      >>>>>>
+
+let services_section = document.createElement("section");
+services_section.classList.add("services_section");
+main.appendChild(services_section);
+
+let services_section_container = document.createElement("div");
+services_section_container.classList.add("services_section_container");
+services_section.appendChild(services_section_container);
+
+let services_section_text_content_container = document.createElement("div");
+services_section_text_content_container.classList.add(
+  "services_section_text_content"
+);
+services_section_container.appendChild(services_section_text_content_container);
+
+// Putting data in text content container:
+let services_section_slogan_text = document.createElement("h4");
+services_section_slogan_text.classList.add("slogan_text");
+services_section_slogan_text.textContent = "We are best creative agency";
+
+let services_section_main_heading = document.createElement("h2");
+services_section_main_heading.classList.add("section_heading");
+services_section_main_heading.textContent =
+  "We turn creative ideas into your business";
+
+let services_section_text = document.createElement("p");
+services_section_text.classList.add("section_text");
+services_section_text.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia impedit placeat ipsum vel aliquid delectus eos. Inventore quis atque culpa odio sed laudantium odio sed eius amet tenetur incidunt deleniti? Voluptas, eius amet amet consectetur labore!`;
+
+services_section_text_content_container.appendChild(
+  services_section_slogan_text
+);
+services_section_text_content_container.appendChild(
+  services_section_main_heading
+);
+services_section_text_content_container.appendChild(services_section_text);
+
+// Sub sections of services section:
+let services_sub_div = document.createElement("div");
+services_sub_div.classList.add("services_div");
+services_section_text_content_container.appendChild(services_sub_div);
+
+let Array_of_sub_services_content = {
+  icons_src: [
+    "../../Project_Assets/chat_icon.png",
+    "../../Project_Assets/colorful_announcement.png",
+  ],
+  icons_alt: ["Messaging Icon", "A colorful icon of announcements"],
+  sub_section_heading: ["Graphics Design", "Graphics Design"],
+  sub_section_text: [
+    ` Lorem ipsum dolor, sit am et conse adipisicingctetur elit.Dolore harum ipsa ducimus tempora. eeyo se ti nascki.`,
+    ` Lorem ipsum dolor, sit am et conse adipisicingctetur elit.Dolore harum ipsa ducimus tempora. eeyo se ti nascki.`,
+  ],
+  sub_section_btn_text: ["READ MORE", "READ MORE"],
+};
+
+let Array_of_sub_services_containers = ["container1", "container2"];
+
+Array_of_sub_services_containers.forEach((container, index) => {
+  // Creating and Appending Div in sub div container
+
+  container = document.createElement("div");
+  container.classList.add("service");
+  services_sub_div.appendChild(container);
+
+  //Now putting content inside each sub div:=>
+
+  // Defining Elements(tags):
+  let icon = document.createElement("i");
+  icon.classList.add("icons");
+  let icon_img = document.createElement("img");
+
+  let sub_section_heading = document.createElement("h2");
+  sub_section_heading.classList.add("sub_section_heading");
+
+  let sub_section_text = document.createElement("p");
+  sub_section_text.classList.add("sub_section_text");
+  let sub_section_btn = document.createElement("button");
+  sub_section_btn.classList.add(`btn`);
+
+  // Now putting values and appending:
+
+  icon_img.setAttribute(
+    "src",
+    `${Array_of_sub_services_content.icons_src[index]}`
+  );
+  icon_img.setAttribute(
+    "alt",
+    `${Array_of_sub_services_content.icons_alt[index]}`
+  );
+
+  container.appendChild(icon);
+  icon.appendChild(icon_img);
+
+  sub_section_heading.textContent = `${Array_of_sub_services_content.sub_section_heading[index]}`;
+  container.appendChild(sub_section_heading);
+
+  sub_section_text.textContent = `${Array_of_sub_services_content.sub_section_text[index]}`;
+  container.appendChild(sub_section_text);
+
+  sub_section_btn.textContent = `${Array_of_sub_services_content.sub_section_btn_text[index]}`;
+  container.appendChild(sub_section_btn);
+});
+
+// Img Content of services section
+
+let services_section_img_content_container = document.createElement(`div`);
+services_section_img_content_container.classList.add("services_section_img");
+services_section_container.appendChild(services_section_img_content_container);
+let services_section_img = document.createElement("img");
+services_section_img.setAttribute(
+  "src",
+  "../../Project_Assets/services_section_image.png"
+);
+services_section_img_content_container.appendChild(services_section_img);
+
+// Img btn:
+
+let img_btn = document.createElement("button");
+img_btn.classList.add("btn");
+services_section_img_content_container.appendChild(img_btn);
+let play_btn = document.createElement("i");
+play_btn.classList.add("fa-solid");
+play_btn.classList.add("fa-play");
+img_btn.appendChild(play_btn);
+
+//<<<<<<<                 Our Services Section End     >>>>>>
