@@ -543,3 +543,34 @@ our_work_sec_btn.classList.add("btn");
 work_section_container.appendChild(our_work_sec_btn);
 
 //<<<<<<<                 Our Recent Work Section End    >>>>>>
+
+//<<<<<<<                 Our Partners Section Start   >>>>>>
+
+let partners_section = document.createElement("section");
+partners_section.classList.add(`partners_section`);
+main.appendChild(partners_section);
+
+let partners_section_container = document.createElement("div");
+partners_section_container.classList.add(`partners_section_container`);
+partners_section.appendChild(partners_section_container);
+
+let data_of_images = [
+  { src: "../../Project_Assets/CISCO.png", alt: "CISCO Logo" },
+  { src: "../../Project_Assets/ADIDAS.png", alt: "ADIDAS Logo" },
+  { src: "../../Project_Assets/LENOVO.png", alt: "LENOVO Logo" },
+  { src: "../../Project_Assets/DISNEP.png", alt: "DISNEP Logo" },
+  { src: "../../Project_Assets/AMAZON.png", alt: "AMAZON Logo" },
+  { src: "../../Project_Assets/PUMA.png", alt: "PUMA Logo" },
+  { src: "../../Project_Assets/APPLE.png", alt: "APPLE Logo" },
+  { src: "../../Project_Assets/MINI.png", alt: "MINI Logo" },
+];
+
+data_of_images.forEach((data) => {
+  let img_tag = document.createElement("img");
+  img_tag.classList.add("partner_logo");
+  img_tag.setAttribute("src", data.src);
+  img_tag.setAttribute("alt", data.alt);
+  partners_section_container.appendChild(img_tag);
+});
+
+//<<<<<<<                 Our Partners Section End  >>>>>>
