@@ -780,10 +780,13 @@ social_links.forEach((social_link_name, index) => {
 });
 
 //<<<<<<<                 Social Links Section End  >>>>>
+let footer_script = document.createElement("script");
+footer_script.setAttribute(
+  "src",
+  "../../Code/Javascript/page_footer_script.js"
+);
+footer_script.defer = true;
+document.head.appendChild(footer_script);
 
-// Task Completed version 2 Details:
-// Declared variables
-// Added spaces for better readability
-// All the attributes of input are now from objects
-// seprated copyright text from other elements(no hover effect at copyright)
-// and other mini improvements for code efficiency
+// Task Completed version 3 Details:
+// script is created and loaded in pure js
