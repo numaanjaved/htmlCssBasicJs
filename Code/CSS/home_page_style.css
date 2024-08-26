@@ -1,22 +1,22 @@
 /* Importing Fonts */
 @font-face {
   font-family: "Palatino-linotype-roman";
-  src: url("../../Project_Assets/Palatino_Font/palatinolinotype_roman.ttf");
+  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_roman.ttf);
 }
 
 @font-face {
   font-family: "Palatino-linotype-bold";
-  src: url("../../Project_Assets/Palatino_Font/palatinolinotype_bold.ttf");
+  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_bold.ttf);
 }
 
 @font-face {
   font-family: "Palatino-linotype-bold-italic";
-  src: url("../../Project_Assets/Palatino_Font/palatinolinotype_bolditalic.ttf");
+  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_bolditalic.ttf);
 }
 
 @font-face {
   font-family: "Palatino-linotype-italic";
-  src: url("../../Project_Assets/Palatino_Font/palatinolinotype_italic.ttf");
+  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_italic.ttf);
 }
 
 /* Theme Settings */
@@ -111,7 +111,6 @@ html {
         > .list_items {
           padding: 0 1.3rem;
           list-style: none;
-          /* display: none; */
           > .li_links::before {
             content: " ";
             width: 100%;
@@ -149,10 +148,23 @@ html {
         background-color: #ffffff00;
         border: none;
         margin-left: 3rem;
-        > .fa-bars {
-          font-size: 2.7rem;
-          color: var(--light);
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        &:hover {
           cursor: pointer;
+        }
+        > .bars {
+          display: block;
+          content: " ";
+          background-color: var(--light);
+          height: 3px;
+          width: 22px;
+          border-radius: 20px;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          -ms-border-radius: 20px;
+          -o-border-radius: 20px;
         }
       }
     }
@@ -663,7 +675,8 @@ html {
         &:hover {
           cursor: pointer;
         }
-        > .fa-play {
+        > .services_section_play_button {
+          height: 35px;
           margin-left: 5px;
         }
       }
@@ -726,9 +739,6 @@ html {
             -moz-border-radius: 200px;
             -ms-border-radius: 200px;
             -o-border-radius: 200px;
-            &:hover {
-              cursor: pointer;
-            }
           }
           > .work_links::before {
             content: "  ";
@@ -934,9 +944,8 @@ html {
             justify-content: center;
             align-items: center;
             column-gap: 5px;
-            > .fa-star {
-              color: var(--sharp-pink);
-              font-size: 1.5rem;
+            > img {
+              height: 1.8rem;
             }
           }
           > .client_name {
@@ -1264,15 +1273,4 @@ html {
       }
     }
   }
-}
-
-/* Adding some classes for special functions */
-.display_none {
-  display: none;
-}
-.display_flex {
-  display: flex;
-}
-.display_block {
-  display: block;
 }

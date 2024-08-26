@@ -39,7 +39,7 @@ lists_container.appendChild(nav_ul);
 // Creating Array of objects containing Li data
 
 let array_of_nav_links = [
-  { href: "../../home_page.html", text: "Home" },
+  { href: "./index.html", text: "Home" },
   { href: "/", text: "About" },
   { href: "/", text: "Features" },
   { href: "/", text: "Product" },
