@@ -4,6 +4,7 @@ let landing_page_container = document.createElement("div");
 landing_page_container.classList.add("landing_Page_container");
 
 //<<<<<<<                 Header Section start          >>>>>>
+
 // Defining header tag
 let header = document.createElement("header");
 header.classList.add("header");
@@ -99,16 +100,21 @@ landing_page_content_div.appendChild(landing_page_text_content);
 
 let landing_page_slogan_text = document.createElement("h3");
 landing_page_slogan_text.textContent = "We are best and creative agency";
+
 let landing_page_main_heading = document.createElement("h1");
 landing_page_main_heading.textContent =
   "We turn creative ideas into your business.";
+
 let landing_page_text = document.createElement("p");
 landing_page_text.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusa reiciendis voluptatem ratione doloribus`;
+
 landing_page_text.classList.add("landing_page_description");
 landing_page_slogan_text.classList.add("slogan_text");
 landing_page_main_heading.classList.add("main_heading");
+
 let landing_page_btn_container = document.createElement("div");
 landing_page_btn_container.classList.add("btns_container");
+
 let buttons_inner_text = ["Our Story", "Read More"];
 buttons_inner_text.forEach((btn) => {
   let button = document.createElement("button");
@@ -116,6 +122,7 @@ buttons_inner_text.forEach((btn) => {
   button.textContent = btn;
   landing_page_btn_container.appendChild(button);
 });
+
 landing_page_text_content.appendChild(landing_page_slogan_text);
 landing_page_text_content.appendChild(landing_page_main_heading);
 landing_page_text_content.appendChild(landing_page_text);
@@ -176,10 +183,13 @@ let branding_list_inner_content = [
 branding_list_inner_content.forEach((li_item_link) => {
   let li_item = document.createElement("li");
   li_item.classList.add("branding_list_items");
+
   let li_item_link_def = document.createElement("a");
   li_item_link_def.classList.add("branding_links");
+
   li_item_link_def.textContent = li_item_link.list_name;
   li_item_link_def.setAttribute("href", `${li_item_link.href}`);
+
   branding_list.appendChild(li_item);
   li_item.appendChild(li_item_link_def);
 });
@@ -232,8 +242,8 @@ let sub_container_content = {
     `Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolor eligendi iusto mollitia aperiam.`,
   ],
 };
-achievement_container.forEach((container, index) => {
-  container = document.createElement("div");
+achievement_container.forEach((con, index) => {
+  let container = document.createElement("div");
   container.classList.add("sub_containers");
   container.classList.add(`cont${index + 1}`);
   achievement_section_container.appendChild(container);
@@ -242,9 +252,11 @@ achievement_container.forEach((container, index) => {
 
   let i_tag = document.createElement("i");
   i_tag.classList.add("icons");
+
   let i_tag_img = document.createElement("img");
   i_tag_img.setAttribute("src", "../../Project_Assets/announcement.png");
   i_tag_img.setAttribute("alt", "Announcement Icon");
+
   i_tag.appendChild(i_tag_img);
 
   let achev_num = document.createElement("p");
@@ -258,9 +270,9 @@ achievement_container.forEach((container, index) => {
 
   //   Putting inner HTML in elements of sub container
 
-  achev_num.textContent = sub_container_content.ach_num[index];
+  achev_num.textContent = `${sub_container_content.ach_num[index]}`;
   achev_text.innerHTML = `${sub_container_content.ach_text[index]}`;
-  achev_des.textContent = sub_container_content.ach_des[index];
+  achev_des.textContent = `${sub_container_content.ach_des[index]}`;
 
   //   Appending Child in sub container
 
@@ -364,10 +376,10 @@ let Array_of_sub_services_content = {
 
 let Array_of_sub_services_containers = ["container1", "container2"];
 
-Array_of_sub_services_containers.forEach((container, index) => {
+Array_of_sub_services_containers.forEach((item, index) => {
   // Creating and Appending Div in sub div container
 
-  container = document.createElement("div");
+  let container = document.createElement("div");
   container.classList.add("service");
   services_sub_div.appendChild(container);
 
@@ -415,6 +427,7 @@ Array_of_sub_services_containers.forEach((container, index) => {
 let services_section_img_content_container = document.createElement(`div`);
 services_section_img_content_container.classList.add("services_section_img");
 services_section_container.appendChild(services_section_img_content_container);
+
 let services_section_img = document.createElement("img");
 services_section_img.setAttribute(
   "src",
@@ -427,6 +440,7 @@ services_section_img_content_container.appendChild(services_section_img);
 let img_btn = document.createElement("button");
 img_btn.classList.add("btn");
 services_section_img_content_container.appendChild(img_btn);
+
 let play_btn = document.createElement("img");
 play_btn.classList.add("services_section_play_button");
 play_btn.setAttribute("src", "../../Project_Assets/play_btn_white.png");
@@ -466,7 +480,12 @@ let work_list_ul = document.createElement("ul");
 work_list_ul.classList.add("work_list");
 work_section_text_content.appendChild(work_list_ul);
 
-let items_in_ul_array = ["Web Design", "Mobile App", "Branding", "Branding"];
+let items_in_ul_array = [
+  { href: "/", link_name: "Web Design" },
+  { href: "/", link_name: "Mobile App" },
+  { href: "/", link_name: "Branding" },
+  { href: "/", link_name: "Branding" },
+];
 
 items_in_ul_array.forEach((li_item_name) => {
   let list_item = document.createElement("li");
@@ -474,7 +493,8 @@ items_in_ul_array.forEach((li_item_name) => {
 
   let list_item_link = document.createElement("a");
   list_item_link.classList.add("work_links");
-  list_item_link.textContent = li_item_name;
+  list_item_link.setAttribute("href", li_item_name.href);
+  list_item_link.textContent = li_item_name.link_name;
 
   list_item.appendChild(list_item_link);
   work_list_ul.appendChild(list_item);
@@ -527,8 +547,8 @@ let data_of_product_images = [
     alt: "Sanitizer Image",
   },
 ];
-Array_of_product_containers.forEach((product_container, index) => {
-  product_container = document.createElement("div");
+Array_of_product_containers.forEach((div, index) => {
+  let product_container = document.createElement("div");
   product_container.classList.add("product_img");
 
   let product_img = document.createElement("img");
@@ -615,9 +635,7 @@ testimonial_section_text_container.appendChild(client_review_container);
 
 let client_review_text = document.createElement("p");
 client_review_text.classList.add("section_text");
-client_review_text.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos nisi doloribus at aut rerum, sed ji autem,
-                praesentium magnam dolore odit possim neque temporibus.`;
+client_review_text.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nisi doloribus at aut rerum, sed ji autem, praesentium magnam dolore odit possim neque temporibus.`;
 client_review_container.appendChild(client_review_text);
 
 let client_info_container = document.createElement("div");
@@ -680,10 +698,7 @@ contact_section_text_container.appendChild(contact_section_sub_heading);
 
 let contact_section_text = document.createElement("p");
 contact_section_text.classList.add("section_text");
-contact_section_text.textContent = ` Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Mollitia, cumque? Nobis repellat vel quas ab in cumque? Animi,
-              corporis architecto! Quibusdam sint laboriosam laudantium omnis in
-              recusandae eum ullam similique?`;
+contact_section_text.textContent = ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia, cumque? Nobis repellat vel quas ab in cumque? Animi, corporis architecto! Quibusdam sint laboriosam laudantium omnis in recusandae eum ullam similique?`;
 contact_section_text_container.appendChild(contact_section_text);
 
 let contact_input_div = document.createElement("div");
@@ -700,26 +715,31 @@ let input_data_array = [
     placeholder: "Name",
     name: "name_input",
     id: "customer_name_input",
+    required: true,
+    spellcheck: false,
+    autocomplete: "off",
   },
   {
     type: "email",
     placeholder: "Email",
     name: "email_input",
     id: "customer_email_input",
+    required: true,
+    spellcheck: false,
+    autocomplete: "off",
   },
 ];
 
 input_data_array.forEach((data, index) => {
   let data_input = document.createElement("input");
   data_input.classList.add("contact_input");
-  data_input.type = `${data.type}`;
-  data_input.placeholder = `${data.placeholder}`;
-  data_input.name = `${data.name}`;
-  data_input.id = `${data.id}`;
-  data_input.spellcheck = `${data.spellcheck}`;
-  data_input.required = true;
-  data_input.spellcheck = false;
-  data_input.autocomplete = "off";
+  data_input.type = data.type;
+  data_input.placeholder = data.placeholder;
+  data_input.name = data.name;
+  data_input.id = data.id;
+  data_input.spellcheck = data.spellcheck;
+  data_input.required = data.required;
+  data_input.autocomplete = data.autocomplete;
   contact_form.appendChild(data_input);
 });
 
@@ -754,8 +774,8 @@ let social_links = [
 social_links.forEach((social_link_name, index) => {
   social_link_name = document.createElement("a");
   social_link_name.classList.add("social_links");
-  social_link_name.textContent = `${social_links[index].link_name}`;
-  social_link_name.setAttribute("href", `${social_links[index].href}`);
+  social_link_name.textContent = social_links[index].link_name;
+  social_link_name.setAttribute("href", social_links[index].href);
   links_container.appendChild(social_link_name);
 });
 
@@ -823,19 +843,19 @@ footer_img_content_div.classList.add("img_content_div");
 footer_main_content.appendChild(footer_img_content_div);
 
 let company_img_divs = ["div1", "div2", "div3", "div4"];
-
+let company_images_data = [
+  { src: "../../Project_Assets/Company_img1.png", alt: "Company Image" },
+  { src: "../../Project_Assets/Company_img2.png", alt: "Company Image" },
+  { src: "../../Project_Assets/Company_img3.png", alt: "Company Image" },
+  { src: "../../Project_Assets/Company_img4.png", alt: "Company Image" },
+];
 company_img_divs.forEach((div_data, index) => {
   let div = document.createElement("div");
   div.classList.add("company_image");
   footer_img_content_div.appendChild(div);
 
   //   creating_img tag:
-  let company_images_data = [
-    { src: "../../Project_Assets/Company_img1.png", alt: "Company Image" },
-    { src: "../../Project_Assets/Company_img2.png", alt: "Company Image" },
-    { src: "../../Project_Assets/Company_img3.png", alt: "Company Image" },
-    { src: "../../Project_Assets/Company_img4.png", alt: "Company Image" },
-  ];
+
   let company_img = document.createElement("img");
   company_img.setAttribute("src", `${company_images_data[index].src}`);
   company_img.setAttribute("alt", `${company_images_data[index].alt}`);
@@ -864,18 +884,30 @@ let Array_of_li_names = [
   "Terms of Use",
   "Site Map",
 ];
-Array_of_li_names.forEach((list_name) => {
+Array_of_li_names.forEach((list_name, index) => {
   let bottom_footer_list_item = document.createElement("li");
   bottom_footer_list_item.classList.add("footer_list_item");
   footer_items_ul.appendChild(bottom_footer_list_item);
 
   //   now adding links in it:
-  let footer_list_item_link = document.createElement("a");
-  footer_list_item_link.classList.add("footer_list_item_link");
-  footer_list_item_link.textContent = list_name;
-  bottom_footer_list_item.appendChild(footer_list_item_link);
+  if (index == 0) {
+    let footer_copyright_link_text = document.createElement("span");
+    footer_copyright_link_text.id = "copyright";
+    footer_copyright_link_text.textContent = list_name;
+    bottom_footer_list_item.appendChild(footer_copyright_link_text);
+  } else if (index != 0) {
+    let footer_list_item_link = document.createElement("a");
+    footer_list_item_link.classList.add("footer_list_item_link");
+    footer_list_item_link.textContent = list_name;
+    bottom_footer_list_item.appendChild(footer_list_item_link);
+  }
 });
 
 //<<<<<<<====                 Footer Section End           ====>>>>>
 
-// Task Completed version 1. further imporvements will be done in upcoming updates.
+// Task Completed version 2 Details:
+// Declared variables
+// Added spaces for better readability
+// All the attributes of input are now from objects
+// seprated copyright text from other elements(no hover effect at copyright)
+// and other mini improvements for code efficiency
