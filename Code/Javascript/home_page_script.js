@@ -63,12 +63,15 @@ array_of_nav_links.forEach((li_items) => {
 
 let hamburger_button = document.createElement("button");
 hamburger_button.classList.add("btn");
-// creating hamburger button using fontawesome:
-let i_tag = document.createElement("i");
-i_tag.classList.add("fa-solid");
-i_tag.classList.add("fa-bars");
+
+let btn_bar = ["bar1", "bar2", "bar3"];
+btn_bar.forEach((bars) => {
+  let bar = document.createElement("span");
+  bar.classList.add("bars");
+  hamburger_button.appendChild(bar);
+});
+
 lists_container.appendChild(hamburger_button);
-hamburger_button.appendChild(i_tag);
 
 //<<<<<<<                 Header Section End          >>>>>>
 
@@ -424,9 +427,10 @@ services_section_img_content_container.appendChild(services_section_img);
 let img_btn = document.createElement("button");
 img_btn.classList.add("btn");
 services_section_img_content_container.appendChild(img_btn);
-let play_btn = document.createElement("i");
-play_btn.classList.add("fa-solid");
-play_btn.classList.add("fa-play");
+let play_btn = document.createElement("img");
+play_btn.classList.add("services_section_play_button");
+play_btn.setAttribute("src", "../../Project_Assets/play_btn_white.png");
+play_btn.setAttribute("alt", "Play button");
 img_btn.appendChild(play_btn);
 
 //<<<<<<<                 Our Services Section End     >>>>>>
@@ -625,9 +629,9 @@ stars_container.classList.add("stars_container");
 client_info_container.appendChild(stars_container);
 
 for (let i = 0; i < 5; i++) {
-  let star = document.createElement("i");
-  star.classList.add("fa-solid");
-  star.classList.add("fa-star");
+  let star = document.createElement("img");
+  star.setAttribute("src", "../../Project_Assets/star_icon.png");
+  star.setAttribute("alt", "Star Icon");
   stars_container.appendChild(star);
 }
 
