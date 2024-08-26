@@ -72,6 +72,17 @@ btn_bar.forEach((bars) => {
   hamburger_button.appendChild(bar);
 });
 
+// hamburger_functionality=>:
+hamburger_button.addEventListener("click", (e) => {
+  if (nav_ul.classList.contains("flex") == true) {
+    nav_ul.classList.remove("flex");
+    nav_ul.classList.add("none");
+  } else if (nav_ul.classList.contains("flex") != true) {
+    nav_ul.classList.remove("none");
+    nav_ul.classList.add("flex");
+  }
+});
+
 lists_container.appendChild(hamburger_button);
 
 //<<<<<<<                 Header Section End          >>>>>>
