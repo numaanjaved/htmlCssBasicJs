@@ -53,7 +53,7 @@ let scripts_func = async () => {
       footer_script.onerror = () => {
         reject("Error Occurred while Loading Footer Script");
       };
-    }, 3000);
+    }, 2000);
   });
 
   let async_header = await header_script_func;
