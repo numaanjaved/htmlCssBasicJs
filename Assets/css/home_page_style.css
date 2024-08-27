@@ -104,10 +104,10 @@ html {
       justify-content: center;
       align-items: center;
       > .header_items_list {
-        display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        display: none;
         > .list_items {
           padding: 0 1.3rem;
           list-style: none;
@@ -1273,4 +1273,12 @@ html {
       }
     }
   }
+}
+
+/* Adding classes for functionality:=> */
+.flex {
+  display: flex !important;
+}
+.none {
+  display: none !important;
 }
