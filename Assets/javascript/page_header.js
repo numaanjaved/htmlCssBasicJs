@@ -18,7 +18,7 @@ nav.appendChild(logo_div);
 // logo img:
 let logo_img = document.createElement("img");
 logo_img.classList.add("rexlogo");
-logo_img.setAttribute("src", "../../Project_Assets/BlueRex_Logo.png");
+logo_img.setAttribute("src", "./Assets/images/BlueRex_Logo.png");
 logo_div.appendChild(logo_img);
 let logo_text = document.createElement("span");
 logo_text.classList.add("rexlogo_text");
@@ -35,7 +35,7 @@ lists_container.appendChild(nav_ul);
 // Creating Array of objects containing Li data
 
 let array_of_nav_links = [
-  { href: "../../home_page.html", text: "Home" },
+  { href: "../../index.html", text: "Home" },
   { href: "/", text: "About" },
   { href: "/", text: "Features" },
   { href: "/", text: "Product" },

@@ -1,22 +1,22 @@
 /* Importing Fonts */
 @font-face {
   font-family: "Palatino-linotype-roman";
-  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_roman.ttf);
+  src: url("../fonts/Palatino_Font/palatinolinotype_roman.ttf");
 }
 
 @font-face {
   font-family: "Palatino-linotype-bold";
-  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_bold.ttf);
+  src: url("../fonts/Palatino_Font/palatinolinotype_bold.ttf");
 }
 
 @font-face {
   font-family: "Palatino-linotype-bold-italic";
-  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_bolditalic.ttf);
+  src: url("../fonts/Palatino_Font/palatinolinotype_bolditalic.ttf");
 }
 
 @font-face {
   font-family: "Palatino-linotype-italic";
-  src: url(../../Project_Assets/Palatino_Font/palatinolinotype_italic.ttf);
+  src: url("../fonts/Palatino_Font/palatinolinotype_italic.ttf");
 }
 
 /* Theme Settings */
@@ -60,7 +60,7 @@ html {
   content: " ";
   height: 748px;
   width: 100%;
-  background-image: url("../../Project_Assets/Landing_Page_BG1.jpg");
+  background-image: url("../images/Landing_Page_BG1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -269,7 +269,7 @@ html {
   width: 100%;
   height: 100%;
   content: " ";
-  background-image: url("../../Project_Assets/World_Map.png");
+  background-image: url("../images/World_Map.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -467,7 +467,7 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url("../../Project_Assets/creative_section_img.jpg");
+  background-image: url("../images/creative_section_img.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -849,7 +849,7 @@ html {
   content: " ";
   height: 100%;
   width: 100%;
-  background-image: url("../../Project_Assets/testiomnals_bg.jpg");
+  background-image: url("../images/testiomnals_bg.jpg");
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   background-repeat: no-repeat;
@@ -975,7 +975,7 @@ html {
 
 .contact_section {
   padding: 5rem 20rem;
-  background-image: url("../../Project_Assets/Contact_bg.png");
+  background-image: url("../images/Contact_bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1141,7 +1141,7 @@ html {
   width: 100%;
   top: 0;
   left: 0;
-  background-image: url("../../Project_Assets/World_Map.png");
+  background-image: url("../images/World_Map.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

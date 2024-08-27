@@ -61,10 +61,10 @@ footer_main_content.appendChild(footer_img_content_div);
 
 let company_img_divs = ["div1", "div2", "div3", "div4"];
 let company_images_data = [
-  { src: "../../Project_Assets/Company_img1.png", alt: "Company Image" },
-  { src: "../../Project_Assets/Company_img2.png", alt: "Company Image" },
-  { src: "../../Project_Assets/Company_img3.png", alt: "Company Image" },
-  { src: "../../Project_Assets/Company_img4.png", alt: "Company Image" },
+  { src: "./Assets/images/Company_img1.png", alt: "Company Image" },
+  { src: "./Assets/images/Company_img2.png", alt: "Company Image" },
+  { src: "./Assets/images/Company_img3.png", alt: "Company Image" },
+  { src: "./Assets/images/Company_img4.png", alt: "Company Image" },
 ];
 company_img_divs.forEach((div_data, index) => {
   let div = document.createElement("div");

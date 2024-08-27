@@ -57,7 +57,7 @@ landing_page_img_container.classList.add("img_content");
 let landing_page_img_content = document.createElement("img");
 landing_page_img_content.setAttribute(
   "src",
-  "../../Project_Assets/Landing_Page_img.png"
+  "./Assets/images/landing_Page_img.png"
 );
 landing_page_img_content.setAttribute("alt", "Business Man Image");
 landing_page_content_div.appendChild(landing_page_img_container);
@@ -131,10 +131,7 @@ branding_page_text_content_div.appendChild(branding_section_btn);
 let branding_section_img_container = document.createElement("div");
 branding_section_img_container.classList.add("branding_page_img_content");
 let branding_section_img = document.createElement("img");
-branding_section_img.setAttribute(
-  "src",
-  "../../Project_Assets/watch_image.png"
-);
+branding_section_img.setAttribute("src", "./Assets/images//watch_image.png");
 branding_section_img.setAttribute("alt", "Image of a Watch");
 
 branding_page_content_div.appendChild(branding_section_img_container);
@@ -176,7 +173,7 @@ achievement_container.forEach((con, index) => {
   i_tag.classList.add("icons");
 
   let i_tag_img = document.createElement("img");
-  i_tag_img.setAttribute("src", "../../Project_Assets/announcement.png");
+  i_tag_img.setAttribute("src", "./Assets/images/announcement.png");
   i_tag_img.setAttribute("alt", "Announcement Icon");
 
   i_tag.appendChild(i_tag_img);
@@ -284,8 +281,8 @@ services_section_text_content_container.appendChild(services_sub_div);
 
 let Array_of_sub_services_content = {
   icons_src: [
-    "../../Project_Assets/chat_icon.png",
-    "../../Project_Assets/colorful_announcement.png",
+    "./Assets/images/chat_icon.png",
+    "./Assets/images/colorful_announcement.png",
   ],
   icons_alt: ["Messaging Icon", "A colorful icon of announcements"],
   sub_section_heading: ["Graphics Design", "Graphics Design"],
@@ -353,7 +350,7 @@ services_section_container.appendChild(services_section_img_content_container);
 let services_section_img = document.createElement("img");
 services_section_img.setAttribute(
   "src",
-  "../../Project_Assets/services_section_image.png"
+  "./Assets/images/services_section_image.png"
 );
 services_section_img_content_container.appendChild(services_section_img);
 
@@ -365,7 +362,7 @@ services_section_img_content_container.appendChild(img_btn);
 
 let play_btn = document.createElement("img");
 play_btn.classList.add("services_section_play_button");
-play_btn.setAttribute("src", "../../Project_Assets/play_btn_white.png");
+play_btn.setAttribute("src", "./Assets/images/play_btn_white.png");
 play_btn.setAttribute("alt", "Play button");
 img_btn.appendChild(play_btn);
 
@@ -433,39 +430,39 @@ work_section_images_main_container.appendChild(work_section_img_sub_container);
 let Array_of_product_containers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let data_of_product_images = [
   {
-    src: "../../Project_Assets/N8_image.png",
+    src: "./Assets/images/N8_image.png",
     alt: "N8 bottle Image",
   },
   {
-    src: "../../Project_Assets/MUG_image.png",
+    src: "./Assets/images/MUG_image.png",
     alt: "Mug Image",
   },
   {
-    src: "../../Project_Assets/Book_image.png",
+    src: "./Assets/images/Book_image.png",
     alt: "Book Image",
   },
   {
-    src: "../../Project_Assets/Tshirt_image.png",
+    src: "./Assets/images/Tshirt_image.png",
     alt: "T-shirt Image",
   },
   {
-    src: "../../Project_Assets/Box_image.png",
+    src: "./Assets/images/Box_image.png",
     alt: "Box Image",
   },
   {
-    src: "../../Project_Assets/Bottles_image.png",
+    src: "./Assets/images/Bottles_image.png",
     alt: "N8 bottle Image",
   },
   {
-    src: "../../Project_Assets/tags_image.png",
+    src: "./Assets/images/tags_image.png",
     alt: "Tags(lables) Image",
   },
   {
-    src: "../../Project_Assets/Handbag_image.png",
+    src: "./Assets/images/Handbag_image.png",
     alt: "Hand bag(Shopping bag) Image",
   },
   {
-    src: "../../Project_Assets/sanitizer_image.png",
+    src: "./Assets/images/sanitizer_image.png",
     alt: "Sanitizer Image",
   },
 ];
@@ -501,14 +498,14 @@ partners_section_container.classList.add(`partners_section_container`);
 partners_section.appendChild(partners_section_container);
 
 let data_of_images = [
-  { src: "../../Project_Assets/CISCO.png", alt: "CISCO Logo" },
-  { src: "../../Project_Assets/ADIDAS.png", alt: "ADIDAS Logo" },
-  { src: "../../Project_Assets/LENOVO.png", alt: "LENOVO Logo" },
-  { src: "../../Project_Assets/DISNEP.png", alt: "DISNEP Logo" },
-  { src: "../../Project_Assets/AMAZON.png", alt: "AMAZON Logo" },
-  { src: "../../Project_Assets/PUMA.png", alt: "PUMA Logo" },
-  { src: "../../Project_Assets/APPLE.png", alt: "APPLE Logo" },
-  { src: "../../Project_Assets/MINI.png", alt: "MINI Logo" },
+  { src: "./Assets/images/CISCO.png", alt: "CISCO Logo" },
+  { src: "./Assets/images/ADIDAS.png", alt: "ADIDAS Logo" },
+  { src: "./Assets/images/LENOVO.png", alt: "LENOVO Logo" },
+  { src: "./Assets/images/DISNEP.png", alt: "DISNEP Logo" },
+  { src: "./Assets/images/AMAZON.png", alt: "AMAZON Logo" },
+  { src: "./Assets/images/PUMA.png", alt: "PUMA Logo" },
+  { src: "./Assets/images/APPLE.png", alt: "APPLE Logo" },
+  { src: "./Assets/images/MINI.png", alt: "MINI Logo" },
 ];
 
 data_of_images.forEach((data) => {
@@ -570,7 +567,7 @@ client_info_container.appendChild(stars_container);
 
 for (let i = 0; i < 5; i++) {
   let star = document.createElement("img");
-  star.setAttribute("src", "../../Project_Assets/star_icon.png");
+  star.setAttribute("src", "./Assets/images/star_icon.png");
   star.setAttribute("alt", "Star Icon");
   stars_container.appendChild(star);
 }
@@ -587,7 +584,7 @@ testimonial_section_container.appendChild(testimonial_section_img_container);
 let testimonial_section_img = document.createElement("img");
 testimonial_section_img.setAttribute(
   "src",
-  "../../Project_Assets/testimonals_img.png"
+  "./Assets/images/testimonals_img.png"
 );
 testimonial_section_img.setAttribute("alt", "A you businessman picture");
 testimonial_section_img_container.appendChild(testimonial_section_img);
