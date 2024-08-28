@@ -16,7 +16,7 @@ let footer_main_text_content_div = document.createElement("div");
 footer_main_text_content_div.classList.add("text_content_div");
 footer_main_content.appendChild(footer_main_text_content_div);
 
-let name_of_companies = ["Company1", "Company2", "Company3", "Company4"];
+let name_of_companies = ["Company", "Company", "Company", "Company"];
 let links_in_company = [
   ["About", "Apporach", "Sustainability", "Careers", "News"],
   ["Scope", "Design", "Accountability", "Profession", "Media"],
