@@ -60,12 +60,9 @@ array_of_nav_links.forEach((li_items) => {
 let hamburger_button = document.createElement("button");
 hamburger_button.classList.add("btn");
 
-let btn_bar = ["bar1", "bar2", "bar3"];
-btn_bar.forEach((bars) => {
-  let bar = document.createElement("span");
-  bar.classList.add("bars");
-  hamburger_button.appendChild(bar);
-});
+let bar = document.createElement("span");
+bar.classList.add("bars");
+hamburger_button.appendChild(bar);
 
 // hamburger_functionality=>:
 hamburger_button.addEventListener("click", (e) => {
