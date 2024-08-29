@@ -7,7 +7,7 @@ createElement("section", "footer_section_content", ".footer");
 createElement("div", "main_content", ".footer_section_content");
 createElement("div", "text_content_div", ".main_content");
 
-let name_of_companies = ["Company1", "Company2", "Company3", "Company4"];
+let name_of_companies = ["Company", "Company", "Company", "Company"];
 let links_in_company = [
   ["About", "Approach", "Sustainability", "Careers", "News"],
   ["Scope", "Design", "Accountability", "Profession", "Media"],
