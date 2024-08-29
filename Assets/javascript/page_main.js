@@ -52,33 +52,27 @@ createElement("img", null, ".img_content", null, {
 
 //<<<<<<<                 Branding Section start         >>>>>>
 
-let branding_page_section = document.createElement("section");
-branding_page_section.classList.add("branding_page_section");
-main.appendChild(branding_page_section);
+createElement("section", "branding_page_section", ".main");
 
-let branding_page_content_div = document.createElement("div");
-branding_page_content_div.classList.add("branding_page_content");
-branding_page_section.appendChild(branding_page_content_div);
-
+createElement("div", "branding_page_content", ".branding_page_section");
 // branding Page text content:
 
-let branding_page_text_content_div = document.createElement("div");
-branding_page_text_content_div.classList.add("branding_page_text_content");
-branding_page_content_div.appendChild(branding_page_text_content_div);
+createElement("div", "branding_page_text_content", ".branding_page_content");
 
-let branding_main_heading, branding_slogan_text;
-branding_slogan_text = document.createElement("h4");
-branding_main_heading = document.createElement("h2");
-branding_slogan_text.classList.add("slogan_text");
-branding_main_heading.classList.add("section_heading");
-branding_slogan_text.textContent = "Dream Big Inspire the World";
-branding_main_heading.textContent = "We turn creative ideas into your business";
-branding_page_text_content_div.appendChild(branding_slogan_text);
-branding_page_text_content_div.appendChild(branding_main_heading);
+createElement(
+  "h4",
+  "slogan_text",
+  ".branding_page_text_content",
+  "Dream Big Inspire the World"
+);
+createElement(
+  "h2",
+  "section_heading",
+  ".branding_page_text_content",
+  "We turn creative ideas into your business"
+);
 
-let branding_list = document.createElement("ul");
-branding_list.classList.add("branding_list");
-branding_page_text_content_div.appendChild(branding_list);
+createElement("ul", "branding_list", ".branding_page_text_content");
 
 let branding_list_inner_content = [
   { href: "/", list_name: "Web Design" },
@@ -88,39 +82,29 @@ let branding_list_inner_content = [
 ];
 
 branding_list_inner_content.forEach((li_item_link) => {
-  let li_item = document.createElement("li");
-  li_item.classList.add("branding_list_items");
+  let li_item = createElement("li", "branding_list_items", ".branding_list");
 
-  let li_item_link_def = document.createElement("a");
-  li_item_link_def.classList.add("branding_links");
-
-  li_item_link_def.textContent = li_item_link.list_name;
-  li_item_link_def.setAttribute("href", `${li_item_link.href}`);
-
-  branding_list.appendChild(li_item);
-  li_item.appendChild(li_item_link_def);
+  createElement("a", "branding_links", li_item, `${li_item_link.list_name}`, {
+    href: `${li_item_link.href}`,
+  });
 });
 
-let branding_section_text = document.createElement("p");
-branding_section_text.classList.add("section_text");
-branding_section_text.textContent = ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ad reiciendis, dolorem vero magnam praesentium alias sequi illo. Modi quo, nobis earum cum iusto nostrum aut quibusdam non sit impedit est ipsa fugiat libero itaque ad eaque. Dolores diesw klice iokrn as, shinda kukro voluptatem.`;
-branding_page_text_content_div.appendChild(branding_section_text);
+createElement(
+  "p",
+  "section_text",
+  ".branding_page_text_content",
+  `Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ad reiciendis, dolorem vero magnam praesentium alias sequi illo. Modi quo, nobis earum cum iusto nostrum aut quibusdam non sit impedit est ipsa fugiat libero itaque ad eaque. Dolores diesw klice iokrn as, shinda kukro voluptatem.`
+);
 
-let branding_section_btn = document.createElement("button");
-branding_section_btn.classList.add("btn");
-branding_section_btn.textContent = "Read More";
-branding_page_text_content_div.appendChild(branding_section_btn);
+createElement("button", "btn", ".branding_page_text_content", `Read More`);
 
 // Branding Section Image Content
 
-let branding_section_img_container = document.createElement("div");
-branding_section_img_container.classList.add("branding_page_img_content");
-let branding_section_img = document.createElement("img");
-branding_section_img.setAttribute("src", "./Assets/images//watch_image.png");
-branding_section_img.setAttribute("alt", "Image of a Watch");
-
-branding_page_content_div.appendChild(branding_section_img_container);
-branding_section_img_container.appendChild(branding_section_img);
+createElement("div", "branding_page_img_content", ".branding_page_content");
+createElement("img", null, ".branding_page_img_content", null, {
+  src: "./Assets/images//watch_image.png",
+  alt: "Image of a Watch",
+});
 
 //<<<<<<<                 Branding Section End        >>>>>>
 
