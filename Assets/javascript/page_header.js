@@ -1,3 +1,34 @@
+let createElement = (
+  newElement,
+  elementClass = null,
+  elementContainer,
+  elementContent = null,
+  attributes = {}
+) => {
+  let htmlElement = document.createElement(newElement);
+  if (elementClass) {
+    htmlElement.classList.add(elementClass);
+  }
+  if (elementContent != null) {
+    htmlElement.innerHTML = elementContent;
+  }
+  if (attributes) {
+    for (let attr_key in attributes) {
+      htmlElement.setAttribute(attr_key, attributes[attr_key]);
+    }
+  }
+  if (typeof elementContainer === "string") {
+    let selectParent = document.querySelector(elementContainer);
+    if (selectParent) {
+      selectParent.appendChild(htmlElement);
+    } else {
+      `Error While creating element "${newElement}" having class name "${elementClass}"`;
+    }
+  } else {
+    elementContainer.appendChild(htmlElement);
+  }
+};
+
 //<<<<<<<                 Header Section start          >>>>>>
 
 // Defining header tag
@@ -15,6 +46,7 @@ let logo_div = document.createElement("div");
 logo_div.classList.add("logo");
 nav.appendChild(logo_div);
 
+k;
 // logo img:
 let logo_img = document.createElement("img");
 logo_img.classList.add("rexlogo");
