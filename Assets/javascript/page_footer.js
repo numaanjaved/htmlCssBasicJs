@@ -9,7 +9,7 @@ createElement("div", "text_content_div", ".main_content");
 
 let name_of_companies = ["Company1", "Company2", "Company3", "Company4"];
 let links_in_company = [
-  ["About", "Apporach", "Sustainability", "Careers", "News"],
+  ["About", "Approach", "Sustainability", "Careers", "News"],
   ["Scope", "Design", "Accountability", "Profession", "Media"],
   ["Product", "Development", "Services", "Sales", "Records"],
   ["Help", "Contact", "Policy", "What's New?", "Faq"],
@@ -44,14 +44,14 @@ links_in_company.forEach((links_names, index) => {
 
 createElement("div", "img_content_div", ".main_content");
 
-let company_img_divs = ["div1", "div2", "div3", "div4"];
+let company_img_container = ["div1", "div2", "div3", "div4"];
 let company_images_data = [
   { src: "./Assets/images/Company_img1.png", alt: "Company Image" },
   { src: "./Assets/images/Company_img2.png", alt: "Company Image" },
   { src: "./Assets/images/Company_img3.png", alt: "Company Image" },
   { src: "./Assets/images/Company_img4.png", alt: "Company Image" },
 ];
-company_img_divs.forEach((div_data, index) => {
+company_img_container.forEach((div_data, index) => {
   let div = createElement("div", "company_image", ".img_content_div");
 
   //   creating_img tag:
