@@ -7,7 +7,14 @@ let createElement = (
 ) => {
   let htmlElement = document.createElement(newElement);
   if (elementClass) {
-    htmlElement.classList.add(elementClass);
+    // console.log(`Adding classes: ${elementClass}`);
+    if (Array.isArray(elementClass)) {
+      elementClass.forEach((cls) => {
+        htmlElement.classList.add(cls);
+      });
+    } else {
+      htmlElement.classList.add(elementClass);
+    }
   }
   if (elementContent != null) {
     htmlElement.innerHTML = elementContent;
