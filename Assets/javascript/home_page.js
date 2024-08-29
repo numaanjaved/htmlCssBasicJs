@@ -1,3 +1,4 @@
+let body = document.body;
 // Scripts Functions
 let scripts_func = async () => {
   let header_script_func = new Promise((resolve, reject) => {
@@ -13,7 +14,7 @@ let scripts_func = async () => {
       header_script.onerror = () => {
         reject("Error Occurred while Loading Header Script");
       };
-    }, 10);
+    }, 1);
   });
   let main_script_func = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -45,7 +46,7 @@ let scripts_func = async () => {
       footer_script.onerror = () => {
         reject("Error Occurred while Loading Footer Script");
       };
-    }, 2000);
+    }, 2500);
   });
 
   let async_header = await header_script_func;

@@ -1,5 +1,3 @@
-// let body = document.body;
-
 let createElement = (
   newElement,
   elementClass = null,
