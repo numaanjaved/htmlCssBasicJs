@@ -1,11 +1,3 @@
-let body = document.body;
-
-// Defining Landing Page Container:
-// It is just for styling purpose
-
-let landing_page_container = document.createElement("div");
-landing_page_container.classList.add("landing_Page_container");
-
 // Scripts Functions
 let scripts_func = async () => {
   let header_script_func = new Promise((resolve, reject) => {

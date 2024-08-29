@@ -1,3 +1,5 @@
+// let body = document.body;
+
 let createElement = (
   newElement,
   elementClass = null,
@@ -27,42 +29,29 @@ let createElement = (
   } else {
     elementContainer.appendChild(htmlElement);
   }
+  return htmlElement;
 };
+
+// div is for background image effect
+createElement("div", "landing_Page_container", body);
 
 //<<<<<<<                 Header Section start          >>>>>>
 
-// Defining header tag
-let header = document.createElement("header");
-header.classList.add("header");
-// Appending in body
-body.appendChild(landing_page_container);
-body.appendChild(header);
-// Defining nav tag
-let nav = document.createElement("nav");
-nav.classList.add("navbar");
-header.appendChild(nav);
-// logo div:
-let logo_div = document.createElement("div");
-logo_div.classList.add("logo");
-nav.appendChild(logo_div);
+createElement("header", "header", body);
 
-k;
-// logo img:
-let logo_img = document.createElement("img");
-logo_img.classList.add("rexlogo");
-logo_img.setAttribute("src", "./Assets/images/BlueRex_Logo.png");
-logo_div.appendChild(logo_img);
-let logo_text = document.createElement("span");
-logo_text.classList.add("rexlogo_text");
-logo_text.textContent = "BlueRex";
-logo_div.appendChild(logo_text);
+createElement("nav", "navbar", ".header");
+
+// logo div:
+createElement("div", "logo", ".navbar");
+createElement("img", "rexlogo", ".logo", null, {
+  src: "./Assets/images/BlueRex_Logo.png",
+  alt: "RexLogo Icon",
+});
+createElement("span", "rexlogo_text", ".logo", "BlueRex");
+
 // Navbar Lists
-let lists_container = document.createElement("div");
-lists_container.classList.add("list_container");
-nav.appendChild(lists_container);
-let nav_ul = document.createElement("ul");
-nav_ul.classList.add("header_items_list");
-lists_container.appendChild(nav_ul);
+createElement("div", "list_container", ".navbar");
+let nav_ul = createElement("ul", "header_items_list", ".list_container");
 
 // Creating Array of objects containing Li data
 
@@ -77,24 +66,17 @@ let array_of_nav_links = [
 ];
 
 array_of_nav_links.forEach((li_items) => {
-  let list_li = document.createElement("li");
-  list_li.classList.add("list_items");
-  let list_item_link = document.createElement("a");
-  list_item_link.classList.add("li_links");
-  list_item_link.setAttribute("href", `${li_items.href}`);
-  list_item_link.textContent = `${li_items.text}`;
-  nav_ul.appendChild(list_li);
-  list_li.appendChild(list_item_link);
+  // defined variable to store data in one variable and then put data in that variable for each iteration
+
+  let li = createElement("li", "list_items", ".header_items_list");
+  createElement("a", "li_links", li, `${li_items.text}`, {
+    href: `${li_items.href}`,
+  });
 });
 
 // navbar Hamburger Button:
-
-let hamburger_button = document.createElement("button");
-hamburger_button.classList.add("btn");
-
-let bar = document.createElement("span");
-bar.classList.add("bars");
-hamburger_button.appendChild(bar);
+let hamburger_button = createElement("button", "btn", ".list_container");
+createElement("span", "bars", hamburger_button);
 
 // hamburger_functionality=>:
 hamburger_button.addEventListener("click", (e) => {
@@ -106,7 +88,5 @@ hamburger_button.addEventListener("click", (e) => {
     nav_ul.classList.add("flex");
   }
 });
-
-lists_container.appendChild(hamburger_button);
 
 //<<<<<<<                 Header Section End          >>>>>>
