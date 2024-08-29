@@ -32,27 +32,27 @@ let scripts_func = async () => {
       };
     }, 20);
   });
-  let footer_script_func = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let footer_script = document.createElement("script");
-      footer_script.setAttribute("src", "./Assets/javascript/page_footer.js");
-      footer_script.defer = true;
-      document.head.appendChild(footer_script);
+  // let footer_script_func = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     let footer_script = document.createElement("script");
+  //     footer_script.setAttribute("src", "./Assets/javascript/page_footer.js");
+  //     footer_script.defer = true;
+  //     document.head.appendChild(footer_script);
 
-      footer_script.onload = () => {
-        resolve("Footer Script Loaded Successfully");
-      };
+  //     footer_script.onload = () => {
+  //       resolve("Footer Script Loaded Successfully");
+  //     };
 
-      footer_script.onerror = () => {
-        reject("Error Occurred while Loading Footer Script");
-      };
-    }, 2500);
-  });
+  //     footer_script.onerror = () => {
+  //       reject("Error Occurred while Loading Footer Script");
+  //     };
+  //   }, 2500);
+  // });
 
   let async_header = await header_script_func;
   let async_main = await main_script_func;
-  let async_footer = await footer_script_func;
-  return [async_header, async_main, async_footer];
+  // let async_footer = await footer_script_func;
+  return [async_header, async_main]; //async_footer
 };
 
 let run_func = scripts_func();
