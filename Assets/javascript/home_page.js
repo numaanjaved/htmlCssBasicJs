@@ -18,7 +18,7 @@ let scripts_func = async () => {
   let header_script_func = new Promise((resolve, reject) => {
     setTimeout(() => {
       let header_script = createScript("script", head, {
-        src: "./Assets/javascript/page_header.js",
+        src: "./Assets/javascript/components/header.js",
         defer: "defer",
       });
       header_script.onload = () => {
@@ -33,7 +33,7 @@ let scripts_func = async () => {
   let main_script_func = new Promise((resolve, reject) => {
     setTimeout(() => {
       let main_script = createScript("script", head, {
-        src: "./Assets/javascript/page_main.js",
+        src: "./Assets/javascript/components/main.js",
         defer: "defer",
       });
       main_script.onload = () => {
@@ -48,7 +48,7 @@ let scripts_func = async () => {
   let footer_script_func = new Promise((resolve, reject) => {
     setTimeout(() => {
       let footer_script = createScript("script", head, {
-        src: "./Assets/javascript/page_footer.js",
+        src: "./Assets/javascript/components/footer.js",
         defer: "defer",
       });
 
