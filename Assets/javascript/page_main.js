@@ -167,34 +167,32 @@ achievement_container.forEach((con, index) => {
 
 //<<<<<<<                 Creative Section Start      >>>>>>
 
-// let creative_section = document.createElement("section");
-// creative_section.classList.add("creative_section");
-// main.appendChild(creative_section);
+createElement("section", "creative_section", ".main");
 
-// let creative_section_container = document.createElement("div");
-// creative_section_container.classList.add("creative_section_container");
-// creative_section.appendChild(creative_section_container);
+createElement("div", "creative_section_container", ".creative_section");
 
-// let creative_section_slogan_text = document.createElement("h4");
-// creative_section_slogan_text.classList.add("slogan_text");
-// creative_section_slogan_text.textContent = `Let's Grow Together`;
+createElement(
+  "h4",
+  "slogan_text",
+  ".creative_section_container",
+  `Let's Grow Together`
+);
 
-// let creative_section_main_heading = document.createElement("h2");
-// creative_section_main_heading.classList.add("section_heading");
-// creative_section_main_heading.textContent = `We turn creative ideas into your business`;
+createElement(
+  "h2",
+  "section_heading",
+  ".creative_section_container",
+  `We turn creative ideas into your business`
+);
 
-// let creative_section_text = document.createElement("p");
-// creative_section_text.classList.add("section_text");
-// creative_section_text.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex fugit aliquam error excepturi veritatis alias ipsum facere nostrum quod non nobis officiis doloremque veniam.`;
+createElement(
+  "p",
+  "section_text",
+  ".creative_section_container",
+  `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex fugit aliquam error excepturi veritatis alias ipsum facere nostrum quod non nobis officiis doloremque veniam.`
+);
 
-// let creative_section_btn = document.createElement("button");
-// creative_section_btn.classList.add("btn");
-// creative_section_btn.textContent = "Read More";
-
-// creative_section_container.appendChild(creative_section_slogan_text);
-// creative_section_container.appendChild(creative_section_main_heading);
-// creative_section_container.appendChild(creative_section_text);
-// creative_section_container.appendChild(creative_section_btn);
+createElement("button", "btn", ".creative_section_container", `Read more`);
 
 //<<<<<<<                 Creative Section End      >>>>>>
 
