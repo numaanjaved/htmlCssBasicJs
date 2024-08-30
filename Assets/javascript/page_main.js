@@ -420,32 +420,26 @@ createElement("img", "services_section_play_button", ".service_sec_btn", null, {
 
 //<<<<<<<                 Our Partners Section Start   >>>>>>
 
-// let partners_section = document.createElement("section");
-// partners_section.classList.add(`partners_section`);
-// main.appendChild(partners_section);
+createElement("section", "partners_section", "main");
 
-// let partners_section_container = document.createElement("div");
-// partners_section_container.classList.add(`partners_section_container`);
-// partners_section.appendChild(partners_section_container);
+createElement("div", "partners_section_container", ".partners_section");
+let data_of_images = [
+  { src: "./Assets/images/CISCO.png", alt: "CISCO Logo" },
+  { src: "./Assets/images/ADIDAS.png", alt: "ADIDAS Logo" },
+  { src: "./Assets/images/LENOVO.png", alt: "LENOVO Logo" },
+  { src: "./Assets/images/DISNEP.png", alt: "DISNEP Logo" },
+  { src: "./Assets/images/AMAZON.png", alt: "AMAZON Logo" },
+  { src: "./Assets/images/PUMA.png", alt: "PUMA Logo" },
+  { src: "./Assets/images/APPLE.png", alt: "APPLE Logo" },
+  { src: "./Assets/images/MINI.png", alt: "MINI Logo" },
+];
 
-// let data_of_images = [
-//   { src: "./Assets/images/CISCO.png", alt: "CISCO Logo" },
-//   { src: "./Assets/images/ADIDAS.png", alt: "ADIDAS Logo" },
-//   { src: "./Assets/images/LENOVO.png", alt: "LENOVO Logo" },
-//   { src: "./Assets/images/DISNEP.png", alt: "DISNEP Logo" },
-//   { src: "./Assets/images/AMAZON.png", alt: "AMAZON Logo" },
-//   { src: "./Assets/images/PUMA.png", alt: "PUMA Logo" },
-//   { src: "./Assets/images/APPLE.png", alt: "APPLE Logo" },
-//   { src: "./Assets/images/MINI.png", alt: "MINI Logo" },
-// ];
-
-// data_of_images.forEach((data) => {
-//   let img_tag = document.createElement("img");
-//   img_tag.classList.add("partner_logo");
-//   img_tag.setAttribute("src", data.src);
-//   img_tag.setAttribute("alt", data.alt);
-//   partners_section_container.appendChild(img_tag);
-// });
+data_of_images.forEach((data) => {
+  createElement("img", "partner_logo", ".partners_section_container", null, {
+    src: `${data.src}`,
+    alt: `${data.alt}`,
+  });
+});
 
 //<<<<<<<                 Our Partners Section End     >>>>>
 
