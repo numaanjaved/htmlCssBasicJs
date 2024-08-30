@@ -679,7 +679,7 @@ html {
         top: 0;
         left: 0;
       }
-      > .btn {
+      > .service_sec_btn {
         position: absolute;
         transform: translate(-50%, -50%);
         top: 50%;
