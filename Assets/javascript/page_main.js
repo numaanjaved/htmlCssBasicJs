@@ -487,79 +487,71 @@ createElement("img", null, ".testimonial_section_img", null, {
 
 //<<<<<<<                 Contact Section Start    >>>>>
 
-// let contact_section = document.createElement("div");
-// contact_section.classList.add("contact_section");
-// main.appendChild(contact_section);
+createElement("section", "contact_section", ".main");
 
-// let contact_section_container = document.createElement("div");
-// contact_section_container.classList.add("contact_section_container");
-// contact_section.appendChild(contact_section_container);
+createElement("div", "contact_section_container", ".contact_section");
 
-// let contact_section_text_container = document.createElement("div");
-// contact_section_text_container.classList.add("contact_section_text_content");
-// contact_section_container.appendChild(contact_section_text_container);
+createElement(
+  "div",
+  "contact_section_text_content",
+  ".contact_section_container"
+);
+createElement(
+  "h2",
+  "section_heading",
+  ".contact_section_text_content",
+  `Need Help?`
+);
+createElement(
+  "h3",
+  "section_sub_heading",
+  ".contact_section_text_content",
+  `Don't Forget to Contact With Us?`
+);
+createElement(
+  "p",
+  "section_text",
+  ".contact_section_text_content",
+  `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia, cumque? Nobis repellat vel quas ab in cumque? Animi, corporis architecto! Quibusdam sint laboriosam laudantium omnis in recusandae eum ullam similique?`
+);
 
-// let contact_section_main_heading = document.createElement("h2");
-// contact_section_main_heading.classList.add("section_heading");
-// contact_section_main_heading.textContent = "Need Help?";
-// contact_section_text_container.appendChild(contact_section_main_heading);
+createElement("div", "contact_div", ".contact_section_text_content");
 
-// let contact_section_sub_heading = document.createElement("h3");
-// contact_section_sub_heading.classList.add("section_sub_heading");
-// contact_section_sub_heading.textContent = "Don't Forget to Contact With Us";
-// contact_section_text_container.appendChild(contact_section_sub_heading);
+createElement("form", "contact_form", ".contact_div");
 
-// let contact_section_text = document.createElement("p");
-// contact_section_text.classList.add("section_text");
-// contact_section_text.textContent = ` Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia, cumque? Nobis repellat vel quas ab in cumque? Animi, corporis architecto! Quibusdam sint laboriosam laudantium omnis in recusandae eum ullam similique?`;
-// contact_section_text_container.appendChild(contact_section_text);
+let input_data_array = [
+  {
+    type: "text",
+    placeholder: "Name",
+    name: "name_input",
+    id: "customer_name_input",
+    required: true,
+    spellcheck: false,
+    autocomplete: "off",
+  },
+  {
+    type: "email",
+    placeholder: "Email",
+    name: "email_input",
+    id: "customer_email_input",
+    required: true,
+    spellcheck: false,
+    autocomplete: "off",
+  },
+];
 
-// let contact_input_div = document.createElement("div");
-// contact_input_div.classList.add("contact_div");
-// contact_section_text_container.appendChild(contact_input_div);
-
-// let contact_form = document.createElement("form");
-// contact_form.classList.add("contact_form");
-// contact_input_div.appendChild(contact_form);
-
-// let input_data_array = [
-//   {
-//     type: "text",
-//     placeholder: "Name",
-//     name: "name_input",
-//     id: "customer_name_input",
-//     required: true,
-//     spellcheck: false,
-//     autocomplete: "off",
-//   },
-//   {
-//     type: "email",
-//     placeholder: "Email",
-//     name: "email_input",
-//     id: "customer_email_input",
-//     required: true,
-//     spellcheck: false,
-//     autocomplete: "off",
-//   },
-// ];
-
-// input_data_array.forEach((data, index) => {
-//   let data_input = document.createElement("input");
-//   data_input.classList.add("contact_input");
-//   data_input.type = data.type;
-//   data_input.placeholder = data.placeholder;
-//   data_input.name = data.name;
-//   data_input.id = data.id;
-//   data_input.spellcheck = data.spellcheck;
-//   data_input.required = data.required;
-//   data_input.autocomplete = data.autocomplete;
-//   contact_form.appendChild(data_input);
-// });
-
-// let contact_form_submit_btn = document.createElement(`button`);
-// contact_form_submit_btn.classList.add("form_btn");
-// contact_form_submit_btn.textContent = "SUBMIT";
-// contact_form.appendChild(contact_form_submit_btn);
+input_data_array.forEach((data, index) => {
+  createElement("input", "contact_input", ".contact_form", null, {
+    type: data.type,
+    name: data.name,
+    id: data.id,
+    placeholder: data.placeholder,
+    spellcheck: data.spellcheck,
+    required: data.required,
+    autocomplete: data.autocomplete,
+  });
+});
+createElement("button", "form_btn", ".contact_form", `SUBMIT`);
 
 //<<<<<<<                 Contact Section End    >>>>>
 
