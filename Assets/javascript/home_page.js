@@ -1,12 +1,26 @@
+let head = document.head;
 let body = document.body;
+
 // Scripts Functions
+let createScript = (scriptTag, scriptContainer, attributes = {}) => {
+  let scriptTagName = document.createElement(scriptTag);
+  scriptContainer.appendChild(scriptTagName);
+
+  if (attributes) {
+    for (let attr_key in attributes) {
+      scriptTagName.setAttribute(attr_key, attributes[attr_key]);
+    }
+  }
+  return scriptTagName;
+};
+
 let scripts_func = async () => {
   let header_script_func = new Promise((resolve, reject) => {
     setTimeout(() => {
-      let header_script = document.createElement("script");
-      header_script.setAttribute("src", "./Assets/javascript/page_header.js");
-      header_script.defer = true;
-      document.head.appendChild(header_script);
+      let header_script = createScript("script", head, {
+        src: "./Assets/javascript/page_header.js",
+        defer: "defer",
+      });
       header_script.onload = () => {
         resolve("Header Script Loaded Successfully");
       };
@@ -18,11 +32,10 @@ let scripts_func = async () => {
   });
   let main_script_func = new Promise((resolve, reject) => {
     setTimeout(() => {
-      let main_script = document.createElement("script");
-      main_script.setAttribute("src", "./Assets/javascript/page_main.js");
-      main_script.defer = true;
-      document.head.appendChild(main_script);
-
+      let main_script = createScript("script", head, {
+        src: "./Assets/javascript/page_main.js",
+        defer: "defer",
+      });
       main_script.onload = () => {
         resolve("Main Script Loaded Successfully");
       };
@@ -32,27 +45,27 @@ let scripts_func = async () => {
       };
     }, 20);
   });
-  // let footer_script_func = new Promise((resolve, reject) => {
-  //   setTimeout(() => {
-  //     let footer_script = document.createElement("script");
-  //     footer_script.setAttribute("src", "./Assets/javascript/page_footer.js");
-  //     footer_script.defer = true;
-  //     document.head.appendChild(footer_script);
+  let footer_script_func = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let footer_script = createScript("script", head, {
+        src: "./Assets/javascript/page_footer.js",
+        defer: "defer",
+      });
 
-  //     footer_script.onload = () => {
-  //       resolve("Footer Script Loaded Successfully");
-  //     };
+      footer_script.onload = () => {
+        resolve("Footer Script Loaded Successfully");
+      };
 
-  //     footer_script.onerror = () => {
-  //       reject("Error Occurred while Loading Footer Script");
-  //     };
-  //   }, 2500);
-  // });
+      footer_script.onerror = () => {
+        reject("Error Occurred while Loading Footer Script");
+      };
+    }, 2500);
+  });
 
   let async_header = await header_script_func;
   let async_main = await main_script_func;
-  // let async_footer = await footer_script_func;
-  return [async_header, async_main]; //async_footer
+  let async_footer = await footer_script_func;
+  return [async_header, async_main, async_footer];
 };
 
 let run_func = scripts_func();
