@@ -50,16 +50,16 @@ createNewElement("div", "img_content_div", ".main_content");
 
 let company_img_container = ["div1", "div2", "div3", "div4"];
 let company_images_data = [
-  { src: "./Assets/images/Company_img1.png", alt: "Company Image" },
-  { src: "./Assets/images/Company_img2.png", alt: "Company Image" },
-  { src: "./Assets/images/Company_img3.png", alt: "Company Image" },
-  { src: "./Assets/images/Company_img4.png", alt: "Company Image" },
+  { src: "./Assets/images/Company_img1.webp", alt: "Company Image" },
+  { src: "./Assets/images/Company_img2.webp", alt: "Company Image" },
+  { src: "./Assets/images/Company_img3.webp", alt: "Company Image" },
+  { src: "./Assets/images/Company_img4.webp", alt: "Company Image" },
 ];
 company_img_container.forEach((div_data, index) => {
   let div = createNewElement("div", "company_image", ".img_content_div");
 
   //   creating_img tag:
-  let company_img = createNewElement("img", null, ".company_image", null, {
+  let company_img = createNewElement("img", null, div, null, {
     src: company_images_data[index].src,
     alt: company_images_data[index].alt,
   });

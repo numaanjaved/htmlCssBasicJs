@@ -49,7 +49,7 @@ createNewElement("nav", "navbar", ".header");
 // logo div:
 createNewElement("div", "logo", ".navbar");
 createNewElement("img", "rexlogo", ".logo", null, {
-  src: "./Assets/images/BlueRex_Logo.png",
+  src: "./Assets/images/BlueRex_Logo.webp",
   alt: "RexLogo Icon",
 });
 createNewElement("span", "rexlogo_text", ".logo", "BlueRex");

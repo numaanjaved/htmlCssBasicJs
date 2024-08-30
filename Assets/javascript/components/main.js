@@ -43,7 +43,7 @@ buttons_inner_text.forEach((btn) => {
 
 createNewElement("div", "img_content", ".landing_page_content");
 createNewElement("img", null, ".img_content", null, {
-  src: "./Assets/images/landing_Page_img.png",
+  src: "./Assets/images/landing_Page_img.webp",
 });
 
 //<<<<<<<                 Landing Page Section end         >>>>>>
@@ -106,7 +106,7 @@ createNewElement("button", "btn", ".branding_page_text_content", `Read More`);
 
 createNewElement("div", "branding_page_img_content", ".branding_page_content");
 createNewElement("img", null, ".branding_page_img_content", null, {
-  src: "./Assets/images//watch_image.png",
+  src: "./Assets/images//watch_image.webp",
   alt: "Image of a Watch",
 });
 
@@ -147,7 +147,7 @@ achievement_container.forEach((con, index) => {
 
   let icon = createNewElement("i", "icons", container);
   createNewElement("img", null, icon, null, {
-    src: "./Assets/images/announcement.png",
+    src: "./Assets/images/announcement.webp",
     alt: "Announcement Icon",
   });
 
@@ -241,8 +241,8 @@ createNewElement("div", "services_div", ".services_section_text_content");
 
 let Array_of_sub_services_content = {
   icons_src: [
-    "./Assets/images/chat_icon.png",
-    "./Assets/images/colorful_announcement.png",
+    "./Assets/images/chat_icon.webp",
+    "./Assets/images/colorful_announcement.webp",
   ],
   icons_alt: ["Messaging Icon", "A colorful icon of announcements"],
   sub_section_heading: ["Graphics Design", "Graphics Design"],
@@ -293,7 +293,7 @@ Array_of_sub_services_containers.forEach((item, index) => {
 // Img Content of services section
 createNewElement("div", "services_section_img", ".services_section_container");
 createNewElement("img", null, ".services_section_img", null, {
-  src: "./Assets/images/services_section_image.png",
+  src: "./Assets/images/services_section_image.webp",
   alt: "services section image",
 });
 
@@ -306,7 +306,7 @@ createNewElement(
   ".service_sec_btn",
   null,
   {
-    src: "./Assets/images/play_btn_white.png",
+    src: "./Assets/images/play_btn_white.webp",
     alt: "Play button",
   }
 );
@@ -367,39 +367,39 @@ createNewElement(
 let Array_of_product_containers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let data_of_product_images = [
   {
-    src: "./Assets/images/N8_image.png",
+    src: "./Assets/images/N8_image.webp",
     alt: "N8 bottle Image",
   },
   {
-    src: "./Assets/images/MUG_image.png",
+    src: "./Assets/images/MUG_image.webp",
     alt: "Mug Image",
   },
   {
-    src: "./Assets/images/Book_image.png",
+    src: "./Assets/images/Book_image.webp",
     alt: "Book Image",
   },
   {
-    src: "./Assets/images/Tshirt_image.png",
+    src: "./Assets/images/Tshirt_image.webp",
     alt: "T-shirt Image",
   },
   {
-    src: "./Assets/images/Box_image.png",
+    src: "./Assets/images/Box_image.webp",
     alt: "Box Image",
   },
   {
-    src: "./Assets/images/Bottles_image.png",
+    src: "./Assets/images/Bottles_image.webp",
     alt: "N8 bottle Image",
   },
   {
-    src: "./Assets/images/tags_image.png",
+    src: "./Assets/images/tags_image.webp",
     alt: "Tags(lables) Image",
   },
   {
-    src: "./Assets/images/Handbag_image.png",
+    src: "./Assets/images/Handbag_image.webp",
     alt: "Hand bag(Shopping bag) Image",
   },
   {
-    src: "./Assets/images/sanitizer_image.png",
+    src: "./Assets/images/sanitizer_image.webp",
     alt: "Sanitizer Image",
   },
 ];
@@ -426,14 +426,14 @@ createNewElement("section", "partners_section", "main");
 
 createNewElement("div", "partners_section_container", ".partners_section");
 let data_of_images = [
-  { src: "./Assets/images/CISCO.png", alt: "CISCO Logo" },
-  { src: "./Assets/images/ADIDAS.png", alt: "ADIDAS Logo" },
-  { src: "./Assets/images/LENOVO.png", alt: "LENOVO Logo" },
-  { src: "./Assets/images/DISNEP.png", alt: "DISNEP Logo" },
-  { src: "./Assets/images/AMAZON.png", alt: "AMAZON Logo" },
-  { src: "./Assets/images/PUMA.png", alt: "PUMA Logo" },
-  { src: "./Assets/images/APPLE.png", alt: "APPLE Logo" },
-  { src: "./Assets/images/MINI.png", alt: "MINI Logo" },
+  { src: "./Assets/images/CISCO.webp", alt: "CISCO Logo" },
+  { src: "./Assets/images/ADIDAS.webp", alt: "ADIDAS Logo" },
+  { src: "./Assets/images/LENOVO.webp", alt: "LENOVO Logo" },
+  { src: "./Assets/images/DISNEP.webp", alt: "DISNEP Logo" },
+  { src: "./Assets/images/AMAZON.webp", alt: "AMAZON Logo" },
+  { src: "./Assets/images/PUMA.webp", alt: "PUMA Logo" },
+  { src: "./Assets/images/APPLE.webp", alt: "APPLE Logo" },
+  { src: "./Assets/images/MINI.webp", alt: "MINI Logo" },
 ];
 
 data_of_images.forEach((data) => {
@@ -488,7 +488,7 @@ createNewElement("div", "stars_container", ".client_info");
 
 for (let i = 0; i < 5; i++) {
   let star = createNewElement("img", null, ".stars_container", null, {
-    src: "./Assets/images/star_icon.png",
+    src: "./Assets/images/star_icon.webp",
     alt: "Star Icon",
   });
 }
@@ -501,7 +501,7 @@ createNewElement(
 );
 
 createNewElement("img", null, ".testimonial_section_img", null, {
-  src: "./Assets/images/testimonals_img.png",
+  src: "./Assets/images/testimonals_img.webp",
   alt: "A you businessman picture",
 });
 
