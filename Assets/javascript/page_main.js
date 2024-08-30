@@ -301,120 +301,104 @@ createElement("img", "services_section_play_button", ".service_sec_btn", null, {
 
 //<<<<<<<                 Our Recent Work Section start     >>>>>>
 
-// let our_work_section = document.createElement("section");
-// our_work_section.classList.add("work_section");
-// main.appendChild(our_work_section);
+createElement("section", "work_section", ".main");
 
-// let work_section_container = document.createElement("div");
-// work_section_container.classList.add("work_section_container");
-// our_work_section.appendChild(work_section_container);
+createElement("div", "work_section_container", ".work_section");
 
 // text content of work section:
 
-// let work_section_text_content = document.createElement("div");
-// work_section_text_content.classList.add("work_section_text_content");
-// work_section_container.appendChild(work_section_text_content);
+createElement("div", "work_section_text_content", ".work_section_container");
+createElement(
+  "h2",
+  "section_heading",
+  ".work_section_text_content",
+  `Our Recent Work`
+);
+createElement(
+  "p",
+  "section_text",
+  ".work_section_text_content",
+  `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi et sapiente porro asperiores accusantium quaerat numquam, nemo pariatur aliquam maxime iusto ducimus ut nisi, nihil quos, quasi non! Necessitatibus, inventore.sit am et conse adipisicingctetur elit.`
+);
 
-// let work_section_heading = document.createElement("h2");
-// work_section_heading.classList.add("section_heading");
-// work_section_heading.textContent = "Our Recent Work";
-// work_section_text_content.appendChild(work_section_heading);
+createElement("ul", "work_list", ".work_section_text_content");
 
-// let work_section_text = document.createElement("p");
-// work_section_text.classList.add("section_text");
-// work_section_text.textContent =
-//   "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi et sapiente porro asperiores accusantium quaerat numquam, nemo pariatur aliquam maxime iusto ducimus ut nisi, nihil quos, quasi non! Necessitatibus, inventore.sit am et conse adipisicingctetur elit.";
-// work_section_text_content.appendChild(work_section_text);
+let items_in_ul_array = [
+  { href: "/", link_name: "Web Design" },
+  { href: "/", link_name: "Mobile App" },
+  { href: "/", link_name: "Branding" },
+  { href: "/", link_name: "Branding" },
+];
 
-// let work_list_ul = document.createElement("ul");
-// work_list_ul.classList.add("work_list");
-// work_section_text_content.appendChild(work_list_ul);
+items_in_ul_array.forEach((li_item_name, index) => {
+  let list_item = createElement("li", "work_list_items", ".work_list");
 
-// let items_in_ul_array = [
-//   { href: "/", link_name: "Web Design" },
-//   { href: "/", link_name: "Mobile App" },
-//   { href: "/", link_name: "Branding" },
-//   { href: "/", link_name: "Branding" },
-// ];
+  createElement(
+    "a",
+    "work_links",
+    list_item,
+    `${items_in_ul_array[index].link_name}`,
+    { href: `${items_in_ul_array[index].href}` }
+  );
+});
 
-// items_in_ul_array.forEach((li_item_name) => {
-//   let list_item = document.createElement("li");
-//   list_item.classList.add("work_list_items");
+createElement("div", "work_section_images", ".work_section_container");
 
-//   let list_item_link = document.createElement("a");
-//   list_item_link.classList.add("work_links");
-//   list_item_link.setAttribute("href", li_item_name.href);
-//   list_item_link.textContent = li_item_name.link_name;
+createElement("div", "work_section_images_container", ".work_section_images");
 
-//   list_item.appendChild(list_item_link);
-//   work_list_ul.appendChild(list_item);
-// });
+let Array_of_product_containers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let data_of_product_images = [
+  {
+    src: "./Assets/images/N8_image.png",
+    alt: "N8 bottle Image",
+  },
+  {
+    src: "./Assets/images/MUG_image.png",
+    alt: "Mug Image",
+  },
+  {
+    src: "./Assets/images/Book_image.png",
+    alt: "Book Image",
+  },
+  {
+    src: "./Assets/images/Tshirt_image.png",
+    alt: "T-shirt Image",
+  },
+  {
+    src: "./Assets/images/Box_image.png",
+    alt: "Box Image",
+  },
+  {
+    src: "./Assets/images/Bottles_image.png",
+    alt: "N8 bottle Image",
+  },
+  {
+    src: "./Assets/images/tags_image.png",
+    alt: "Tags(lables) Image",
+  },
+  {
+    src: "./Assets/images/Handbag_image.png",
+    alt: "Hand bag(Shopping bag) Image",
+  },
+  {
+    src: "./Assets/images/sanitizer_image.png",
+    alt: "Sanitizer Image",
+  },
+];
+Array_of_product_containers.forEach((div, index) => {
+  let product_container = createElement(
+    "div",
+    "product_img",
+    ".work_section_images_container"
+  );
 
-// let work_section_images_main_container = document.createElement("div");
-// work_section_images_main_container.classList.add("work_section_images");
-// work_section_container.appendChild(work_section_images_main_container);
+  createElement("img", null, product_container, null, {
+    src: `${data_of_product_images[index].src}`,
+    alt: `${data_of_product_images[index].alt}`,
+  });
+});
 
-// let work_section_img_sub_container = document.createElement("div");
-// work_section_img_sub_container.classList.add("work_section_images_container");
-// work_section_images_main_container.appendChild(work_section_img_sub_container);
-
-// let Array_of_product_containers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// let data_of_product_images = [
-//   {
-//     src: "./Assets/images/N8_image.png",
-//     alt: "N8 bottle Image",
-//   },
-//   {
-//     src: "./Assets/images/MUG_image.png",
-//     alt: "Mug Image",
-//   },
-//   {
-//     src: "./Assets/images/Book_image.png",
-//     alt: "Book Image",
-//   },
-//   {
-//     src: "./Assets/images/Tshirt_image.png",
-//     alt: "T-shirt Image",
-//   },
-//   {
-//     src: "./Assets/images/Box_image.png",
-//     alt: "Box Image",
-//   },
-//   {
-//     src: "./Assets/images/Bottles_image.png",
-//     alt: "N8 bottle Image",
-//   },
-//   {
-//     src: "./Assets/images/tags_image.png",
-//     alt: "Tags(lables) Image",
-//   },
-//   {
-//     src: "./Assets/images/Handbag_image.png",
-//     alt: "Hand bag(Shopping bag) Image",
-//   },
-//   {
-//     src: "./Assets/images/sanitizer_image.png",
-//     alt: "Sanitizer Image",
-//   },
-// ];
-// Array_of_product_containers.forEach((div, index) => {
-//   let product_container = document.createElement("div");
-//   product_container.classList.add("product_img");
-
-//   let product_img = document.createElement("img");
-
-//   product_img.setAttribute("src", `${data_of_product_images[index].src}`);
-//   product_img.setAttribute("alt", `${data_of_product_images[index].alt}`);
-
-//   work_section_img_sub_container.appendChild(product_container);
-//   product_container.appendChild(product_img);
-// });
-
-// let our_work_sec_btn = document.createElement("button");
-// our_work_sec_btn.textContent = `Read More`;
-// our_work_sec_btn.classList.add("btn");
-
-// work_section_container.appendChild(our_work_sec_btn);
+createElement("button", "btn", ".work_section_container", `Read More`);
 
 //<<<<<<<                 Our Recent Work Section End    >>>>>>
 
