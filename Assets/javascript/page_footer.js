@@ -1,11 +1,11 @@
 //<<<<<<<====                 Footer Section start             ====>>>>>
 
-createElement("footer", "footer", body);
+createNewElement("footer", "footer", body);
 
-createElement("section", "footer_section_content", ".footer");
+createNewElement("section", "footer_section_content", ".footer");
 
-createElement("div", "main_content", ".footer_section_content");
-createElement("div", "text_content_div", ".main_content");
+createNewElement("div", "main_content", ".footer_section_content");
+createNewElement("div", "text_content_div", ".main_content");
 
 let name_of_companies = ["Company", "Company", "Company", "Company"];
 let links_in_company = [
@@ -15,8 +15,8 @@ let links_in_company = [
   ["Help", "Contact", "Policy", "What's New?", "Faq"],
 ];
 links_in_company.forEach((links_names, index) => {
-  let subDiv = createElement("div", "text_sub_content", ".text_content_div");
-  createElement(
+  let subDiv = createNewElement("div", "text_sub_content", ".text_content_div");
+  createNewElement(
     "h4",
     "section_sub_heading",
     subDiv,
@@ -24,15 +24,19 @@ links_in_company.forEach((links_names, index) => {
   );
 
   //Adding company links list:
-  let company_linkList = createElement("ul", "company_list", subDiv);
+  let company_linkList = createNewElement("ul", "company_list", subDiv);
 
   //   Creating li and extracting data from Array
   links_names.forEach((li_link_name) => {
-    let li_items = createElement("li", "company_list_items", company_linkList);
+    let li_items = createNewElement(
+      "li",
+      "company_list_items",
+      company_linkList
+    );
 
     //   Now creating Link of Li:
 
-    let company_li_link = createElement(
+    let company_li_link = createNewElement(
       "a",
       "company_item_link",
       li_items,
@@ -42,7 +46,7 @@ links_in_company.forEach((links_names, index) => {
   });
 });
 
-createElement("div", "img_content_div", ".main_content");
+createNewElement("div", "img_content_div", ".main_content");
 
 let company_img_container = ["div1", "div2", "div3", "div4"];
 let company_images_data = [
@@ -52,10 +56,10 @@ let company_images_data = [
   { src: "./Assets/images/Company_img4.png", alt: "Company Image" },
 ];
 company_img_container.forEach((div_data, index) => {
-  let div = createElement("div", "company_image", ".img_content_div");
+  let div = createNewElement("div", "company_image", ".img_content_div");
 
   //   creating_img tag:
-  let company_img = createElement("img", null, ".company_image", null, {
+  let company_img = createNewElement("img", null, ".company_image", null, {
     src: company_images_data[index].src,
     alt: company_images_data[index].alt,
   });
@@ -63,11 +67,11 @@ company_img_container.forEach((div_data, index) => {
 
 // bottom part of Footer:
 
-createElement("div", "sub_content", ".footer_section_content");
+createNewElement("div", "sub_content", ".footer_section_content");
 
-createElement("div", "text_content_footer_bottom", ".sub_content");
+createNewElement("div", "text_content_footer_bottom", ".sub_content");
 
-createElement("ul", "footer_items", ".text_content_footer_bottom");
+createNewElement("ul", "footer_items", ".text_content_footer_bottom");
 
 let footer_li_items_array = ["li1", "li2", "li3", "li4"];
 
@@ -78,7 +82,7 @@ let Array_of_li_names = [
   "Site Map",
 ];
 Array_of_li_names.forEach((list_name, index) => {
-  let bottom_footer_list_item = createElement(
+  let bottom_footer_list_item = createNewElement(
     "li",
     "footer_list_item",
     ".footer_items"
@@ -86,11 +90,11 @@ Array_of_li_names.forEach((list_name, index) => {
 
   //   now adding links in it:
   if (index == 0) {
-    createElement("span", null, bottom_footer_list_item, `${list_name}`, {
+    createNewElement("span", null, bottom_footer_list_item, `${list_name}`, {
       id: "copyright",
     });
   } else if (index != 0) {
-    let footer_list_item_link = createElement(
+    let footer_list_item_link = createNewElement(
       "a",
       "footer_list_item_link",
       bottom_footer_list_item,
