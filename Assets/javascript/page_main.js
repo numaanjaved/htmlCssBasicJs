@@ -581,32 +581,28 @@ createElement("img", null, ".testimonial_section_img", null, {
 
 //<<<<<<<                 Social Links Section Start   >>>>>
 
-// let social_links_section = document.createElement("section");
-// social_links_section.classList.add("social_links_section");
-// main.appendChild(social_links_section);
+createElement("section", "social_links_section", ".main");
 
-// let social_links_container = document.createElement("div");
-// social_links_container.classList.add("social_links_section_container");
-// social_links_section.appendChild(social_links_container);
+createElement("div", "social_links_section_container", ".social_links_section");
 
-// let links_container = document.createElement("div");
-// links_container.classList.add("links_container");
-// social_links_container.appendChild(links_container);
+createElement("div", "links_container", ".social_links_section_container");
 
-// let social_links = [
-//   { href: "/", link_name: "facebook" },
-//   { href: "/", link_name: "twitter" },
-//   { href: "/", link_name: "linkedin" },
-//   { href: "/", link_name: "instagram" },
-//   { href: "/", link_name: "behance" },
-// ];
-// social_links.forEach((social_link_name, index) => {
-//   social_link_name = document.createElement("a");
-//   social_link_name.classList.add("social_links");
-//   social_link_name.textContent = social_links[index].link_name;
-//   social_link_name.setAttribute("href", social_links[index].href);
-//   links_container.appendChild(social_link_name);
-// });
+let social_links = [
+  { href: "/", link_name: "facebook" },
+  { href: "/", link_name: "twitter" },
+  { href: "/", link_name: "linkedin" },
+  { href: "/", link_name: "instagram" },
+  { href: "/", link_name: "behance" },
+];
+social_links.forEach((social_link_name, index) => {
+  createElement(
+    "a",
+    "social_links",
+    ".links_container",
+    social_links[index].link_name,
+    { href: `${social_links[index].href}` }
+  );
+});
 
 //<<<<<<<                 Social Links Section End        >>>>>
 //<<<<<<<                     Main Section End        >>>>>>
