@@ -451,74 +451,59 @@ createElement("img", "services_section_play_button", ".service_sec_btn", null, {
 
 //<<<<<<<                 Testimonials Section start   >>>>>
 
-// let testimonial_section = document.createElement("section");
-// testimonial_section.classList.add("testimonial_section");
-// main.appendChild(testimonial_section);
+createElement("section", "testimonial_section", ".main");
 
-// let testimonial_section_container = document.createElement("div");
-// testimonial_section_container.classList.add("testimonial_section_container");
-// testimonial_section.appendChild(testimonial_section_container);
+createElement("div", "testimonial_section_container", ".testimonial_section");
 
-// Testimonials Section text content:
-// let testimonial_section_text_container = document.createElement("div");
-// testimonial_section_text_container.classList.add(
-//   "testimonial_section_text_content"
-// );
-// testimonial_section_container.appendChild(testimonial_section_text_container);
+createElement(
+  "div",
+  "testimonial_section_text_content",
+  ".testimonial_section_container"
+);
 
-// let testimonial_section_slogan_text = document.createElement("h4");
-// testimonial_section_slogan_text.classList.add("slogan_text");
-// testimonial_section_slogan_text.textContent = "Our Happy Client";
-// testimonial_section_text_container.appendChild(testimonial_section_slogan_text);
+createElement(
+  "h4",
+  "slogan_text",
+  ".testimonial_section_text_content",
+  `Our Happy Client`
+);
+createElement(
+  "h2",
+  "section_heading",
+  ".testimonial_section_text_content",
+  `Testimonials`
+);
 
-// testimonial_section_text_container.appendChild(testimonial_section_slogan_text);
-// let testimonial_section_main_heading = document.createElement("h2");
-// testimonial_section_main_heading.classList.add(`section_heading`);
-// testimonial_section_main_heading.textContent = "Testimonials";
-// testimonial_section_text_container.appendChild(
-//   testimonial_section_main_heading
-// );
+createElement("div", "client_review", ".testimonial_section_text_content");
 
-// let client_review_container = document.createElement("div");
-// client_review_container.classList.add("client_review");
-// testimonial_section_text_container.appendChild(client_review_container);
+createElement(
+  "p",
+  "section_text",
+  ".client_review",
+  `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nisi doloribus at aut rerum, sed ji autem, praesentium magnam dolore odit possim neque temporibus.`
+);
 
-// let client_review_text = document.createElement("p");
-// client_review_text.classList.add("section_text");
-// client_review_text.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nisi doloribus at aut rerum, sed ji autem, praesentium magnam dolore odit possim neque temporibus.`;
-// client_review_container.appendChild(client_review_text);
+createElement("div", "client_info", ".client_review");
+createElement("div", "stars_container", ".client_info");
 
-// let client_info_container = document.createElement("div");
-// client_info_container.classList.add("client_info");
-// client_review_container.appendChild(client_info_container);
+for (let i = 0; i < 5; i++) {
+  let star = createElement("img", null, ".stars_container", null, {
+    src: "./Assets/images/star_icon.png",
+    alt: "Star Icon",
+  });
+}
+createElement("p", "client_name", ".client_info", `Mr. John Doe`);
 
-// let stars_container = document.createElement("div");
-// stars_container.classList.add("stars_container");
-// client_info_container.appendChild(stars_container);
+createElement(
+  "div",
+  "testimonial_section_img",
+  ".testimonial_section_container"
+);
 
-// for (let i = 0; i < 5; i++) {
-//   let star = document.createElement("img");
-//   star.setAttribute("src", "./Assets/images/star_icon.png");
-//   star.setAttribute("alt", "Star Icon");
-//   stars_container.appendChild(star);
-// }
-
-// let testimonial_client_name = document.createElement("p");
-// testimonial_client_name.classList.add("client_name");
-// testimonial_client_name.textContent = "Mr. John Doe";
-// client_info_container.appendChild(testimonial_client_name);
-
-// let testimonial_section_img_container = document.createElement("div");
-// testimonial_section_img_container.classList.add("testimonial_section_img");
-// testimonial_section_container.appendChild(testimonial_section_img_container);
-
-// let testimonial_section_img = document.createElement("img");
-// testimonial_section_img.setAttribute(
-//   "src",
-//   "./Assets/images/testimonals_img.png"
-// );
-// testimonial_section_img.setAttribute("alt", "A you businessman picture");
-// testimonial_section_img_container.appendChild(testimonial_section_img);
+createElement("img", null, ".testimonial_section_img", null, {
+  src: "./Assets/images/testimonals_img.png",
+  alt: "A you businessman picture",
+});
 
 //<<<<<<<                 Testimonials Section End   >>>>>
 
