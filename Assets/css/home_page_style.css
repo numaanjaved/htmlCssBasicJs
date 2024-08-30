@@ -145,11 +145,14 @@ html {
         }
       }
       > .btn {
-        background-color: #ffffff00;
+        background-color: transparent;
+        height: 22px;
         border: none;
         margin-left: 3rem;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         row-gap: 5px;
         position: relative;
         &:hover {
@@ -157,14 +160,13 @@ html {
         }
         > .bars::before {
           position: absolute;
-          top: 8px;
-          top: -8px;
+          top: 0;
           left: 0;
           display: block;
           content: " ";
           background-color: var(--light);
           height: 3px;
-          width: 22px;
+          width: 24px;
           border-radius: 20px;
           -webkit-border-radius: 20px;
           -moz-border-radius: 20px;
@@ -175,8 +177,8 @@ html {
           display: block;
           content: " ";
           background-color: var(--light);
-          height: 3px;
-          width: 22px;
+          height: 3.2px;
+          width: 24px;
           border-radius: 20px;
           -webkit-border-radius: 20px;
           -moz-border-radius: 20px;
@@ -185,13 +187,13 @@ html {
         }
         > .bars::after {
           position: absolute;
-          top: 8px;
+          bottom: 0;
           left: 0;
           display: block;
           content: " ";
           background-color: var(--light);
-          height: 3px;
-          width: 22px;
+          height: 3.5px;
+          width: 24px;
           border-radius: 20px;
           -webkit-border-radius: 20px;
           -moz-border-radius: 20px;
