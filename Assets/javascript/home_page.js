@@ -1,6 +1,5 @@
 let head = document.head;
 let body = document.body;
-
 // Scripts Functions
 let createScript = (scriptTag, scriptContainer, attributes = {}) => {
   let scriptTagName = document.createElement(scriptTag);
@@ -15,56 +14,26 @@ let createScript = (scriptTag, scriptContainer, attributes = {}) => {
 };
 
 let scripts_func = async () => {
-  let header_script_func = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let header_script = createScript("script", head, {
-        src: "./Assets/javascript/components/header.js",
-        defer: "defer",
-      });
-      header_script.onload = () => {
-        resolve("Header Script Loaded Successfully");
-      };
-
-      header_script.onerror = () => {
-        reject("Error Occurred while Loading Header Script");
-      };
-    }, 1);
-  });
-  let main_script_func = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let main_script = createScript("script", head, {
-        src: "./Assets/javascript/components/main.js",
-        defer: "defer",
-      });
-      main_script.onload = () => {
-        resolve("Main Script Loaded Successfully");
-      };
-
-      main_script.onerror = () => {
-        reject("Error Occurred while Loading Main Script");
-      };
-    }, 20);
-  });
-  let footer_script_func = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let footer_script = createScript("script", head, {
-        src: "./Assets/javascript/components/footer.js",
-        defer: "defer",
-      });
-
-      footer_script.onload = () => {
-        resolve("Footer Script Loaded Successfully");
-      };
-
-      footer_script.onerror = () => {
-        reject("Error Occurred while Loading Footer Script");
-      };
-    }, 2500);
-  });
-
-  let async_header = await header_script_func;
-  let async_main = await main_script_func;
-  let async_footer = await footer_script_func;
+  let newScriptFunc =(src, timeout)=>{
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let new_script = createScript("script", head, {
+          src: `${src}`,
+          defer: "defer",
+        });
+        new_script.onload = () => {
+          resolve(` ${src} Script Loaded Successfully`);
+        };
+  
+        new_script.onerror = () => {
+          reject(`Error Occurred while Loading ${src} Script`);
+        };
+      }, timeout);
+    });
+  }
+  let async_header =await newScriptFunc("./Assets/javascript/components/header.js",10)
+  let async_main =await newScriptFunc("./Assets/javascript/components/main.js",20)
+  let async_footer =await newScriptFunc("./Assets/javascript/components/footer.js",2000)
   return [async_header, async_main, async_footer];
 };
 
