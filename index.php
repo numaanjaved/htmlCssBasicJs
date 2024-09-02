@@ -7,7 +7,7 @@
     <!-- Page Title -->
     <title>Welcome to BlueRex | Check our services</title>
     <!-- Importing JS scripts -->
-    <script src="<?php echo './Assets/javascript/home_page.js'?>" defer></script>
+    <script src="./Assets/javascript/home_page.js" defer></script>
 
     <!-- Importing fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
