@@ -21,9 +21,10 @@ console.log(title);
 
 // QUERYSELECTOR
 
-var listItem = document.querySelector(".items:nth-child(odd)");
-for(let i )
-listItem.style.backgroundColor = "grey";
+var listItem = document.querySelector(".items");
+
 console.log(listItem);
 
 //QUERYSELECTORALL
+var listitems = document.querySelectorAll(".listed-group-item");
+console.log(listitems)
