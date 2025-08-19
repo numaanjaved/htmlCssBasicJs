@@ -28,7 +28,15 @@ const number = b == 4 ? true : false;
 console.log(number);
 
 // switch case
-
+switch (number) {
+  case true:
+    console.log("number is same");
+    break;
+  case false:
+    console.log("number is not same");
+    break;
+  default:
+}
 // functions
 function addSum(num1 = 1, num2 = 1) {
   console.log(num1 + num2);
@@ -68,6 +76,11 @@ console.log(arr);
 arr.unshift("apple");
 console.log(arr);
 
+const todocompleted = arr.filter((todo) => {
+  return todo === 5;
+});
+console.log(todocompleted);
+
 // Object
 let obj = {
   name: "hello",
@@ -99,6 +112,25 @@ let arrOfObj = [
 ];
 console.log(arrOfObj);
 
+// class
+
+class person {
+  constructor(fname, lname, dob) {
+    this.fname = fname;
+    this.lname = lname;
+    this.dob = new Date (dob);
+  }
+  getfullyear() {
+    return this.dob.getFullYear;
+  }
+  getfullname(){
+    return `${this.fname} ${this.lname}`
+  }
+}
+const person1 = new person("hello", "world", "3-4-1934");
+const person2 = new person("hello2","world2","2-3-1942")
+console.log(person2);
+console.log(person1.getfullname())
 // DOM
 let inputtext = document.querySelector(".text");
 let inputemail = document.querySelector(".email");
