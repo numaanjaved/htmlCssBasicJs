@@ -14,14 +14,19 @@ const d = true; // boolean
 const e = null;
 const dataType = undefined;
 
-// conditional operator
-if (b == 44) {
-  console.log("b is 44");
-} else if (b > 3) {
-  console.log("b is greater");
-} else {
-  console.log("b is not same");
+//loops
+for (let i = 0; i < 10; i++) {
+  console.log(i);
 }
+
+// conditional operator
+// if (b == 44) {
+//   console.log("b is 44");
+// } else if (b > 3) {
+//   console.log("b is greater");
+// } else {
+//   console.log("b is not same");
+// }
 
 // ternary operator
 const number = b == 4 ? true : false;
@@ -118,19 +123,19 @@ class person {
   constructor(fname, lname, dob) {
     this.fname = fname;
     this.lname = lname;
-    this.dob = new Date (dob);
+    this.dob = new Date(dob);
   }
   getfullyear() {
     return this.dob.getFullYear;
   }
-  getfullname(){
-    return `${this.fname} ${this.lname}`
+  getfullname() {
+    return `${this.fname} ${this.lname}`;
   }
 }
 const person1 = new person("hello", "world", "3-4-1934");
-const person2 = new person("hello2","world2","2-3-1942")
+const person2 = new person("hello2", "world2", "2-3-1942");
 console.log(person2);
-console.log(person1.getfullname())
+console.log(person1.getfullname());
 // DOM
 let inputtext = document.querySelector(".text");
 let inputemail = document.querySelector(".email");
