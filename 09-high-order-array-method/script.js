@@ -72,3 +72,12 @@ const ages = [12, 34, 54, 35, 4, 64, 6, 2, 45, 32, 13, 28];
 
 // let sumAge = ages.reduce((total, current) => (total += current));
 // console.log(sumAge);
+
+// combined methods
+
+let combined = ages
+  .map((age) => age * 2)
+  .filter((age) => age <= 40)
+  .sort((a, b) => a - b)
+  .reduce((total, current) => (total += current), 0);
+console.log(combined);
