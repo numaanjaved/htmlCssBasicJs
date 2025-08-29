@@ -16,8 +16,8 @@ console.log(header);
 // GETELEMENTBYCLASSNAME
 
 var title = document.getElementsByClassName("title");
-title[1].style.color = "grey";
-console.log(title);
+title[1].style.color="grey"
+console.log(title)
 
 // QUERYSELECTOR
 
