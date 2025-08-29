@@ -8,12 +8,6 @@ ul {
   background-color: #1bb36c;
   padding: 10px;
 }
-.container {
-  max-width: 400px;
-  border: 1px solid grey;
-  margin: 50px auto;
-  padding: 10px;
-}
 .items {
   padding: 10px;
 }
