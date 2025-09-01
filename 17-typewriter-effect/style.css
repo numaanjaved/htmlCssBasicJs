@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #777;
+  color: aliceblue;
+}
+.container {
+  height: 100%;
+  display: flex;
+  padding: 3rem;
+  justify-content: center;
+  flex-direction: column;
+}
+.txt-type > .txt{
+  border-right: 1px solid rgb(179, 165, 165);
+}
+h1,
+h2 {
+  font-weight: 200;
+}
+h1 {
+  font-size: 3.5rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
