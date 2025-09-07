@@ -45,19 +45,19 @@ body {
   top: 40%;
   right: 0;
 }
-.slide .content{
-    color: grey;
-    position: absolute;
-    bottom: 70px;
-    left: -600px;
-    width: 600px;
-    background-color: #eee;
-    opacity: 0;
+.slide .content {
+  color: grey;
+  position: absolute;
+  bottom: 70px;
+  left: -600px;
+  width: 600px;
+  background-color: #eee;
+  opacity: 0;
 }
-.slide.current .content{
-    transform: translateX(600px);
-    transition: 1s all;
-    opacity: 1;
+.slide.current .content {
+  transform: translateX(600px);
+  transition: 1s all;
+  opacity: 1;
 }
 .slide:first-child {
   background: url(./img/download.jpg) no-repeat center center / cover;
