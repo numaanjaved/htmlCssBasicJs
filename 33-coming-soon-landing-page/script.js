@@ -15,4 +15,9 @@ let intvl = setInterval(() => {
   <div>${mins}<span>Mins</span></div>
   <div>${seconds}<span>Seconds</span></div>
   `;
+  if (distance < 0) {
+    clearInterval(intvl);
+    countDown.style.color = "#587543";
+    countDown.innerHTML = `<div>Launched!</div>`;
+  }
 }, 1000);
