@@ -10,7 +10,7 @@ searchForm.addEventListener("submit", (e) => {
     showMessage("Please fill field", "alert-primary");
   }
   searchInput.value = "";
-  reddit.search(searchTerm, sortBy, searchLimit).then((results) => {
+  reddit.search(searchTerm, searchLimit, sortBy).then((results) => {
     let output = "<div class='card-columns'>";
     results.forEach((post) => {
       let image = post.preview
