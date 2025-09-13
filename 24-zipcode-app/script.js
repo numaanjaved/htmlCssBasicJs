@@ -1,7 +1,23 @@
 document.querySelector("form").addEventListener("submit", getLocation);
 function getLocation(e) {
   e.preventDefault();
-  let zip = document.querySelector(".zip").value;
+  let zip = document.querySelector(".zip").value.trim();
+  if (!/^\d{5}$/.test(zip)) {
+    showIcon("remove");
+    document.querySelector(".output").innerHTML = `<div class="message">
+        <p>Please enter a valid 5-digit zipcode</p>
+      </div>`;
+    setTimeout(() => {
+      document.querySelector(".output").innerHTML = "";
+    }, 2000);
+    setTimeout(() => {
+      document.querySelector(".zip").value = "";
+    }, 2000);
+    setTimeout(() => {
+      document.querySelector(".icon-remove").style.display = "none";
+    }, 2000);
+    return;
+  }
   fetch(`https://api.zippopotam.us/us/${zip}`)
     .then((response) => {
       if (response.status != 200) {
@@ -9,13 +25,14 @@ function getLocation(e) {
         document.querySelector(".output").innerHTML = `<div class="message">
             <p>Please enter valid zipcode</p>
             </div>`;
-        throw Error(response.statusText);
+        return Promise.reject("No data found");
       } else {
         showIcon("check");
         return response.json();
       }
     })
     .then((data) => {
+      if (!data) return;
       data.places.forEach((place) => {
         document.querySelector(".output").innerHTML = `<div class="message">
         <div>
@@ -31,7 +48,12 @@ function getLocation(e) {
         </div>`;
       });
     })
-    .catch((err) => console.log(err));
+    .catch(
+      (err) =>
+        (document.querySelector(".output").innerHTML = `<div class="message">
+            <p>${err}</p>
+            </div>`)
+    );
 }
 function showIcon(icon) {
   document.querySelector(".icon-check").style.display = "none";
