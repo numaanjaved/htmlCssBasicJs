@@ -55,8 +55,8 @@ function fetchResult() {
 }
 
 function deletebookmark(url) {
-  var booksaved = JSON.parse(localStorage.getItem("bookmarks"));
-  for (var i = 0; i < booksaved.length; i++) {
+  var olderbooksaved = JSON.parse(localStorage.getItem("bookmarks"));
+  for (var i = 0; i < olderbooksaved.length; i++) {
     if (booksaved[i].url == url) {
       booksaved.splice(i, 1);
     }
