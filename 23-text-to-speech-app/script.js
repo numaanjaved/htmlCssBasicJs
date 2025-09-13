@@ -31,13 +31,11 @@ const speak = () => {
     body.style.background = "#141414 url(img/wave.gif)";
     body.style.backgroundRepeat = "repeat-x";
     body.style.backgroundSize = "100% 100%";
-    console.log("Already speaking");
   }
   if (textInput.value !== "") {
     const speakText = new SpeechSynthesisUtterance(textInput.value);
     speakText.onend = (e) => {
       body.style.background = "#141414";
-      console.log("Speaking done");
     };
     const selectedVoice =
       voiceSelect.selectedOptions[0].getAttribute("data-name");
