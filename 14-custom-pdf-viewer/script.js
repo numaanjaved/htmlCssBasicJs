@@ -1,11 +1,13 @@
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
 const url = "./docs/pdf.pdf";
 let pdfDoc = null,
   pageIsRendering = false,
   pageNum = 1,
-  PageIsPending = null;
-const scale = 1,
-  canvas = document.querySelector("#pdf-render");
-ctx = canvas.getContext("2d");
+  pageIsPending = null;
+const scale = 1;
+const canvas = document.querySelector("#pdf-render");
+const ctx = canvas.getContext("2d");
 
 const renderPage = (num) => {
   pageIsRendering = true;
@@ -18,9 +20,10 @@ const renderPage = (num) => {
       viewport,
     };
     page.render(renderCtx).promise.then(() => {
-      if (PageIsPending !== null) {
-        renderPage(PageIsPending);
-        PageIsPending = null;
+      pageIsRendering = false;
+      if (pageIsPending !== null) {
+        renderPage(pageIsPending);
+        pageIsPending = null;
       }
     });
     document.querySelector("#page-num").textContent = num;
@@ -29,13 +32,14 @@ const renderPage = (num) => {
 
 const queueRenderPage = (num) => {
   if (pageIsRendering) {
-    PageIsPending = num;
+    pageIsPending = num;
   } else {
     renderPage(num);
   }
 };
 
 const showPrevPage = () => {
+  if (!pdfDoc) return;
   if (pageNum <= 1) {
     return;
   }
@@ -44,6 +48,7 @@ const showPrevPage = () => {
 };
 
 const showNextPage = () => {
+  if (!pdfDoc) return;
   if (pageNum >= pdfDoc.numPages) {
     return;
   }
