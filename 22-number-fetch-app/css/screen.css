@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #eee;
+}
+.container {
+  width: 100vw;
+}
+.content {
+  width: 50%;
+  background-color: #6fa3ad;
+  margin: 10px auto;
+  padding: 10px;
+  color: aliceblue;
+}
+.numberFact {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  margin: 10px 0;
+}
+.facts {
+  display: none;
+}
