@@ -24,8 +24,8 @@ nextBtn.addEventListener("click", validate);
 
 function getQuestion() {
   inputLabel.innerHTML = questions[position].question;
-  input.type = input.type ? questions[position].type : "text";
-  input.value = input.value ? questions[position].answer : "";
+  input.type ? questions[position].type : "text";
+  input.value ? questions[position].answer : "";
   progressBar.style.width = (position * 100) / questions.length + "%";
   showQuestion();
 }
@@ -67,13 +67,13 @@ function inputFail() {
 }
 
 function inputPass() {
-  setTimeout(transform, shakeTime * 0, 0, 10);
-  setTimeout(transform, shakeTime * 1, 0, 0);
+  setTimeout(() => transform(0, 30), shakeTime * 0);
+  setTimeout(() => transform(0, 0), shakeTime * 1);
   questions[position].answer = input.value;
   position++;
   if (questions[position]) {
     hideQuestion();
-    getQuestion();
+    setTimeout(getQuestion(), switchTime);
     inputLabel.innerHTML = questions[position].question;
     input.value = "";
   } else {
@@ -84,8 +84,8 @@ function inputPass() {
 function formComplete() {
   formBox.classList.add("close");
   const h1 = document.createElement("h1");
-  h1.classList.add("end")
-  setTimeout(()=>h1.style.opacity="1",1000)
+  h1.classList.add("end");
+  setTimeout(() => (h1.style.opacity = "1"));
   h1.appendChild(
     document.createTextNode(`Thanks ${questions[0].answer} for sign up`)
   );
