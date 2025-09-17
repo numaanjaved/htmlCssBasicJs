@@ -13,7 +13,7 @@ h1.logo {
   font-size: 40px;
   color: aliceblue;
 }
-h1.end{
+h1.end {
   position: relative;
   color: #eeeeee;
   opacity: 0;
@@ -83,6 +83,9 @@ input {
   width: 0%;
   height: 2px;
   background-color: #317bc0;
+  position: relative;
+  top: 0;
+  left: 15px;
   transition: all 0.5s ease-in;
 }
 #progress-bar {

@@ -21,6 +21,11 @@ let progressBar = document.querySelector("#progress-bar");
 
 document.addEventListener("DOMContentLoaded", getQuestion);
 nextBtn.addEventListener("click", validate);
+input.addEventListener("keyup", (e) => {
+  if (e.keyCode == 13) {
+    validate();
+  }
+});
 
 function getQuestion() {
   inputLabel.innerHTML = questions[position].question;
@@ -91,3 +96,8 @@ function formComplete() {
   );
   document.querySelector(".container").insertBefore(h1, formBox);
 }
+prevbtn.addEventListener("click", () => {
+  position--;
+  inputLabel.innerHTML = questions[position].question;
+  progressBar.style.width = (position * 100) / questions.length + "%";
+});
