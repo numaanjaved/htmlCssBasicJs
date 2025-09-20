@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+}
+#time {
+  font-size: 8rem;
+}
+h1 {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+}
+h2 {
+  font-size: 2rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
