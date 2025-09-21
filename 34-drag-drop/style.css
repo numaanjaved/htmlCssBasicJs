@@ -10,7 +10,7 @@ body {
   border: 3px solid #589753;
 }
 .fill {
-  background: url("photo.jpg");
+  background: url("photo.jpg") no-repeat center center/cover;
   height: 150px;
   width: 150px;
   position: relative;
