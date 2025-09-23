@@ -4,9 +4,12 @@ function getLocation(e) {
   let zip = document.querySelector(".zip").value.trim();
   if (!/^\d{5}$/.test(zip)) {
     showIcon("remove");
-    document.querySelector(".output").innerHTML = `<div class="message">
-        <p>Please enter a valid 5-digit zipcode</p>
-      </div>`;
+    let div = document.createElement("div");
+    div.className = "message";
+    let paragraph = document.createElement("p");
+    paragraph.textContent = "Please enter a valid 5-digit zipcode";
+    div.appendChild(paragraph);
+    document.querySelector(".output").appendChild(div);
     setTimeout(() => {
       document.querySelector(".output").innerHTML = "";
     }, 2000);
@@ -22,9 +25,12 @@ function getLocation(e) {
     .then((response) => {
       if (response.status != 200) {
         showIcon("remove");
-        document.querySelector(".output").innerHTML = `<div class="message">
-            <p>Please enter valid zipcode</p>
-            </div>`;
+        let div = document.createElement("div");
+        div.className = "message";
+        let paragraph = document.createElement("p");
+        paragraph.textContent = "Please enter a valid zipcode";
+        div.appendChild(paragraph);
+        document.querySelector(".output").appendChild(div);
         return Promise.reject("No data found");
       } else {
         showIcon("check");
@@ -34,26 +40,40 @@ function getLocation(e) {
     .then((data) => {
       if (!data) return;
       data.places.forEach((place) => {
-        document.querySelector(".output").innerHTML = `<div class="message">
-        <div>
-        <h1>Location Info</h1>
-        <button class="delete">X</button>
-        </div>
-        <ul>
-        <li><strong>City :</strong>${place["place name"]}</li>
-        <li><strong>State :</strong>${place["state"]}</li>
-        <li><strong>Longitude :</strong>${place["longitude"]}</li>
-        <li><strong>Latitude :</strong>${place["latitude"]}</li>
-        </ul>
-        </div>`;
+        let div = document.createElement("div");
+        div.className = "message";
+        let innerDiv = document.createElement("div");
+        let innerh1 = document.createElement("h1");
+        innerh1.textContent = "Location Info";
+        let button = document.createElement("button");
+        button.className = "delete";
+        button.textContent = "X";
+        innerDiv.append(innerh1, button);
+        div.appendChild(innerDiv);
+        let ul = document.createElement("ul");
+        function makeLi(value, tagValue) {
+          let li = document.createElement("li");
+          li.textContent = value;
+          let strong = document.createElement("strong");
+          strong.textContent = tagValue;
+          li.append(strong);
+          return li;
+        }
+        ul.appendChild(makeLi("City :", place["place name"]));
+        ul.appendChild(makeLi("State :", place["state"]));
+        ul.appendChild(makeLi("Longitude :", place["longitude"]));
+        ul.appendChild(makeLi("Latitude :", place["latitude"]));
+        div.appendChild(ul);
+        document.querySelector(".output").appendChild(div);
       });
     })
-    .catch(
-      (err) =>
-        (document.querySelector(".output").innerHTML = `<div class="message">
-            <p>${err}</p>
-            </div>`)
-    );
+    .catch((err) => {
+      let errorDiv = document.createElement("div");
+      errorDiv.className = "message";
+      let errorParagraph = document.createElement("p");
+      errorParagraph.textContent = err;
+      document.querySelector(".output").appendChild(errorDiv);
+    });
 }
 function showIcon(icon) {
   document.querySelector(".icon-check").style.display = "none";
