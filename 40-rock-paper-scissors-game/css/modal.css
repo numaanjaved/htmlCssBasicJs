@@ -1,0 +1,31 @@
+.modal {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #00000066;
+  z-index: 1;
+}
+.modal-content {
+  text-align: center;
+  width: 350px;
+  height: 300px;
+  background-color: #fff;
+  padding: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: modalOpen 1;
+}
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
