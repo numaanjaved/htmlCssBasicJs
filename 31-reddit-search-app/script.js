@@ -11,28 +11,53 @@ searchForm.addEventListener("submit", (e) => {
   }
   searchInput.value = "";
   reddit.search(searchTerm, searchLimit, sortBy).then((results) => {
-    let output = "<div class='card-columns'>";
     results.forEach((post) => {
+      let img = document.createElement("img");
+      img.className = "card-img-top";
+
       let image = post.preview
         ? post.preview.images[0].source.url
         : "https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg";
-      output += `
-      <div class="card mb-2">
-      <img class="card-img-top" src="${image}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">${post.title}</h5>
-        <p class="card-text">${truncate(post.selftext, 100)}</p>
-        <a href="${post.url}" target="_blank
-        " class="btn btn-primary">Read More</a>
-        <hr>
-        <span class="badge badge-secondary">Subreddit: ${post.subreddit}</span> 
-        <span class="badge badge-dark">Score: ${post.score}</span>
-      </div>
-    </div>
-      `;
+      img.src = image;
+      img.alt = "Card image cap";
+
+      let oDiv = document.createElement("div");
+      oDiv.appendChild(img);
+      oDiv.className = "card mb-2";
+
+      let iDiv = document.createElement("div");
+      iDiv.className = "card-body";
+
+      let h5 = document.createElement("h5");
+      h5.className = "card-title";
+      h5.textContent = post.title;
+
+      let p = document.createElement("p");
+      p.classList.add("card-text");
+      p.textContent = truncate(post.selftext, 100);
+
+      let a = document.createElement("a");
+      a.className = "btn btn-primary";
+      a.setAttribute("href", post.url);
+      a.textContent = "Read More";
+
+      let hr = document.createElement("hr");
+
+      function makeSpan(className, value) {
+        let span = document.createElement("span");
+        span.className = "badge";
+        span.classList.add(`bg-${className}`);
+        span.textContent = value;
+        return span;
+      }
+
+      iDiv.append(h5, p, a, hr);
+      iDiv.appendChild(makeSpan("secondary", `Subreddit: ${post.subreddit}`));
+      iDiv.appendChild(makeSpan("dark", `Score: ${post.score}`));
+
+      oDiv.appendChild(iDiv);
+      document.querySelector("#results").appendChild(oDiv);
     });
-    document.querySelector("#results").innerHTML = output;
-    output += "</div>";
   });
 });
 
