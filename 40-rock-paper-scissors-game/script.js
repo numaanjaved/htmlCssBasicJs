@@ -53,31 +53,32 @@ function getWinner(p, c) {
 }
 
 function showWinner(winner, computerChoice) {
+  result.innerHTML = "";
+  score.innerHTML = "";
+  let h1 = document.createElement("h1");
+  let icon = document.createElement("i");
+  icon.className = `fas fa-hand-${computerChoice} fa-10x`;
+  let p = document.createElement("p");
+  p.textContent = `Computer Choose ${computerChoice}`;
   if (winner === "player") {
     scoreBoard.player++;
-    result.innerHTML = `
-    <h1 class="text-win">You Win</h1>
-    <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-    <p>Computer Choose ${computerChoice}</p>
-    `;
+    h1.className = "text-win";
+    h1.textContent = "You Win";
+    result.append(h1, icon, p);
   } else if (winner === "computer") {
     scoreBoard.computer++;
-    result.innerHTML = `
-    <h1 class="text-lose">You Lose</h1>
-    <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-    <p>Computer Choose ${computerChoice}</p>
-    `;
+    h1.className = "text-lose";
+    h1.textContent = "You Lose";
+    result.append(h1, icon, p);
   } else {
-    result.innerHTML = `
-    <h1>Draw!</h1>
-    <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-    <p>Computer Choose ${computerChoice}</p>
-    `;
+    h1.textContent = "Draw!";
+    result.append(h1, icon, p);
   }
-  score.innerHTML = `
-    <p>Player: ${scoreBoard.player}</p>
-    <p>Computer: ${scoreBoard.computer}
-    `;
+  let p1 = document.createElement("p");
+  p1.textContent = `Player: ${scoreBoard.player}`;
+  let p2 = document.createElement("p");
+  p2.textContent = `Computer: ${scoreBoard.computer}`;
+  score.append(p1, p2);
   modal.style.display = "block";
 }
 
@@ -94,8 +95,12 @@ choices.forEach((choice) => {
 window.addEventListener("click", clearModal);
 
 restart.addEventListener("click", () => {
+  score.innerHTML = "";
   scoreBoard.player = 0;
   scoreBoard.computer = 0;
-  score.innerHTML = `<p>Player: 0</p>
-  <p>Computer: 0</p>`;
+  let p1 = document.createElement("p");
+  p1.textContent = `Player: 0`;
+  let p2 = document.createElement("p");
+  p2.textContent = `Computer: 0`;
+  score.append(p1, p2);
 });
