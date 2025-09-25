@@ -1,25 +1,26 @@
-let input = document.querySelector("#passbox");
+let input = document.querySelector("#passBox");
 let limitNumber = document.querySelector("#limitNumber");
 let lowerEl = document.querySelector("#lowercase");
 let upperEl = document.querySelector("#uppercase");
 let numberEl = document.querySelector("#number");
 let symbolEl = document.querySelector("#symbol");
 let genBtn = document.querySelector("#genPassword");
+let copy = document.querySelector("#copy");
 
-let randFun = {
-  lower: genRandomLower,
-  upper: genRandomUpper,
-  number: genRandomNumber,
-  symbol: genRandomSymbol,
+const ranFunction = {
+  lower: randomLower,
+  upper: randomUpper,
+  number: randomNumber,
+  symbol: randomSymbol,
 };
 
 genBtn.addEventListener("click", () => {
-  const length = limitNumber.value;
-  const hasLower = lowerEl.checked;
-  const hasUpper = upperEl.checked;
-  const hasNumber = numberEl.checked;
-  const hasSymbol = symbolEl.checked;
-  input.value = generatePassword(
+  let length = +limitNumber.value;
+  let hasLower = lowerEl.checked;
+  let hasUpper = upperEl.checked;
+  let hasNumber = numberEl.checked;
+  let hasSymbol = symbolEl.checked;
+  input.value = passwordGenerated(
     hasLower,
     hasUpper,
     hasNumber,
@@ -28,39 +29,49 @@ genBtn.addEventListener("click", () => {
   );
 });
 
-function generatePassword(lower, upper, number, symbol, length) {
-  let genPassword = "";
+copy.addEventListener("click", () => {
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value);
+  alert("Copyed: " + input.value);
+});
 
-  let typesCount = lower + upper + number + symbol;
+function passwordGenerated(lower, upper, number, symbol, length) {
+  let generatedPassword = "";
+  const typesCount = lower + upper + number + symbol;
 
-  console.log(typesCount);
-
-  let typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
-    (item) => Object.values(item)[0]
+  const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
+    (item) => {
+      return Object.values(item)[0];
+    }
   );
 
-  console.log(typesArr);
+  if (typesArr === 0) {
+    return "";
+  }
 
   for (let i = 0; i < length; i += typesCount) {
     typesArr.forEach((type) => {
-      const funcName = Object.keys(type)[0];
-      console.log(funcName);
-      genPassword += randFun[funcName]();
+      const ranFun = Object.keys(type)[0];
+      generatedPassword += ranFunction[ranFun]();
     });
   }
-  const finalPassword = genPassword.slice(0, length);
-  return finalPassword;
+  return generatedPassword.slice(0, length);
 }
-function genRandomLower() {
+// generate password
+function randomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
-function genRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+
+function randomUpper() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 68);
 }
-function genRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+
+function randomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 47);
 }
-function genRandomSymbol() {
-  let symbol = "!@#$%^&*()_+";
+
+function randomSymbol() {
+  const symbol = "!@#$%^&*()_+}{}";
   return symbol[Math.floor(Math.random() * symbol.length)];
 }

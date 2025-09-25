@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Password Generator</title>
   </head>
   <body>
     <div class="container">
       <h1>Password generator</h1>
-      <div class="input-box">
-        <input type="text" id="passbox" disabled />
+      <div class="row">
+        <input type="text" id="passBox" disabled />
+        <i class="fa-regular fa-clipboard" id="copy"></i>
       </div>
       <div class="row">
         <label class="password">Password length</label>
@@ -18,19 +26,19 @@
       </div>
       <div class="row">
         <label class="password">Lowercase letters</label>
-        <input type="checkbox" id="lowercase" checked/>
+        <input type="checkbox" id="lowercase" checked />
       </div>
       <div class="row">
         <label class="password">Uppercase letters</label>
-        <input type="checkbox" id="uppercase" checked/>
+        <input type="checkbox" id="uppercase" checked />
       </div>
       <div class="row">
         <label class="password">Number letters</label>
-        <input type="checkbox" id="number" checked/>
+        <input type="checkbox" id="number" checked />
       </div>
       <div class="row">
         <label class="password">Symbol letters</label>
-        <input type="checkbox" id="symbol" checked/>
+        <input type="checkbox" id="symbol" checked />
       </div>
       <button id="genPassword">Generate Password</button>
     </div>

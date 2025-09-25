@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #095486;
+  color: #fff;
+  line-height: 1.5;
+}
+.container {
+  max-width: 400px;
+  margin: 3rem auto;
+  text-align: center;
+  box-shadow: 10px 4px 29px rgba(207, 193, 193, 0.3);
+  padding: 1rem;
+}
+.container #passBox {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  position: relative;
+}
+#copy {
+  position: absolute;
+  top: 130px;
+  right: 160px;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+#genPassword {
+  display: inline-block;
+  padding: 1rem;
+  border: none;
+}
