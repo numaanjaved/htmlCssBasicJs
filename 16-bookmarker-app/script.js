@@ -33,12 +33,12 @@ function saveBookMark(e) {
 }
 
 function fetchResult() {
-  var booksaved = JSON.parse(localStorage.getItem("bookmarks"));
+  var booksSaved = JSON.parse(localStorage.getItem("bookmarks"));
   let bookmarkresult = document.querySelector("#output");
   bookmarkresult.innerHTML = "";
-  for (var i = 0; i < booksaved.length; i++) {
-    var name = booksaved[i].name;
-    var url = booksaved[i].url;
+  for (var i = 0; i < booksSaved.length; i++) {
+    var name = booksSaved[i].name;
+    var url = booksSaved[i].url;
     bookmarkresult.innerHTML +=
       '<div class="bookOutput">' +
       name +

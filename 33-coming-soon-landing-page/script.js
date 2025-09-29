@@ -9,15 +9,36 @@ let intvl = setInterval(() => {
   );
   const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  countDown.innerHTML = `
-  <div>${days}<span>Days</span></div>
-  <div>${hours}<span>Hours</span></div>
-  <div>${mins}<span>Mins</span></div>
-  <div>${seconds}<span>Seconds</span></div>
-  `;
+  divD.innerHTML = `${days}`;
+  divD.appendChild(spanD);
+  divH.innerHTML = `${hours}`;
+  divH.appendChild(spanH);
+  divM.innerHTML = `${mins}`;
+  divM.appendChild(spanM);
+  divS.innerHTML = `${seconds}`;
+  divS.appendChild(spanS);
+  countDown.append(divD, divH, divM, divS);
   if (distance < 0) {
     clearInterval(intvl);
     countDown.style.color = "#587543";
-    countDown.innerHTML = `<div>Launched!</div>`;
+    let div = document.createElement("div");
+    div.innerText = "Launched!";
+    countDown.appendChild(div);
   }
 }, 1000);
+
+let divD = document.createElement("div");
+let spanD = document.createElement("span");
+spanD.innerText = "Days";
+
+let divH = document.createElement("div");
+let spanH = document.createElement("span");
+spanH.innerText = "Hours";
+
+let divM = document.createElement("div");
+let spanM = document.createElement("span");
+spanM.innerText = "Mins";
+
+let divS = document.createElement("div");
+let spanS = document.createElement("span");
+spanS.innerText = "Seconds";
