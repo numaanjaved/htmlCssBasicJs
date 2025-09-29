@@ -14,12 +14,26 @@ class UI {
   static addBookToList(book) {
     const list = document.querySelector("#book-list");
     const row = document.createElement("tr");
-    row.innerHTML = `
-    <td>${book.title}</td>
-    <td>${book.author}</td>
-    <td>${book.isbn}</td>
-    <td><a href="#" class="btn btn-primary delete">X</a></td>
-    `;
+    function btn(tg1, tg2, value) {
+      let tag1 = document.createElement(tg1);
+      let tag2 = document.createElement(tg2);
+      tag1.appendChild(tag2);
+      tag2.className = "btn btn-primary delete";
+      tag2.innerText = value;
+      return tag1;
+    }
+
+    function makeTd(value) {
+      let td = document.createElement("td");
+      td.innerText = value;
+      return td;
+    }
+    row.append(
+      makeTd(book.title),
+      makeTd(book.author),
+      makeTd(book.isbn),
+      btn("td", "a", "X")
+    );
     list.appendChild(row);
   }
   static deleteBook(el) {
@@ -36,7 +50,7 @@ class UI {
     container.insertBefore(div, bookForm);
     setTimeout(() => {
       document.querySelector(".alert").remove();
-    },3000);
+    }, 3000);
   }
   static clearfeild() {
     const title = (document.querySelector("#title").value = "");
@@ -96,5 +110,5 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 document.querySelector("#book-list").addEventListener("click", (e) => {
   UI.deleteBook(e.target);
   Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
-  UI.showAlert("Book removed","success")
+  UI.showAlert("Book removed", "success");
 });
