@@ -1,96 +1,66 @@
 document.querySelector("#text").addEventListener("click", loadtext);
+document.querySelector("#user").addEventListener("click", loadUser);
+document.querySelector("#users").addEventListener("click", loadUsers);
+document.querySelector("#gitUser").addEventListener("click", loaduser);
 
-function loadtext() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "sample.txt", true);
+function fetchData(url, callback) {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
   xhr.onload = function () {
     if (this.status == 200) {
-      console.log(this.responseText);
+      callback(this.responseText);
     }
-  };
-
-  xhr.onreadystatechange = function () {
-    if ((this.readyState = 4)) {
-      console.log(this.responseText);
-    }
-    document.querySelector(".text").innerHTML = this.responseText;
   };
   xhr.send();
 }
 
-document.querySelector("#user").addEventListener("click", loadUser);
-document.querySelector("#users").addEventListener("click", loadUsers);
+function makeLi(value) {
+  let li = document.createElement("li");
+  li.textContent = `${value}`;
+  return li;
+}
+
+function makeListFromObject(obj, keys) {
+  let ul = document.createElement("ul");
+  keys.forEach((key) => ul.append(makeLi(obj[key])));
+  return ul;
+}
+
+function loadtext() {
+  fetchData("sample.txt", function (data) {
+    console.log(data);
+    document.querySelector(".text").innerHTML = data;
+  });
+}
+
 function loadUser() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "user.json", true);
-  xhr.onload = function () {
-    if (this.status == 200) {
-      var user = JSON.parse(this.responseText);
-      let id = user.id;
-      let userName = user.name;
-      let userEmail = user.email;
-      let ul = document.createElement("ul");
-      function makeLi(value) {
-        let li = document.createElement("li");
-        li.textContent = `${value}`;
-        return li;
-      }
-      ul.appendChild(makeLi(id));
-      ul.appendChild(makeLi(userName));
-      ul.appendChild(makeLi(userEmail));
-      document.querySelector(".user").appendChild(ul);
-    }
-  };
-  xhr.send();
+  fetchData("user.json", function (data) {
+    const user = JSON.parse(data);
+    let ul = makeListFromObject(user, ["id", "name", "email"]);
+    document.querySelector(".user").appendChild(ul);
+  });
 }
 
 function loadUsers() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "users.json", true);
-  xhr.onload = function () {
-    if (this.status == 200) {
-      var users = JSON.parse(this.responseText);
-      function makeLi(value) {
-        let li = document.createElement("li");
-        li.textContent = `${value}`;
-        return li;
-      }
-      for (let i of users) {
-        let ul = document.createElement("ul");
-        ul.appendChild(makeLi(i.id));
-        ul.appendChild(makeLi(i.name));
-        ul.appendChild(makeLi(i.email));
-        document.querySelector(".users").appendChild(ul);
-      }
-    }
-  };
-  xhr.send();
+  fetchData("users.json", function (data) {
+    const users = JSON.parse(data);
+    const container = document.querySelector(".users");
+    users.forEach((user) => {
+      container.appendChild(makeListFromObject(user, ["id", "name", "email"]));
+    });
+  });
 }
 
-document.querySelector("#gitUser").addEventListener("click", loaduser);
 function loaduser() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://api.github.com/users", true);
-  xhr.onload = function () {
-    if (this.status == 200) {
-      let users = JSON.parse(this.responseText);
-      let div = document.createElement("div");
-      div.classList.add("users");
-      let gitUsers = document.querySelector(".gitUser");
-      gitUsers.appendChild(div);
-      function makeLi(value) {
-        let li = document.createElement("li");
-        li.textContent = `${value}`;
-        return li;
-      }
-      for (let i of users) {
-        let ul = document.createElement("ul");
-        ul.appendChild(makeLi(i.id));
-        ul.appendChild(makeLi(i.login));
-        gitUsers.appendChild(ul);
-      }
-      console.log(users)
-    }
-  };
-  xhr.send();
+  fetchData("https://api.github.com/users", function (data) {
+    const users = JSON.parse(data);
+    const gitUsers = document.querySelector(".gitUser");
+    const div = document.createElement("div");
+    div.classList.add("users");
+    gitUsers.appendChild(div);
+
+    users.forEach((user) => {
+      div.appendChild(makeListFromObject(user, ["id", "login"]));
+    });
+  });
 }
