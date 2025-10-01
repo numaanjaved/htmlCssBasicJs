@@ -1,6 +1,14 @@
 import reddit from "./redditapi.js";
 let searchForm = document.querySelector("#search-form");
 let searchInput = document.querySelector("#search-input");
+let limitOption = document.querySelector("#limit");
+let optionArr = [5, 10, 25, 50, 100];
+optionArr.forEach((option) => {
+  let optionTag = document.createElement("option");
+  optionTag.textContent = option;
+  optionTag.value = option;
+  limitOption.append(optionTag);
+});
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let searchTerm = searchInput.value;
@@ -10,6 +18,7 @@ searchForm.addEventListener("submit", (e) => {
     showMessage("Please fill field", "alert-primary");
   }
   searchInput.value = "";
+  limitOption.value = "";
   reddit.search(searchTerm, searchLimit, sortBy).then((results) => {
     results.forEach((post) => {
       let img = document.createElement("img");
