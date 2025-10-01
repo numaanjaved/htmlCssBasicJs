@@ -1,48 +1,90 @@
+let container = document.querySelector(".container");
+
+function fetchData(url, preCall, callbacks) {
+  fetch(url)
+    .then(preCall)
+    .then(callbacks)
+    .catch((err) => console.log(err));
+}
+
+function make(btnId, value) {
+  let btn = document.createElement("button");
+  btn.className = "btn btn-primary";
+  btn.id = btnId;
+  btn.textContent = value;
+  return btn;
+}
+let arrObj = [
+  { id: "getText", text: "Get Text" },
+  { id: "getUsers", text: "Get Users" },
+  { id: "getPosts", text: "Get Posts" },
+];
+arrObj.forEach((arr) => {
+  container.insertBefore(make(arr.id, arr.text), document.querySelector("hr"));
+});
+
 document.querySelector("#getText").addEventListener("click", getText);
 document.querySelector("#getUsers").addEventListener("click", getUsers);
 document.querySelector("#getPosts").addEventListener("click", getPosts);
+
 function getText() {
-  fetch("sample.txt")
-    .then(function (res) {
-      return res.text();
-    })
-    .then(function (data) {
-      document.querySelector("#output").innerHTML = data;
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+  fetchData(
+    "sample.txt",
+    (res) => res.text(),
+    (data) => (document.querySelector("#output").innerHTML = data)
+  );
+}
+function makeLi(value) {
+  let li = document.createElement("li");
+  li.textContent = value;
+  return li;
+}
+function makeListFromObject(obj, keys) {
+  let ul = document.createElement("ul");
+  keys.forEach((key) => {
+    ul.append(makeLi(obj[key]));
+  });
+  return ul;
 }
 
 function getUsers() {
-  fetch("users.json")
-    .then((res) => res.json())
-    .then((data) => {
-      let output = "<h2>Users</h2>";
+  fetchData(
+    "users.json",
+    (res) => res.json(),
+    function (data) {
+      let outputResult = document.querySelector("#output");
+      outputResult.textContent = "";
+      let h2 = document.createElement("h2");
+      h2.textContent = "Users";
+      outputResult.append(h2);
       data.forEach(function (user) {
-        output += `<div>
-                    <ul>
-                        <li>${user.id}</li>
-                        <li>${user.name}</li>
-                        <li>${user.email}</li>
-                        </ul>
-                    </div>`;
+        let div = document.createElement("div");
+        outputResult.append(div);
+        div.append(makeListFromObject(user, ["id", "name", "email"]));
       });
-      document.querySelector("#output").innerHTML = output;
-    });
+    }
+  );
 }
 
 function getPosts() {
-  fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((res) => res.json())
-    .then((data) => {
-      let output = "<h2>Posts</h2>";
+  fetchData(
+    "https://jsonplaceholder.typicode.com/posts",
+    (res) => res.json(),
+    function (data) {
+      let outputResult = document.querySelector("#output");
+      outputResult.textContent = "";
+      let h2 = document.createElement("h2");
+      h2.textContent = "Posts";
+      outputResult.append(h2);
       data.forEach(function (post) {
-        output += `<div>
-                        <h2>${post.title}</h2>
-                        <p>${post.body}</p>
-                    </div>`;
+        let div = document.createElement("div");
+        outputResult.append(div);
+        let h2 = document.createElement("h2");
+        h2.textContent = post.title;
+        let p = document.createElement("p");
+        div.append(h2, p);
+        p.textContent = post.body;
       });
-      document.querySelector("#output").innerHTML = output;
-    });
+    }
+  );
 }
