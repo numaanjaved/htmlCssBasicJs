@@ -6,8 +6,6 @@ const ratings = {
   phillips: 4.3,
 };
 
-const tableBody = [{}];
-
 const starTotal = 5;
 
 const productSelect = document.querySelector("#product-select");
