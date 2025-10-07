@@ -5,7 +5,6 @@ const ratings = {
   panasonic: 2.4,
   phillips: 4.3,
 };
-
 const starTotal = 5;
 
 const productSelect = document.querySelector("#product-select");
