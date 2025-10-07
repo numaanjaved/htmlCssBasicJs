@@ -15,9 +15,9 @@ function make(btnId, value) {
   return btn;
 }
 let arrObj = [
-  { id: "getText", text: "Get Text" },
-  { id: "getUsers", text: "Get Users" },
-  { id: "getPosts", text: "Get Posts" },
+  { id: "getText", class: "btn", text: "Get Text" },
+  { id: "getUsers", class: "btn", text: "Get Users" },
+  { id: "getPosts", class: "btn", text: "Get Posts" },
 ];
 arrObj.forEach((arr) => {
   container.insertBefore(make(arr.id, arr.text), document.querySelector("hr"));
@@ -39,6 +39,8 @@ function makeLi(value) {
   li.textContent = value;
   return li;
 }
+let btn = document.querySelectorAll(".btn");
+btn.forEach((itm) => (itm.style.margin = "0 10px"));
 function makeListFromObject(obj, keys) {
   let ul = document.createElement("ul");
   keys.forEach((key) => {
@@ -87,4 +89,21 @@ function getPosts() {
       });
     }
   );
+}
+
+function clean(text) {
+  let outputResult = document.querySelector("#output");
+  outputResult.textContent = "";
+  let h2 = document.createElement("h2");
+  h2.textContent = text;
+  outputResult.append(h2);
+  data.forEach(function (post) {
+    let div = document.createElement("div");
+    outputResult.append(div);
+    let h2 = document.createElement("h2");
+    h2.textContent = post.title;
+    let p = document.createElement("p");
+    div.append(h2, p);
+    p.textContent = post.body;
+  });
 }
