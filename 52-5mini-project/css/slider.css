@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+}
+.slider-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 35%;
+  transition: transform 0.5s ease;
+}
+.left-slider > div {
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 24px;
+}
+.right-slider {
+  position: absolute;
+  height: 100%;
+  width: 65%;
+  top: 0;
+  left: 35%;
+  transition: transform 0.5s ease;
+}
+.image:nth-of-type(1) {
+  height: 100%;
+  width: 100%;
+  background: url(../img/download.jpg) no-repeat center center/cover;
+}
+.image:nth-of-type(2) {
+  height: 100%;
+  width: 100%;
+  background: url(../img/photo.jpg) no-repeat center center/cover;
+}
+.image:nth-of-type(3) {
+  height: 100%;
+  width: 100%;
+  background: url(../img/photo2.jpg) no-repeat center center/cover;
+}
+.image:nth-of-type(4) {
+  height: 100%;
+  width: 100%;
+  background: url(../img/photo3.jpg) no-repeat center center/cover;
+}
+.action-buttons button {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+.action-buttons .down {
+  transform: translate(-50px, 50px);
+}
+.action-buttons .up {
+  left: 35%;
+}
