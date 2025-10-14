@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  background: linear-gradient(0deg, #f4f5f4 34.4%, #cf88c0 93%);
+  font-family: "lato";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  margin-bottom: 6rem;
+}
+.music-container {
+  background-color: #fff;
+  display: flex;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  position: relative;
+  z-index: 4;
+}
+.img-container {
+  width: 110px;
+  position: relative;
+}
+.img-container img {
+  width: 100%;
+  height: 110px;
+  border-radius: 50%;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.action-btn {
+  background-color: #fff;
+  outline: line;
+  border: none;
+  margin: 10px 1rem;
+  font-size: 1.2rem;
+  color: grey;
+  z-index: 10;
+}
+.action-btn-big {
+  font-size: 1.5rem;
+}
+.music-info {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  height: 90px;
+  background-color: rgb(201, 200, 200);
+  width: calc(100% - 40px);
+  opacity: 0;
+  transform: translateY(0);
+  transition: all 1s ease;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: -1;
+}
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+.music-info h4 {
+  margin: 10px 10px 10px 140px;
+}
+.progress-container {
+  width: 50%;
+  height: 4px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin: 0 10px;
+}
+.progress-container .progress {
+  width: 0%;
+  height: 100%;
+  background-color: #548895;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.1s ease;
+}
