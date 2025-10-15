@@ -58,16 +58,23 @@ function nextSong() {
   playSong();
 }
 
+function setProgress(e) {
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration;
+
+  audio.currentTime = (clickX / width) * duration;
+}
+
 function updateProgress(e) {
   const { duration, currentTime } = e.srcElement;
   let progressPercentage = (currentTime / duration) * 100;
   progress.style.width = `${progressPercentage}%`;
 }
 
-
 playBtn.addEventListener("click", () => {
   const isPlaying = musicContainer.classList.contains("play");
-  
+
   if (isPlaying) {
     pauseSong();
   } else {
@@ -79,17 +86,6 @@ prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
 
 audio.addEventListener("timeupdate", updateProgress);
-// progress.addEventListener("click", (e) => {
-// console.log(123);
-// });
+progressContainer.addEventListener("click", setProgress);
 
-
-// function setProgress(e) {
-//   const width = this.clientWidth;
-//   const clickX = e.offsetX;
-//   const duration = audio.duration;
-
-//   audio.currentTime = (clickX / width) * duration;
-//   console.log(width);
-//   console.log(123);
-// }
+audio.addEventListener("ended", nextSong);
