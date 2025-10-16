@@ -14,11 +14,13 @@ function make(btnId, value) {
   btn.textContent = value;
   return btn;
 }
+
 let arrObj = [
   { id: "getText", class: "btn", text: "Get Text" },
   { id: "getUsers", class: "btn", text: "Get Users" },
   { id: "getPosts", class: "btn", text: "Get Posts" },
 ];
+
 arrObj.forEach((arr) => {
   container.insertBefore(make(arr.id, arr.text), document.querySelector("hr"));
 });
@@ -34,11 +36,13 @@ function getText() {
     (data) => (document.querySelector("#output").innerHTML = data)
   );
 }
+
 function makeLi(value) {
   let li = document.createElement("li");
   li.textContent = value;
   return li;
 }
+
 let btn = document.querySelectorAll(".btn");
 btn.forEach((itm) => (itm.style.margin = "0 10px"));
 function makeListFromObject(obj, keys) {
