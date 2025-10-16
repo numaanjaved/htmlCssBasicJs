@@ -49,21 +49,39 @@ function makeListFromObject(obj, keys) {
   return ul;
 }
 
+function makeFunc(value, arr, renderItem) {
+  let outputResult = document.querySelector("#output");
+  outputResult.textContent = "";
+  let h2 = document.createElement("h2");
+  h2.textContent = value;
+  outputResult.append(h2);
+  arr.forEach(function (user) {
+    outputResult.append(renderItem(user));
+  });
+}
+
+function renderUser(user) {
+  let div = document.createElement("div");
+  div.append(makeListFromObject(user, ["id", "name", "email"]));
+  return div;
+}
+
+function renderPost(post) {
+  let div = document.createElement("div");
+  let h2 = document.createElement("h2");
+  h2.textContent = post.title;
+  let p = document.createElement("p");
+  div.append(h2, p);
+  p.textContent = post.body;
+  return div;
+}
+
 function getUsers() {
   fetchData(
     "users.json",
     (res) => res.json(),
     function (data) {
-      let outputResult = document.querySelector("#output");
-      outputResult.textContent = "";
-      let h2 = document.createElement("h2");
-      h2.textContent = "Users";
-      outputResult.append(h2);
-      data.forEach(function (user) {
-        let div = document.createElement("div");
-        outputResult.append(div);
-        div.append(makeListFromObject(user, ["id", "name", "email"]));
-      });
+      makeFunc("Users", data, renderUser);
     }
   );
 }
@@ -73,37 +91,7 @@ function getPosts() {
     "https://jsonplaceholder.typicode.com/posts",
     (res) => res.json(),
     function (data) {
-      let outputResult = document.querySelector("#output");
-      outputResult.textContent = "";
-      let h2 = document.createElement("h2");
-      h2.textContent = "Posts";
-      outputResult.append(h2);
-      data.forEach(function (post) {
-        let div = document.createElement("div");
-        outputResult.append(div);
-        let h2 = document.createElement("h2");
-        h2.textContent = post.title;
-        let p = document.createElement("p");
-        div.append(h2, p);
-        p.textContent = post.body;
-      });
+      makeFunc("Posts", data, renderPost);
     }
   );
-}
-
-function clean(text) {
-  let outputResult = document.querySelector("#output");
-  outputResult.textContent = "";
-  let h2 = document.createElement("h2");
-  h2.textContent = text;
-  outputResult.append(h2);
-  data.forEach(function (post) {
-    let div = document.createElement("div");
-    outputResult.append(div);
-    let h2 = document.createElement("h2");
-    h2.textContent = post.title;
-    let p = document.createElement("p");
-    div.append(h2, p);
-    p.textContent = post.body;
-  });
 }
