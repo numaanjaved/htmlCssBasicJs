@@ -17,7 +17,12 @@ const richestPeople = [
 let listItems = [];
 
 let dragStartIndex;
-
+function makeTags(tag, text, tagClass) {
+  const tagEl = document.createElement(tag);
+  tagEl.textContent = text;
+  tagEl.className = tagClass;
+  return tagEl;
+}
 function createItem() {
   [...richestPeople]
     .map((listItem) => ({ value: listItem, sort: Math.random() }))
@@ -27,17 +32,13 @@ function createItem() {
       const listItem = document.createElement("li");
       listItem.setAttribute("data-index", index);
 
-      const span = document.createElement("span");
-      span.textContent = `${index + 1}`;
-      span.className = "number";
-
+      const span = makeTags("span", `${index + 1}`, "number");
+      
       const div = document.createElement("div");
       div.setAttribute("draggable", true);
       div.className = "dragable";
 
-      const p = document.createElement("p");
-      p.textContent = `${person}`;
-      p.className = "person-name";
+      const p = makeTags("p", `${person}`, "person-name");
 
       const i = document.createElement("i");
       i.className = "fas fa-grip-lines";
@@ -122,4 +123,3 @@ function checkItem() {
     }
   });
 }
-
