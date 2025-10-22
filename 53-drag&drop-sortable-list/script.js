@@ -38,7 +38,7 @@ function createItem() {
       const span = makeTags("span", `${index + 1}`, "number");
 
       const div = makeTags("div", "", "draggable", "true", "dragable");
-      
+
       const p = makeTags("p", `${person}`, "person-name");
 
       const i = document.createElement("i");
@@ -57,29 +57,22 @@ function createItem() {
 createItem();
 
 function dragStart() {
-  // console.log("drag start");
-
   dragStartIndex = Number(this.closest("li").getAttribute("data-index"));
 }
 
 function dragEnter() {
-  // console.log("drag Enter");
   this.classList.add("over");
 }
 
 function dragLeave() {
-  // console.log("drag Leave");
   this.classList.remove("over");
 }
 
 function dragOver(e) {
-  // console.log("drag Over");
   e.preventDefault();
 }
 
 function dragDrop() {
-  // console.log("drag Drop");
-
   const dragEndIndex = +this.getAttribute("data-index");
 
   swapItems(dragStartIndex, dragEndIndex);
