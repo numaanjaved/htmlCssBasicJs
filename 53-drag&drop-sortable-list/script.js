@@ -17,12 +17,15 @@ const richestPeople = [
 let listItems = [];
 
 let dragStartIndex;
-function makeTags(tag, text, tagClass) {
+
+function makeTags(tag, text, attName, attValue, tagClass) {
   const tagEl = document.createElement(tag);
   tagEl.textContent = text;
+  tagEl.setAttribute(attName, attValue);
   tagEl.className = tagClass;
   return tagEl;
 }
+
 function createItem() {
   [...richestPeople]
     .map((listItem) => ({ value: listItem, sort: Math.random() }))
@@ -33,11 +36,9 @@ function createItem() {
       listItem.setAttribute("data-index", index);
 
       const span = makeTags("span", `${index + 1}`, "number");
-      
-      const div = document.createElement("div");
-      div.setAttribute("draggable", true);
-      div.className = "dragable";
 
+      const div = makeTags("div", "", "draggable", "true", "dragable");
+      
       const p = makeTags("p", `${person}`, "person-name");
 
       const i = document.createElement("i");
