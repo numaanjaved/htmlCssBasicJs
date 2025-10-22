@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+}
+h1 {
+  margin: 0;
+}
+.dragable-list {
+  margin: 0;
+  padding: 0;
+  border: 1px solid gray;
+  list-style: none;
+}
+.dragable-list li {
+  display: flex;
+  flex: 1;
+}
+
+.dragable-list li:not(:last-of-type) {
+  border-bottom: 1px solid grey;
+}
+
+.dragable-list .number {
+  background-color: grey;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.dragable-list .person-name {
+  margin: 0 1rem;
+}
+.dragable-list .dragable {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.dragable-list li.right .person-name {
+  color: #347854;
+}
+.dragable-list li.wrong .person-name {
+  color: #5f3c1f;
+}
+.dragable-list li.over .dragable {
+  background-color: grey;
+}
