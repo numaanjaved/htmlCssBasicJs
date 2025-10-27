@@ -73,74 +73,73 @@ body.appendChild(containerDiv);
 
 // container sign up content
 const pSignUp = textLogin("Register new membership");
-containerDiv.appendChild(pSignUp);
 
 // register input email
-
 const inputEmailSignUpFirstName = inputName("firstName", "First Name");
-containerDiv.appendChild(inputEmailSignUpFirstName);
 
 const inputEmailSignUpLastName = inputName("lastName", "Last Name");
-containerDiv.appendChild(inputEmailSignUpLastName);
 
 const inputEmailSignUpEmail = makeInput("signUpE");
-containerDiv.appendChild(inputEmailSignUpEmail);
 
 // register input password
 const inputPasswordSignUp = inputPassword("signUpP");
-containerDiv.appendChild(inputPasswordSignUp);
 
 // Sign-Up button
 const buttonLoginSignUp = signInOrOutBtn("signUpB", "Sign Up");
-containerDiv.appendChild(buttonLoginSignUp);
 
 const pTextSignUp = pText();
-containerDiv.appendChild(pTextSignUp);
 
 const buttonSignUp = lOrRBtn("signUpBtn", "Login Now", "#437583");
-containerDiv.appendChild(buttonSignUp);
+containerDiv.append(
+  pSignUp,
+  inputEmailSignUpFirstName,
+  inputEmailSignUpLastName,
+  inputEmailSignUpEmail,
+  inputPasswordSignUp,
+  buttonLoginSignUp,
+  pTextSignUp,
+  buttonSignUp
+);
 
 const goToSignInForm = document.querySelector("#signInBtn");
 const goToSignUpForm = document.querySelector("#signUpBtn");
-const signInB = document.querySelector("#signInB");
-const signUpB = document.querySelector("#signUpB");
+const signInButton = document.querySelector("#signInB");
+const signUpButton = document.querySelector("#signUpB");
+const signInDiv = document.querySelector("#signIn");
+const signUpDiv = document.querySelector("#signUp");
 
 goToSignInForm.addEventListener("click", (e) => {
   e.preventDefault();
-  const signInContainer = document.querySelector("#signIn");
-  signInContainer.style.transform = "translateX(-550px)";
-  signInContainer.style.opacity = "0";
-  const signUpContainer = document.querySelector("#signUp");
-  signUpContainer.style.transform = "translateX(0)";
-  signUpContainer.style.opacity = "1";
+  signInDiv.style.transform = "translateX(-550px)";
+  signInDiv.style.opacity = "0";
+  signUpDiv.style.transform = "translateX(0)";
+  signUpDiv.style.opacity = "1";
 });
 
 goToSignUpForm.addEventListener("click", (e) => {
-  e.preventDefault();
-  const signInContainer = document.querySelector("#signIn");
-  signInContainer.style.transform = "translateX(0)";
-  signInContainer.style.opacity = "1";
-  const signUpContainer = document.querySelector("#signUp");
-  signUpContainer.style.transform = "translateX(-550px)";
-  signUpContainer.style.opacity = "0";
+  signInDiv.style.transform = "translateX(0)";
+  signInDiv.style.opacity = "1";
+  signUpDiv.style.transform = "translateX(-550px)";
+  signUpDiv.style.opacity = "0";
 });
-const signUpButton = document.querySelector("#signUpB");
-const signInButton = document.querySelector("#signInB");
 const fName = document.querySelector("#firstName");
 const lName = document.querySelector("#lastName");
 const signUpEmail = document.querySelector("#signUpE");
 const SignUpPassword = document.querySelector("#signUpP");
 const signInEmail = document.querySelector("#signInE");
 const signInPassword = document.querySelector("#signInP");
-const signInDiv = document.querySelector("#signIn");
-const signUpDiv = document.querySelector("#signUp");
+const regex = new RegExp(/^\S+@\S+\.\S+$/);
+let userList = [];
 
-const userList = [];
 signUpButton.addEventListener("click", () => {
   let fNameValue = fName.value;
   let lNameValue = lName.value;
   let signUpEmailValue = signUpEmail.value;
   let signUpPasswordValue = SignUpPassword.value;
+  if (!signUpEmailValue.match(regex)) {
+    alert("Please enter valid email");
+    return false;
+  }
 
   if (
     fName.value == "" ||
@@ -171,7 +170,6 @@ signUpButton.addEventListener("click", () => {
   successText.textContent = "Congrulation you successfully registered";
   signUpDiv.insertBefore(successText, document.querySelector("#signUp p"));
 
-  userList.push(userInfo);
   fName.value = "";
   lName.value = "";
   signUpEmail.value = "";
@@ -179,11 +177,14 @@ signUpButton.addEventListener("click", () => {
   setTimeout(() => {
     const textSuccess = document.querySelector("#successP");
     textSuccess.style.display = "none";
-    signInDiv.style.display = "block";
-    signUpDiv.style.display = "none";
+    signInDiv.style.opacity = "1";
+    signInDiv.style.transform = "translateX(0)";
+    signUpDiv.style.opacity = "0";
+    signUpDiv.style.transform = "translateX(-550px)";
   }, 2000);
-  localStorage.setItem("User", JSON.stringify(userList));
-});
+    userList.push(userInfo);
+    localStorage.setItem("user", JSON.stringify(userList));
+  });
 
 signInButton.addEventListener("click", () => {
   let data = JSON.parse(localStorage.getItem("User"));
@@ -191,12 +192,18 @@ signInButton.addEventListener("click", () => {
   const signInPasswordValue = signInPassword.value;
   if (signInEmail.value == "" || signInPassword.value == "") {
     alert("Please enter email and password");
+    return false;
   }
   data.forEach((user) => {
     const userEmail = user.email;
     const userPassword = user.password;
-    if (signInEmailValue == userEmail || signInPasswordValue == userPassword) {
-      console.log("hello");
+    if (signInEmailValue == userEmail && signInPasswordValue == userPassword) {
+      signInDiv.style.opacity = "0";
+      signInDiv.style.transform = "translate(-550px)";
+      body.textContent = `Thanks ${user.firstName} ${user.lastName} for Login in.`;
+      return false;
+    } else {
+      alert("Please enter correct email or password");
     }
   });
 });
