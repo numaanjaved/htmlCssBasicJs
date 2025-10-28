@@ -7,6 +7,7 @@ import {
   textLogin,
   pText,
 } from "./utils.js";
+import { localStorageData } from "./localstorage.js";
 // body styling
 const body = document.querySelector("body");
 body.style.height = "100vh";
@@ -202,18 +203,11 @@ signUpButton.addEventListener("click", () => {
     textSuccess.remove();
     formSwitch("translateX(0)", "1", "translateX(-550px)", "0");
   }, 2000);
-  if (localStorage.getItem("user") === null) {
-    let userList = [];
-    userList.push(userInfo);
-    localStorage.setItem("user", JSON.stringify(userList));
-  } else {
-    let oldData = JSON.parse(localStorage.getItem("user"));
-    oldData.push(userInfo);
-    localStorage.setItem("user", JSON.stringify(oldData));
-  }
+  localStorageData(userInfo);
 });
 
 signInButton.addEventListener("click", () => {
+  const data = JSON.parse(localStorage.getItem("user"));
   const signInEmailValue = signInEmail.value;
   const signInPasswordValue = signInPassword.value;
   if (signInEmail.value == "" || signInPassword.value == "") {
