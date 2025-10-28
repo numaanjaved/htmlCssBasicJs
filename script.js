@@ -220,7 +220,7 @@ signInButton.addEventListener("click", () => {
     );
     return false;
   }
-  data.forEach((user) => {
+  data.forEach((user, index) => {
     const userEmail = user.email;
     const userPassword = user.password;
     if (signInEmailValue == userEmail && signInPasswordValue == userPassword) {
@@ -229,7 +229,18 @@ signInButton.addEventListener("click", () => {
       body.textContent = `Thanks ${user.firstName} ${user.lastName} for Login in.`;
       return false;
     } else {
-      alert("Please enter correct email or password");
+      if (index == 1) {
+        signInEmail.value = "";
+        signInPassword.value = "";
+        makeTag(
+          "incorrectT",
+          "incorrectToast",
+          "Please enter valid email and password",
+          signInDiv,
+          signInButton
+        );
+        return false;
+      }
     }
   });
 });
