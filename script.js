@@ -8,7 +8,7 @@ import {
   pText,
 } from "./utils.js";
 
-import { userList, setData, data } from "./localstorage.js";
+import { userList, data } from "./localstorage.js";
 // body styling
 const body = document.querySelector("body");
 body.style.height = "100vh";
@@ -110,19 +110,37 @@ const signUpButton = document.querySelector("#signUpB");
 const signInDiv = document.querySelector("#signIn");
 const signUpDiv = document.querySelector("#signUp");
 
+function makeTag(valueId, valueClass, value, div, value2) {
+  const tag = document.createElement("p");
+  tag.id = valueId;
+  tag.className = valueClass;
+  tag.textContent = value;
+  div.insertBefore(tag, value2);
+  setTimeout(() => {
+    tag.remove();
+  }, 2000);
+  return false;
+}
+
+function formSwitch(
+  translateSignInForm,
+  signInFormOpacity,
+  translateSignUpForm,
+  signUpFormOpacity
+) {
+  signInDiv.style.transform = translateSignInForm;
+  signInDiv.style.opacity = signInFormOpacity;
+  signUpDiv.style.transform = translateSignUpForm;
+  signUpDiv.style.opacity = signUpFormOpacity;
+}
+
 goToSignInForm.addEventListener("click", (e) => {
   e.preventDefault();
-  signInDiv.style.transform = "translateX(-550px)";
-  signInDiv.style.opacity = "0";
-  signUpDiv.style.transform = "translateX(0)";
-  signUpDiv.style.opacity = "1";
+  formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
 });
-
 goToSignUpForm.addEventListener("click", (e) => {
-  signInDiv.style.transform = "translateX(0)";
-  signInDiv.style.opacity = "1";
-  signUpDiv.style.transform = "translateX(-550px)";
-  signUpDiv.style.opacity = "0";
+  e.preventDefault();
+  formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
 });
 const fName = document.querySelector("#firstName");
 const lName = document.querySelector("#lastName");
@@ -137,33 +155,30 @@ signUpButton.addEventListener("click", () => {
   let lNameValue = lName.value;
   let signUpEmailValue = signUpEmail.value;
   let signUpPasswordValue = SignUpPassword.value;
-
   if (
     fName.value == "" ||
     lName.value == "" ||
     signUpEmail.value == "" ||
     SignUpPassword.value == ""
   ) {
-    const inputT = document.createElement("p");
-    inputT.id = "inputT";
-    inputT.className = "inputToast";
-    inputT.textContent = "Please fill all fields";
-    signUpDiv.insertBefore(inputT, signUpButton);
-    setTimeout(() => {
-      inputT.remove();
-    }, 2000);
+    makeTag(
+      "inputT",
+      "inputToast",
+      "Please fill all fields",
+      signUpDiv,
+      signUpButton
+    );
     return false;
   }
 
   if (!signUpEmailValue.match(regex)) {
-    const emailT = document.createElement("p");
-    emailT.id = "emailT";
-    emailT.className = "emailToast";
-    emailT.textContent = "Please enter valid email";
-    signUpDiv.insertBefore(emailT, SignUpPassword);
-    setTimeout(() => {
-      emailT.remove();
-    }, 2000);
+    makeTag(
+      "emailT",
+      "emailToast",
+      "Please enter valid email",
+      signUpDiv,
+      SignUpPassword
+    );
     return false;
   }
 
@@ -187,10 +202,7 @@ signUpButton.addEventListener("click", () => {
   setTimeout(() => {
     const textSuccess = document.querySelector("#successP");
     textSuccess.remove();
-    signInDiv.style.opacity = "1";
-    signInDiv.style.transform = "translateX(0)";
-    signUpDiv.style.opacity = "0";
-    signUpDiv.style.transform = "translateX(-550px)";
+    formSwitch("translateX(0)", "1", "translateX(-550px)", "0");
   }, 2000);
 
   userList.push(userInfo);
@@ -201,14 +213,13 @@ signInButton.addEventListener("click", () => {
   const signInEmailValue = signInEmail.value;
   const signInPasswordValue = signInPassword.value;
   if (signInEmail.value == "" || signInPassword.value == "") {
-    const loginT = document.createElement("p");
-    loginT.id = "loginT";
-    loginT.className = "loginToast";
-    loginT.textContent = "Please enter email and password";
-    signInDiv.insertBefore(loginT, signInButton);
-    setTimeout(() => {
-      loginT.remove();
-    }, 2000);
+    makeTag(
+      "loginT",
+      "loginToast",
+      "Please enter email and password",
+      signInDiv,
+      signInButton
+    );
     return false;
   }
   data.forEach((user) => {
