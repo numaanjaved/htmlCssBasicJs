@@ -136,10 +136,6 @@ signUpButton.addEventListener("click", () => {
   let lNameValue = lName.value;
   let signUpEmailValue = signUpEmail.value;
   let signUpPasswordValue = SignUpPassword.value;
-  if (!signUpEmailValue.match(regex)) {
-    alert("Please enter valid email");
-    return false;
-  }
 
   if (
     fName.value == "" ||
@@ -147,7 +143,26 @@ signUpButton.addEventListener("click", () => {
     signUpEmail.value == "" ||
     SignUpPassword.value == ""
   ) {
-    alert("Please fill all fields");
+    const inputT = document.createElement("p");
+    inputT.id = "inputT";
+    inputT.className = "inputToast";
+    inputT.textContent = "Please fill all fields";
+    signUpDiv.insertBefore(inputT, signUpButton);
+    setTimeout(() => {
+      inputT.remove();
+    }, 2000);
+    return false;
+  }
+
+  if (!signUpEmailValue.match(regex)) {
+    const emailT = document.createElement("p");
+    emailT.id = "emailT";
+    emailT.className = "emailToast";
+    emailT.textContent = "Please enter valid email";
+    signUpDiv.insertBefore(emailT, SignUpPassword);
+    setTimeout(() => {
+      emailT.remove();
+    }, 2000);
     return false;
   }
 
@@ -160,12 +175,6 @@ signUpButton.addEventListener("click", () => {
 
   const successText = document.createElement("p");
   successText.id = "successP";
-  successText.style.width = "70%";
-  successText.style.padding = "1rem";
-  successText.style.border = "1px";
-  successText.style.borderStyle = "solid";
-  successText.style.borderColor = "#904594";
-  successText.style.color = "green";
   successText.style.textAlign = "center";
   successText.textContent = "Congrulation you successfully registered";
   signUpDiv.insertBefore(successText, document.querySelector("#signUp p"));
@@ -182,16 +191,23 @@ signUpButton.addEventListener("click", () => {
     signUpDiv.style.opacity = "0";
     signUpDiv.style.transform = "translateX(-550px)";
   }, 2000);
-    userList.push(userInfo);
-    localStorage.setItem("user", JSON.stringify(userList));
-  });
+  userList.push(userInfo);
+  localStorage.setItem("user", JSON.stringify(userList));
+});
 
 signInButton.addEventListener("click", () => {
   let data = JSON.parse(localStorage.getItem("User"));
   const signInEmailValue = signInEmail.value;
   const signInPasswordValue = signInPassword.value;
   if (signInEmail.value == "" || signInPassword.value == "") {
-    alert("Please enter email and password");
+    const loginT = document.createElement("p");
+    loginT.id = "loginT";
+    loginT.className = "loginToast";
+    loginT.textContent = "Please enter email and password";
+    signInDiv.insertBefore(loginT, signInButton);
+    setTimeout(() => {
+      loginT.remove();
+    }, 2000);
     return false;
   }
   data.forEach((user) => {
