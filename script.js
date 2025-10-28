@@ -7,6 +7,8 @@ import {
   textLogin,
   pText,
 } from "./utils.js";
+
+import { userList, setData, data } from "./localstorage.js";
 // body styling
 const body = document.querySelector("body");
 body.style.height = "100vh";
@@ -129,7 +131,6 @@ const SignUpPassword = document.querySelector("#signUpP");
 const signInEmail = document.querySelector("#signInE");
 const signInPassword = document.querySelector("#signInP");
 const regex = new RegExp(/^\S+@\S+\.\S+$/);
-let userList = [];
 
 signUpButton.addEventListener("click", () => {
   let fNameValue = fName.value;
@@ -185,18 +186,18 @@ signUpButton.addEventListener("click", () => {
   SignUpPassword.value = "";
   setTimeout(() => {
     const textSuccess = document.querySelector("#successP");
-    textSuccess.style.display = "none";
+    textSuccess.remove();
     signInDiv.style.opacity = "1";
     signInDiv.style.transform = "translateX(0)";
     signUpDiv.style.opacity = "0";
     signUpDiv.style.transform = "translateX(-550px)";
   }, 2000);
+
   userList.push(userInfo);
   localStorage.setItem("user", JSON.stringify(userList));
 });
 
 signInButton.addEventListener("click", () => {
-  let data = JSON.parse(localStorage.getItem("User"));
   const signInEmailValue = signInEmail.value;
   const signInPasswordValue = signInPassword.value;
   if (signInEmail.value == "" || signInPassword.value == "") {
