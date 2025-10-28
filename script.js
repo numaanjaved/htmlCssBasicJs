@@ -209,7 +209,7 @@ signUpButton.addEventListener("click", () => {
   } else {
     let oldData = JSON.parse(localStorage.getItem("user"));
     oldData.push(userInfo);
-    localStorage.setItem("user", JSON.stringify(userList));
+    localStorage.setItem("user", JSON.stringify(oldData));
   }
 });
 
