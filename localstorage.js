@@ -9,3 +9,4 @@ export function localStorageData(list) {
     localStorage.setItem("user", JSON.stringify(oldData));
   }
 }
+export let data = JSON.parse(localStorage.getItem("user"));

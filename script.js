@@ -7,7 +7,7 @@ import {
   textLogin,
   pText,
 } from "./utils.js";
-import { localStorageData } from "./localstorage.js";
+import { localStorageData, data } from "./localstorage.js";
 // body styling
 const body = document.querySelector("body");
 body.style.height = "100vh";
@@ -207,7 +207,6 @@ signUpButton.addEventListener("click", () => {
 });
 
 signInButton.addEventListener("click", () => {
-  const data = JSON.parse(localStorage.getItem("user"));
   const signInEmailValue = signInEmail.value;
   const signInPasswordValue = signInPassword.value;
   if (signInEmail.value == "" || signInPassword.value == "") {
