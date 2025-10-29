@@ -78,3 +78,15 @@ export function pText() {
   pText.style.margin = "0";
   return pText;
 }
+export function makeTag(valueId, valueClass, value, div, value2) {
+  const tag = document.createElement("p");
+  tag.className = valueClass;
+  tag.id = valueId;
+  tag.className = valueClass;
+  tag.textContent = value;
+  div.insertBefore(tag, value2);
+  setTimeout(() => {
+    tag.remove();
+  }, 2000);
+  return false;
+}

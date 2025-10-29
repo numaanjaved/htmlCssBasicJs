@@ -6,6 +6,7 @@ import {
   inputName,
   textLogin,
   pText,
+  makeTag,
 } from "./utils.js";
 import { localStorageData, data } from "./localstorage.js";
 // body styling
@@ -109,18 +110,6 @@ const signUpButton = document.querySelector("#signUpB");
 const signInDiv = document.querySelector("#signIn");
 const signUpDiv = document.querySelector("#signUp");
 
-function makeTag(valueId, valueClass, value, div, value2) {
-  const tag = document.createElement("p");
-  tag.id = valueId;
-  tag.className = valueClass;
-  tag.textContent = value;
-  div.insertBefore(tag, value2);
-  setTimeout(() => {
-    tag.remove();
-  }, 2000);
-  return false;
-}
-
 function formSwitch(
   translateSignInForm,
   signInFormOpacity,
@@ -162,7 +151,7 @@ signUpButton.addEventListener("click", () => {
   ) {
     makeTag(
       "inputT",
-      "inputToast",
+      "inputToast util",
       "Please fill all fields",
       signUpDiv,
       signUpButton
@@ -173,7 +162,7 @@ signUpButton.addEventListener("click", () => {
   if (!signUpEmailValue.match(regex)) {
     makeTag(
       "emailT",
-      "emailToast",
+      "emailToast util",
       "Please enter valid email",
       signUpDiv,
       SignUpPassword
@@ -190,6 +179,7 @@ signUpButton.addEventListener("click", () => {
 
   const successText = document.createElement("p");
   successText.id = "successP";
+  successText.className = "util"
   successText.style.textAlign = "center";
   successText.textContent = "Congrulation you successfully registered";
   signUpDiv.insertBefore(successText, document.querySelector("#signUp p"));
@@ -212,7 +202,7 @@ signInButton.addEventListener("click", () => {
   if (signInEmail.value == "" || signInPassword.value == "") {
     makeTag(
       "loginT",
-      "loginToast",
+      "loginToast util",
       "Please enter email and password",
       signInDiv,
       signInButton
@@ -233,7 +223,7 @@ signInButton.addEventListener("click", () => {
         signInPassword.value = "";
         makeTag(
           "incorrectT",
-          "incorrectToast",
+          "incorrectToast util",
           "Please enter valid email and password",
           signInDiv,
           signInButton
