@@ -11,27 +11,11 @@ import {
 import { localStorageData, data } from "./localstorage.js";
 // body styling
 const body = document.querySelector("body");
-body.style.height = "100vh";
-body.style.width = "100vw";
-body.style.backgroundColor = "#a7c9c6ff";
-body.style.display = "flex";
-body.style.alignItems = "center";
-body.style.justifyContent = "space-around";
-body.style.overflow = "hidden";
 
 // container for login form
 const containerSignIn = document.createElement("div");
 containerSignIn.id = "signIn";
-containerSignIn.style.maxHeight = "400px";
-containerSignIn.style.width = "300px";
-containerSignIn.style.display = "flex";
-containerSignIn.style.alignItems = "center";
-containerSignIn.style.justifyContent = "center";
-containerSignIn.style.flexDirection = "column";
-containerSignIn.style.backgroundColor = "#fff";
-containerSignIn.style.borderRadius = "10px";
-containerSignIn.style.padding = "1rem";
-containerSignIn.style.position = "absolute";
+containerSignIn.className = "signIn utilForm";
 body.appendChild(containerSignIn);
 
 // container sign in content
@@ -60,17 +44,7 @@ containerSignIn.appendChild(buttonLoginSignIn);
 // container for Sign Up form
 const containerDiv = document.createElement("div");
 containerDiv.id = "signUp";
-containerDiv.style.maxHeight = "500px";
-containerDiv.style.width = "300px";
-containerDiv.style.display = "flex";
-containerDiv.style.alignItems = "center";
-containerDiv.style.justifyContent = "center";
-containerDiv.style.flexDirection = "column";
-containerDiv.style.backgroundColor = "#fff";
-containerDiv.style.borderRadius = "10px";
-containerDiv.style.transform = "translateX(550px)";
-containerDiv.style.opacity = "0";
-containerDiv.style.margin = "0";
+containerDiv.className = "signUp utilForm";
 body.appendChild(containerDiv);
 
 // container sign up content

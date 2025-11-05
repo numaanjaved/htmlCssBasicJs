@@ -1,3 +1,32 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #a7c9c6;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.signIn {
+  max-height: 400px;
+  position: absolute;
+}
+.signUp {
+  max-height: 500px;
+  transform: translateX(550px);
+  opacity: 0;
+  margin: 0;
+}
+.utilForm {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+}
 #successP {
   background-color: #0aad49;
   animation: fadeIn 0.5s 1 linear;
