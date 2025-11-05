@@ -10,12 +10,14 @@ body {
 .signIn {
   max-height: 400px;
   position: absolute;
+  transition: all 0.3s ease;
 }
 .signUp {
   max-height: 500px;
   transform: translateX(550px);
   opacity: 0;
   margin: 0;
+  transition: all 0.3s ease;
 }
 .utilForm {
   width: 300px;
