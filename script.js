@@ -15,7 +15,7 @@ const body = document.querySelector("body");
 // container for login form
 const containerSignIn = document.createElement("div");
 containerSignIn.id = "signIn";
-containerSignIn.className = "signIn utilForm";
+containerSignIn.className = "signIn utilForm tr";
 body.appendChild(containerSignIn);
 
 // container sign in content
@@ -44,7 +44,7 @@ containerSignIn.appendChild(buttonLoginSignIn);
 // container for Sign Up form
 const containerDiv = document.createElement("div");
 containerDiv.id = "signUp";
-containerDiv.className = "signUp utilForm";
+containerDiv.className = "signUp utilForm mg tr";
 body.appendChild(containerDiv);
 
 // container sign up content
