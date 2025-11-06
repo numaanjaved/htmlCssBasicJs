@@ -38,7 +38,7 @@ containerSignIn.appendChild(buttonLogin);
 const pTextSignIn = pText();
 containerSignIn.appendChild(pTextSignIn);
 
-const buttonLoginSignIn = lOrRBtn("signInBtn", "Register Now", "#437583");
+const buttonLoginSignIn = lOrRBtn("signInBtn", "Register Now");
 containerSignIn.appendChild(buttonLoginSignIn);
 
 // container for Sign Up form
@@ -65,7 +65,7 @@ const buttonLoginSignUp = signInOrOutBtn("signUpB", "Sign Up");
 
 const pTextSignUp = pText();
 
-const buttonSignUp = lOrRBtn("signUpBtn", "Login Now", "#437583");
+const buttonSignUp = lOrRBtn("signUpBtn", "Login Now");
 containerDiv.append(
   pSignUp,
   inputEmailSignUpFirstName,
