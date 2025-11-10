@@ -77,7 +77,12 @@ body {
   animation: fadeIn 0.5s 1 linear;
 }
 .util {
+  width: 70%;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 10px;
   position: relative;
+  padding: 1rem;
 }
 .emailToast {
   background-color: #485296;
@@ -92,6 +97,7 @@ body {
   animation: fadeRight 0.5s 1 linear;
 }
 .incorrectToast {
+  padding: 1rem;
   background-color: #454874;
   animation: fadeBottom 0.5s 1 linear;
 }

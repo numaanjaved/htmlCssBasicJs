@@ -7,12 +7,15 @@ export function makeInput(valueId) {
 }
 
 export function inputPassword(valueId) {
+  const form = document.createElement("form");
   const inputPassword = document.createElement("input");
   inputPassword.id = valueId;
+  inputPassword.setAttribute("autocomplete", true);
   inputPassword.className = "text-md pd mg outline";
   inputPassword.placeholder = "Password";
   inputPassword.type = "password";
-  return inputPassword;
+  form.appendChild(inputPassword);
+  return form;
 }
 
 export function lOrRBtn(valueId, value) {

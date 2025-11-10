@@ -153,7 +153,7 @@ signUpButton.addEventListener("click", () => {
 
   const successText = document.createElement("p");
   successText.id = "successP";
-  successText.className = "util"
+  successText.className = "util";
   successText.style.textAlign = "center";
   successText.textContent = "Congrulation you successfully registered";
   signUpDiv.insertBefore(successText, document.querySelector("#signUp p"));
