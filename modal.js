@@ -1,7 +1,5 @@
 import {
   signInButton,
-  signUpButton,
-  signUpDiv,
   signInDiv,
   fName,
   lName,
@@ -9,11 +7,11 @@ import {
   signUpEmail,
   signInPassword,
   SignUpPassword,
-  formSwitch,
-  makeTag
 } from "./view.js";
 
-export function localStorageData(list) {
+import { makeTag } from "./util.js";
+
+function localStorageData(list) {
   if (localStorage.getItem("user") === null) {
     let userList = [];
     userList.push(list);
@@ -24,7 +22,8 @@ export function localStorageData(list) {
     localStorage.setItem("user", JSON.stringify(oldData));
   }
 }
-export let data = JSON.parse(localStorage.getItem("user"));
+let data = JSON.parse(localStorage.getItem("user"));
+
 export function signInCheck() {
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
@@ -65,18 +64,5 @@ export function signUpData() {
     email: signUpEmailValue,
     password: signUpPasswordValue,
   };
-
-  const successText = document.createElement("p");
-  successText.id = "successP";
-  successText.className = "util";
-  successText.style.textAlign = "center";
-  successText.textContent = "Congrulation you successfully registered";
-  signUpDiv.insertBefore(successText, document.querySelector("#signUp p"));
-
-  setTimeout(() => {
-    const textSuccess = document.querySelector("#successP");
-    textSuccess.remove();
-    formSwitch("translateX(0)", "1", "translateX(-550px)", "0");
-  }, 2000);
   localStorageData(userInfo);
 }

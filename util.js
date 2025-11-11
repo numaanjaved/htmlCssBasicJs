@@ -1,3 +1,4 @@
+import { signInDiv, signUpDiv } from "./view.js";
 export function makeInput(valueId) {
   const inputEmail = document.createElement("input");
   inputEmail.className = "text-md pd outline bd";
@@ -55,4 +56,29 @@ export function pText() {
   pText.className = "mg";
   pText.textContent = "-OR-";
   return pText;
+}
+
+export function formSwitch(
+  translateSignInForm,
+  signInFormOpacity,
+  translateSignUpForm,
+  signUpFormOpacity
+) {
+  signInDiv.style.transform = translateSignInForm;
+  signInDiv.style.opacity = signInFormOpacity;
+  signUpDiv.style.transform = translateSignUpForm;
+  signUpDiv.style.opacity = signUpFormOpacity;
+}
+
+export function makeTag(valueId, valueClass, value, div, value2) {
+  const tag = document.createElement("p");
+  tag.className = valueClass;
+  tag.id = valueId;
+  tag.className = valueClass;
+  tag.textContent = value;
+  div.insertBefore(tag, value2);
+  setTimeout(() => {
+    tag.remove();
+  }, 2000);
+  return false;
 }

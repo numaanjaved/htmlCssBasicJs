@@ -5,7 +5,8 @@ import {
   signInOrOutBtn,
   pText,
   lOrRBtn,
-  inputName
+  inputName,
+  formSwitch,
 } from "./util.js";
 import { renderSignIn, renderSignUp } from "./controller.js";
 
@@ -84,31 +85,6 @@ export const signUpButton = document.querySelector("#signUpB");
 export const signInDiv = document.querySelector("#signIn");
 export const signUpDiv = document.querySelector("#signUp");
 
-export function formSwitch(
-  translateSignInForm,
-  signInFormOpacity,
-  translateSignUpForm,
-  signUpFormOpacity
-) {
-  signInDiv.style.transform = translateSignInForm;
-  signInDiv.style.opacity = signInFormOpacity;
-  signUpDiv.style.transform = translateSignUpForm;
-  signUpDiv.style.opacity = signUpFormOpacity;
-}
-
-export function makeTag(valueId, valueClass, value, div, value2) {
-  const tag = document.createElement("p");
-  tag.className = valueClass;
-  tag.id = valueId;
-  tag.className = valueClass;
-  tag.textContent = value;
-  div.insertBefore(tag, value2);
-  setTimeout(() => {
-    tag.remove();
-  }, 2000);
-  return false;
-}
-
 goToSignInForm.addEventListener("click", (e) => {
   e.preventDefault();
   formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
@@ -127,51 +103,9 @@ export const signInPassword = document.querySelector("#signInP");
 export const regex = new RegExp(/^\S+@\S+\.\S+$/);
 
 signInButton.addEventListener("click", () => {
-  if (signInEmail.value == "" || signInPassword.value == "") {
-    makeTag(
-      "loginT",
-      "loginToast util",
-      "Please enter email and password",
-      signInDiv,
-      signInButton
-    );
-    return false;
-  }
   renderSignIn();
 });
 
 signUpButton.addEventListener("click", () => {
-  let signUpEmailValue = signUpEmail.value;
-  if (
-    fName.value == "" ||
-    lName.value == "" ||
-    signUpEmail.value == "" ||
-    SignUpPassword.value == ""
-  ) {
-    makeTag(
-      "inputT",
-      "inputToast util",
-      "Please fill all fields",
-      signUpDiv,
-      signUpButton
-    );
-    return false;
-  }
-
-  if (!signUpEmailValue.match(regex)) {
-    makeTag(
-      "emailT",
-      "emailToast util",
-      "Please enter valid email",
-      signUpDiv,
-      SignUpPassword
-    );
-    return false;
-  }
-
-  fName.value = "";
-  lName.value = "";
-  signUpEmail.value = "";
-  SignUpPassword.value = "";
   renderSignUp();
 });
