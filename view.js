@@ -1,62 +1,13 @@
-import { renderSignIn } from "./controller.js";
-function makeInput(valueId) {
-  const inputEmail = document.createElement("input");
-  inputEmail.className = "text-md pd outline bd";
-  inputEmail.id = valueId;
-  inputEmail.placeholder = "Email";
-  return inputEmail;
-}
-
-function inputPassword(valueId) {
-  const inputPassword = document.createElement("input");
-  const form = document.createElement("form");
-  inputPassword.id = valueId;
-  inputPassword.setAttribute("autocomplete", true);
-  inputPassword.className = "text-md pd mg outline";
-  inputPassword.placeholder = "Password";
-  inputPassword.type = "password";
-  form.appendChild(inputPassword);
-  return form;
-}
-
-function lOrRBtn(valueId, value) {
-  const buttonLogin = document.createElement("button");
-  buttonLogin.id = valueId;
-  buttonLogin.className = "outline color bdn";
-  buttonLogin.textContent = value;
-  return buttonLogin;
-}
-
-function textLogin(value) {
-  const p = document.createElement("p");
-  p.id = "text";
-  p.className = "textCenter";
-  p.textContent = value;
-  return p;
-}
-
-function inputName(valueId, value) {
-  const input = document.createElement("input");
-  input.id = valueId;
-  input.className = "text-md pd outline bd";
-  input.placeholder = value;
-  return input;
-}
-
-function signInOrOutBtn(valueId, value) {
-  const button = document.createElement("button");
-  button.id = valueId;
-  button.className = "outline color bdn";
-  button.textContent = value;
-  return button;
-}
-
-function pText() {
-  const pText = document.createElement("p");
-  pText.className = "mg";
-  pText.textContent = "-OR-";
-  return pText;
-}
+import {
+  textLogin,
+  makeInput,
+  inputPassword,
+  signInOrOutBtn,
+  pText,
+  lOrRBtn,
+  inputName
+} from "./util.js";
+import { renderSignIn, renderSignUp } from "./controller.js";
 
 // body styling
 const body = document.querySelector("body");
@@ -133,7 +84,7 @@ export const signUpButton = document.querySelector("#signUpB");
 export const signInDiv = document.querySelector("#signIn");
 export const signUpDiv = document.querySelector("#signUp");
 
-function formSwitch(
+export function formSwitch(
   translateSignInForm,
   signInFormOpacity,
   translateSignUpForm,
@@ -145,6 +96,19 @@ function formSwitch(
   signUpDiv.style.opacity = signUpFormOpacity;
 }
 
+export function makeTag(valueId, valueClass, value, div, value2) {
+  const tag = document.createElement("p");
+  tag.className = valueClass;
+  tag.id = valueId;
+  tag.className = valueClass;
+  tag.textContent = value;
+  div.insertBefore(tag, value2);
+  setTimeout(() => {
+    tag.remove();
+  }, 2000);
+  return false;
+}
+
 goToSignInForm.addEventListener("click", (e) => {
   e.preventDefault();
   formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
@@ -153,6 +117,7 @@ goToSignUpForm.addEventListener("click", (e) => {
   e.preventDefault();
   formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
 });
+
 export const fName = document.querySelector("#firstName");
 export const lName = document.querySelector("#lastName");
 export const signUpEmail = document.querySelector("#signUpE");
@@ -160,11 +125,53 @@ export const SignUpPassword = document.querySelector("#signUpP");
 export const signInEmail = document.querySelector("#signInE");
 export const signInPassword = document.querySelector("#signInP");
 export const regex = new RegExp(/^\S+@\S+\.\S+$/);
-export let signInEmailValue = signInEmail.value;
-export let signInPasswordValue = signInPassword.value;
+
 signInButton.addEventListener("click", () => {
+  if (signInEmail.value == "" || signInPassword.value == "") {
+    makeTag(
+      "loginT",
+      "loginToast util",
+      "Please enter email and password",
+      signInDiv,
+      signInButton
+    );
+    return false;
+  }
   renderSignIn();
 });
 
 signUpButton.addEventListener("click", () => {
+  let signUpEmailValue = signUpEmail.value;
+  if (
+    fName.value == "" ||
+    lName.value == "" ||
+    signUpEmail.value == "" ||
+    SignUpPassword.value == ""
+  ) {
+    makeTag(
+      "inputT",
+      "inputToast util",
+      "Please fill all fields",
+      signUpDiv,
+      signUpButton
+    );
+    return false;
+  }
+
+  if (!signUpEmailValue.match(regex)) {
+    makeTag(
+      "emailT",
+      "emailToast util",
+      "Please enter valid email",
+      signUpDiv,
+      SignUpPassword
+    );
+    return false;
+  }
+
+  fName.value = "";
+  lName.value = "";
+  signUpEmail.value = "";
+  SignUpPassword.value = "";
+  renderSignUp();
 });

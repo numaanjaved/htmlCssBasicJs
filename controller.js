@@ -1,4 +1,7 @@
-import { localStorageData, signInCheck } from "./modal.js";
+import { signInCheck,signUpData } from "./modal.js";
 export function renderSignIn() {
   signInCheck();
+}
+export function renderSignUp() {
+  signUpData();
 }
