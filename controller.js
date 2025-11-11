@@ -12,7 +12,7 @@ import {
   regex,
 } from "./view.js";
 
-import { makeTag } from "./util.js";
+import { formSwitch, makeTag } from "./util.js";
 import { signInCheck, signUpData } from "./modal.js";
 
 export function renderSignIn() {
@@ -53,7 +53,7 @@ export function renderSignUp() {
       "emailToast util",
       "Please enter valid email",
       signUpDiv,
-      SignUpPassword
+      document.querySelector("#signUp p")
     );
     return false;
   }
