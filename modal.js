@@ -19,23 +19,13 @@ export function localStorageData(list) {
   }
 }
 
-let data = JSON.parse(localStorage.getItem("user"));
-
-if (data == null) {
-  signInEmail.value = "";
-  signInPassword.value = "";
-  makeTag(
-    "incorrectT",
-    "incorrectToast util",
-    "Please enter valid email and password",
-    signInDiv,
-    signInButton
-  );
-}
 export function signInCheck() {
+  let data = JSON.parse(localStorage.getItem("user"));
+  console.log(data);
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
 
+  window.addEventListener("DOMContentLoaded", signInCheck);
   data.forEach((user, index) => {
     const userEmail = user.email;
     const userPassword = user.password;
