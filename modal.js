@@ -1,17 +1,13 @@
 import {
   signInButton,
   signInDiv,
-  fName,
-  lName,
   signInEmail,
-  signUpEmail,
   signInPassword,
-  SignUpPassword,
 } from "./view.js";
 
 import { makeTag } from "./util.js";
 
-function localStorageData(list) {
+export function localStorageData(list) {
   if (localStorage.getItem("user") === null) {
     let userList = [];
     userList.push(list);
@@ -22,8 +18,20 @@ function localStorageData(list) {
     localStorage.setItem("user", JSON.stringify(oldData));
   }
 }
+
 let data = JSON.parse(localStorage.getItem("user"));
 
+if (data == null) {
+  signInEmail.value = "";
+  signInPassword.value = "";
+  makeTag(
+    "incorrectT",
+    "incorrectToast util",
+    "Please enter valid email and password",
+    signInDiv,
+    signInButton
+  );
+}
 export function signInCheck() {
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
@@ -51,18 +59,4 @@ export function signInCheck() {
       }
     }
   });
-}
-
-export function signUpData() {
-  let fNameValue = fName.value;
-  let lNameValue = lName.value;
-  let signUpEmailValue = signUpEmail.value;
-  let signUpPasswordValue = SignUpPassword.value;
-  let userInfo = {
-    firstName: fNameValue,
-    lastName: lNameValue,
-    email: signUpEmailValue,
-    password: signUpPasswordValue,
-  };
-  localStorageData(userInfo);
 }

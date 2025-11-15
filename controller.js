@@ -13,8 +13,8 @@ import {
 } from "./view.js";
 
 import { formSwitch, makeTag } from "./util.js";
-import { signInCheck, signUpData } from "./modal.js";
 
+import { signInCheck } from "./modal.js";
 export function renderSignIn() {
   if (signInEmail.value == "" || signInPassword.value == "") {
     makeTag(
@@ -75,6 +75,4 @@ export function renderSignUp() {
     textSuccess.remove();
     formSwitch("translateX(0)", "1", "translateX(-550px)", "0");
   }, 2000);
-
-  signUpData();
 }
