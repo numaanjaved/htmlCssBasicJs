@@ -74,5 +74,6 @@ export function renderSignUp() {
     const textSuccess = document.querySelector("#successP");
     textSuccess.remove();
     formSwitch("translateX(0)", "1", "translateX(-550px)", "0");
+    window.location.reload();
   }, 2000);
 }

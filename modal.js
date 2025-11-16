@@ -20,7 +20,7 @@ export function localStorageData(list) {
 }
 
 let data = JSON.parse(localStorage.getItem("user"));
-
+console.log(data);
 if (data == null) {
   signInEmail.value = "";
   signInPassword.value = "";

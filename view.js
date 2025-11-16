@@ -156,9 +156,6 @@ signUpButton.addEventListener("click", () => {
     email: signUpEmailValue,
     password: signUpPasswordValue,
   };
-  setTimeout(() => {
-    window.location.reload();
-  }, 2000);
   localStorageData(userInfo);
   renderSignUp();
 });
