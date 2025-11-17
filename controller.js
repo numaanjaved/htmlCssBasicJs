@@ -1,20 +1,34 @@
 import {
-  signInButton,
   signUpButton,
   signUpDiv,
-  signInDiv,
   fName,
   lName,
-  signInEmail,
   signUpEmail,
-  signInPassword,
   SignUpPassword,
   regex,
-} from "./view.js";
+} from "./view2.js";
 
-import { formSwitch, makeTag } from "./util.js";
+import {
+  signInEmail,
+  signInButton,
+  signInDiv,
+  signInPassword,
+  formSwitch,
+} from "./view1.js";
 
 import { signInCheck } from "./modal.js";
+export function makeTag(valueId, valueClass, value, div, value2) {
+  const tag = document.createElement("p");
+  tag.className = valueClass;
+  tag.id = valueId;
+  tag.className = valueClass;
+  tag.textContent = value;
+  div.insertBefore(tag, value2);
+  setTimeout(() => {
+    tag.remove();
+  }, 2000);
+  return false;
+}
 export function renderSignIn() {
   if (signInEmail.value == "" || signInPassword.value == "") {
     makeTag(

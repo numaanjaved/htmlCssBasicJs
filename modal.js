@@ -3,9 +3,9 @@ import {
   signInDiv,
   signInEmail,
   signInPassword,
-} from "./view.js";
+} from "./view1.js";
 
-import { makeTag } from "./util.js";
+import { makeTag } from "./controller.js";
 
 export function localStorageData(list) {
   if (localStorage.getItem("user") === null) {
@@ -20,7 +20,7 @@ export function localStorageData(list) {
 }
 
 let data = JSON.parse(localStorage.getItem("user"));
-console.log(data);
+
 if (data == null) {
   signInEmail.value = "";
   signInPassword.value = "";
