@@ -21,7 +21,6 @@ export function makeTag(valueId, valueClass, value, div, value2) {
   const tag = document.createElement("p");
   tag.className = valueClass;
   tag.id = valueId;
-  tag.className = valueClass;
   tag.textContent = value;
   div.insertBefore(tag, value2);
   setTimeout(() => {
