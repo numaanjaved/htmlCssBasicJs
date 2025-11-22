@@ -1,5 +1,4 @@
-import { renderSignIn } from "./controller.js";
-import { formSwitch } from "./view2.js";
+import { renderSignIn, formFunctionSignUp } from "./controller.js";
 
 // body styling
 const body = document.querySelector("body");
@@ -79,13 +78,10 @@ containerSignIn.append(
 
 export const goToSignInForm = document.querySelector("#signInBtn");
 export const signInButton = document.querySelector("#signInB");
-export const signInDiv = document.querySelector("#signIn");
 export const signInEmail = document.querySelector("#signInE");
 export const signInPassword = document.querySelector("#signInP");
-goToSignInForm.addEventListener("click", (e) => {
-  e.preventDefault();
-  formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
-});
+
+formFunctionSignUp();
 signInButton.addEventListener("click", () => {
   renderSignIn();
 });

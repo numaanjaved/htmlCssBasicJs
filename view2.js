@@ -1,24 +1,9 @@
-import { renderSignUp } from "./controller.js";
-import {
-  inputPassword,
-  makeTagElement,
-  inputTag,
-} from "./view1.js";
+import { renderSignUp, formFunctionSignIn } from "./controller.js";
+import { inputPassword, makeTagElement, inputTag } from "./view1.js";
 
 // body styling
 const body = document.querySelector("body");
 
-export function formSwitch(
-  translateSignInForm,
-  signInFormOpacity,
-  translateSignUpForm,
-  signUpFormOpacity
-) {
-  signInDiv.style.transform = translateSignInForm;
-  signInDiv.style.opacity = signInFormOpacity;
-  signUpDiv.style.transform = translateSignUpForm;
-  signUpDiv.style.opacity = signUpFormOpacity;
-}
 // container for Sign Up form
 const containerDiv = document.createElement("div");
 containerDiv.id = "signUp";
@@ -71,18 +56,10 @@ containerDiv.append(
 );
 export const goToSignUpForm = document.querySelector("#signUpBtn");
 export const signUpButton = document.querySelector("#signUpB");
-export const fName = document.querySelector("#firstName");
 export const signUpDiv = document.querySelector("#signUp");
-export const lName = document.querySelector("#lastName");
-export const signUpEmail = document.querySelector("#signUpE");
-export const SignUpPassword = document.querySelector("#signUpP");
 export const regex = new RegExp(/^\S+@\S+\.\S+$/);
 
-goToSignUpForm.addEventListener("click", (e) => {
-  e.preventDefault();
-  formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
-});
-
+formFunctionSignIn();
 signUpButton.addEventListener("click", () => {
   renderSignUp();
 });

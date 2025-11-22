@@ -1,22 +1,35 @@
-import {
-  signUpButton,
-  signUpDiv,
-  fName,
-  lName,
-  signUpEmail,
-  SignUpPassword,
-  formSwitch,
-  regex,
-} from "./view2.js";
+import { signUpButton, regex, goToSignUpForm } from "./view2.js";
 
 import {
   signInEmail,
   signInButton,
-  signInDiv,
-  signInPassword
+  signInPassword,
+  goToSignInForm,
 } from "./view1.js";
 
-import { localStorageData,data } from "./modal.js";
+import { signUpData, data, formSwitch } from "./modal.js";
+
+export function formFunctionSignUp() {
+  goToSignInForm.addEventListener("click", (e) => {
+    e.preventDefault();
+    formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
+  });
+}
+
+export function formFunctionSignIn() {
+  goToSignUpForm.addEventListener("click", (e) => {
+    e.preventDefault();
+    formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
+  });
+}
+export const signInDiv = document.querySelector("#signIn");
+
+export const fName = document.querySelector("#firstName");
+export const signUpDiv = document.querySelector("#signUp");
+export const lName = document.querySelector("#lastName");
+export const signUpEmail = document.querySelector("#signUpE");
+export const SignUpPassword = document.querySelector("#signUpP");
+
 export function makeTag(valueId, valueClass, value, div, value2) {
   const tag = document.createElement("p");
   tag.className = valueClass;
@@ -80,17 +93,8 @@ export function renderSignIn() {
 }
 
 export function renderSignUp() {
-  let fNameValue = fName.value;
-  let lNameValue = lName.value;
-  let signUpPasswordValue = SignUpPassword.value;
   let signUpEmailValue = signUpEmail.value;
-  let userInfo = {
-    firstName: fNameValue,
-    lastName: lNameValue,
-    email: signUpEmailValue,
-    password: signUpPasswordValue,
-  };
-  localStorageData(userInfo);
+  signUpData();
   if (
     fName.value == "" ||
     lName.value == "" ||
