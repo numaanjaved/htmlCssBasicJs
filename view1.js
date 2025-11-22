@@ -1,96 +1,81 @@
 import { renderSignIn } from "./controller.js";
-import { signUpDiv } from "./view2.js";
+import { formSwitch } from "./view2.js";
 
 // body styling
 const body = document.querySelector("body");
 
-export function formSwitch(
-  translateSignInForm,
-  signInFormOpacity,
-  translateSignUpForm,
-  signUpFormOpacity
-) {
-  signInDiv.style.transform = translateSignInForm;
-  signInDiv.style.opacity = signInFormOpacity;
-  signUpDiv.style.transform = translateSignUpForm;
-  signUpDiv.style.opacity = signUpFormOpacity;
+export function inputPassword(valueId) {
+  const inputPassword = document.createElement("input");
+  const form = document.createElement("form");
+  inputPassword.id = valueId;
+  inputPassword.setAttribute("autocomplete", true);
+  inputPassword.className = "text-md pd mg outline";
+  inputPassword.placeholder = "Password";
+  inputPassword.type = "password";
+  form.appendChild(inputPassword);
+  return form;
 }
 
+export function makeTagElement(tagName, valueId, classes, value) {
+  const buttonLogin = document.createElement(tagName);
+  buttonLogin.id = valueId;
+  buttonLogin.className = classes;
+  buttonLogin.textContent = value;
+  return buttonLogin;
+}
+
+export function inputTag(valueId, value) {
+  const input = document.createElement("input");
+  input.id = valueId;
+  input.className = "text-md pd outline bd";
+  input.placeholder = value;
+  return input;
+}
 // container for login form
 const containerSignIn = document.createElement("div");
 containerSignIn.id = "signIn";
 containerSignIn.className = "signIn utilForm tr";
 body.appendChild(containerSignIn);
 
-const makeTagElementArr = [
-  {
-    tagName: "p",
-    valueId: "text",
-    classes: "textCenter",
-    value: "Sign in to start your session",
-  },
-  {
-    tagName: "input",
-    valueId: "signInE",
-    classes: "text-md pd outline bd",
-    value: "Email",
-  },
-  {
-    tagName: "input",
-    tag1: "form",
-    valueId: "signInP",
-    arr: {
-      attT: "autocomplete",
-      attV: true,
-    },
-    classes: "text-md pd outline bd",
-    value: "Email",
-  },
-  {
-    tagName: "button",
-    valueId: "signInB",
-    classes: "outline color bdn",
-    value: "Sign In",
-  },
-  {
-    tagName: "p",
-    valueId: "ptext",
-    classes: "mg",
-    value: "-OR-",
-  },
-  {
-    tagName: "button",
-    valueId: "signInBtn",
-    classes: "outline color bdn",
-    value: "Register Now",
-  },
-];
+// container sign in content
+const pSignIn = makeTagElement(
+  "p",
+  "text",
+  "textCenter",
+  "Sign in to start your session"
+);
 
-makeTagElementArr.forEach((element, index) => {
-  if (index == 1) {
-    const input = document.createElement("input");
-    input.id = element.valueId;
-    input.className = "text-md pd outline bd";
-    input.placeholder = element.value;
-    containerSignIn.appendChild(input);
-  } else if (index == 2) {
-    const inputPassword = document.createElement("input");
-    const form = document.createElement("form");
-    inputPassword.id = element.valueId;
-    inputPassword.setAttribute("autocomplete", true);
-    inputPassword.className = "text-md pd mg outline";
-    inputPassword.placeholder = "Password";
-    inputPassword.type = "password";
-    form.appendChild(inputPassword);
-    containerSignIn.appendChild(form);
-  } else {
-    const elementTag = document.createElement(element.tagName);
-    elementTag.id = element.valueId;
-    elementTag.className = element.classes;
-    elementTag.textContent = element.value;
-    containerSignIn.appendChild(elementTag);
-  }
-});
+// login input email
+const inputEmailSignIn = inputTag("signInE", "Email");
+
+// login input password
+const inputPasswordSignIn = inputPassword("signInP");
+
+// Sign-In button
+const buttonLogin = makeTagElement(
+  "button",
+  "signInB",
+  "outline color bdn",
+  "Sign In"
+);
+
+const pTextSignIn = makeTagElement("p", "ptext", "mg", "-OR-");
+
+const buttonLoginSignIn = makeTagElement(
+  "button",
+  "signInBtn",
+  "outline color bdn",
+  "Register Now"
+);
+
+containerSignIn.append(
+  pSignIn,
+  inputEmailSignIn,
+  inputPasswordSignIn,
+  buttonLogin,
+  pTextSignIn,
+  buttonLoginSignIn
+);
 
 export const goToSignInForm = document.querySelector("#signInBtn");
 export const signInButton = document.querySelector("#signInB");

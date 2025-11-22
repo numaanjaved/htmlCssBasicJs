@@ -1,109 +1,74 @@
 import { renderSignUp } from "./controller.js";
-import { localStorageData } from "./modal.js";
-import { formSwitch } from "./view1.js";
+import {
+  inputPassword,
+  makeTagElement,
+  inputTag,
+} from "./view1.js";
 
 // body styling
 const body = document.querySelector("body");
 
+export function formSwitch(
+  translateSignInForm,
+  signInFormOpacity,
+  translateSignUpForm,
+  signUpFormOpacity
+) {
+  signInDiv.style.transform = translateSignInForm;
+  signInDiv.style.opacity = signInFormOpacity;
+  signUpDiv.style.transform = translateSignUpForm;
+  signUpDiv.style.opacity = signUpFormOpacity;
+}
 // container for Sign Up form
 const containerDiv = document.createElement("div");
 containerDiv.id = "signUp";
 containerDiv.className = "signUp utilForm mg tr";
 body.appendChild(containerDiv);
 
-const makeTagElementArr = [
-  {
-    tagName: "p",
-    valueId: "text",
-    classes: "textCenter",
-    value: "Resgister new membership",
-  },
-  {
-    tagName: "input",
-    valueId: "firstName",
-    classes: "text-md pd outline bd",
-    value: "First Name",
-  },
-  {
-    tagName: "input",
-    valueId: "lastName",
-    classes: "text-md pd outline bd",
-    value: "Last Name",
-  },
-  {
-    tagName: "input",
-    valueId: "signUpE",
-    classes: "text-md pd outline bd",
-    value: "Email",
-  },
-  {
-    tagName: "input",
-    tag1: "form",
-    valueId: "signUpP",
-    arr: {
-      attT: "autocomplete",
-      attV: true,
-    },
-    classes: "text-md pd outline bd",
-    value: "Email",
-  },
-  {
-    tagName: "button",
-    valueId: "signUpB",
-    classes: "outline color bdn",
-    value: "Sign Up",
-  },
-  {
-    tagName: "p",
-    valueId: "ptext",
-    classes: "mg",
-    value: "-OR-",
-  },
-  {
-    tagName: "button",
-    valueId: "signUpBtn",
-    classes: "outline color bdn",
-    value: "Login Now",
-  },
-];
+// container sign up content
+const pSignUp = makeTagElement(
+  "p",
+  "text",
+  "textCenter",
+  "Resgister new membership"
+);
 
-makeTagElementArr.forEach((element, index) => {
-  if (index == 1) {
-    const input = document.createElement("input");
-    input.id = element.valueId;
-    input.className = "text-md pd outline bd";
-    input.placeholder = element.value;
-    containerDiv.appendChild(input);
-  } else if (index == 2) {
-    const input = document.createElement("input");
-    input.id = element.valueId;
-    input.className = "text-md pd outline bd";
-    input.placeholder = element.value;
-    containerDiv.appendChild(input);
-  } else if (index == 3) {
-    const input = document.createElement("input");
-    input.id = element.valueId;
-    input.className = "text-md pd outline bd";
-    input.placeholder = element.value;
-    containerDiv.appendChild(input);
-  } else if (index == 4) {
-    const inputPassword = document.createElement("input");
-    const form = document.createElement("form");
-    inputPassword.id = element.valueId;
-    inputPassword.setAttribute("autocomplete", true);
-    inputPassword.className = "text-md pd mg outline";
-    inputPassword.placeholder = "Password";
-    inputPassword.type = "password";
-    form.appendChild(inputPassword);
-    containerDiv.appendChild(form);
-  } else {
-    const elementTag = document.createElement(element.tagName);
-    elementTag.id = element.valueId;
-    elementTag.className = element.classes;
-    elementTag.textContent = element.value;
-    containerDiv.appendChild(elementTag);
-  }
-});
+// register input email
+const inputEmailSignUpFirstName = inputTag("firstName", "First Name");
+
+const inputEmailSignUpLastName = inputTag("lastName", "Last Name");
+
+const inputEmailSignUpEmail = inputTag("signUpE", "Email");
+
+// register input password
+const inputPasswordSignUp = inputPassword("signUpP");
+
+// Sign-Up button
+const buttonLoginSignUp = makeTagElement(
+  "button",
+  "signUpB",
+  "outline color bdn",
+  "Sign Up"
+);
+
+const pTextSignUp = makeTagElement("p", "ptext", "mg", "-OR-");
+
+const buttonSignUp = makeTagElement(
+  "button",
+  "signUpBtn",
+  "outline color bdn",
+  "Login Now"
+);
+containerDiv.append(
+  pSignUp,
+  inputEmailSignUpFirstName,
+  inputEmailSignUpLastName,
+  inputEmailSignUpEmail,
+  inputPasswordSignUp,
+  buttonLoginSignUp,
+  pTextSignUp,
+  buttonSignUp
+);
 export const goToSignUpForm = document.querySelector("#signUpBtn");
 export const signUpButton = document.querySelector("#signUpB");
 export const fName = document.querySelector("#firstName");
@@ -119,16 +84,5 @@ goToSignUpForm.addEventListener("click", (e) => {
 });
 
 signUpButton.addEventListener("click", () => {
-  let fNameValue = fName.value;
-  let lNameValue = lName.value;
-  let signUpPasswordValue = SignUpPassword.value;
-  let signUpEmailValue = signUpEmail.value;
-  let userInfo = {
-    firstName: fNameValue,
-    lastName: lNameValue,
-    email: signUpEmailValue,
-    password: signUpPasswordValue,
-  };
-  localStorageData(userInfo);
   renderSignUp();
 });

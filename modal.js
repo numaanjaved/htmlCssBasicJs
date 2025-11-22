@@ -1,12 +1,3 @@
-import {
-  signInButton,
-  signInDiv,
-  signInEmail,
-  signInPassword,
-} from "./view1.js";
-
-import { makeTag } from "./controller.js";
-
 export function localStorageData(list) {
   if (localStorage.getItem("user") === null) {
     let userList = [];
@@ -19,44 +10,5 @@ export function localStorageData(list) {
   }
 }
 
-let data = JSON.parse(localStorage.getItem("user"));
-export function signInCheck() {
-  let signInEmailValue = signInEmail.value;
-  let signInPasswordValue = signInPassword.value;
-  if (data == null) {
-    signInEmail.value = "";
-    signInPassword.value = "";
-    makeTag(
-      "incorrectT",
-      "incorrectToast util",
-      "Please enter valid email and password",
-      signInDiv,
-      signInButton
-    );
-    return false;
-  }
-
-  data.forEach((user, index) => {
-    const userEmail = user.email;
-    const userPassword = user.password;
-    if (signInEmailValue == userEmail && signInPasswordValue == userPassword) {
-      signInDiv.style.opacity = "0";
-      signInDiv.style.transform = "translate(-550px)";
-      document.body.textContent = `Thanks ${user.firstName} ${user.lastName} for Login in.`;
-      return false;
-    } else {
-      if (index == 1) {
-        signInEmail.value = "";
-        signInPassword.value = "";
-        makeTag(
-          "incorrectT",
-          "incorrectToast util",
-          "Please enter valid email and password",
-          signInDiv,
-          signInButton
-        );
-        return false;
-      }
-    }
-  });
-}
+export let data = JSON.parse(localStorage.getItem("user"));
+console.log(data);

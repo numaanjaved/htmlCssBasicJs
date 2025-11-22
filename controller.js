@@ -5,6 +5,7 @@ import {
   lName,
   signUpEmail,
   SignUpPassword,
+  formSwitch,
   regex,
 } from "./view2.js";
 
@@ -12,11 +13,10 @@ import {
   signInEmail,
   signInButton,
   signInDiv,
-  signInPassword,
-  formSwitch,
+  signInPassword
 } from "./view1.js";
 
-import { signInCheck } from "./modal.js";
+import { localStorageData,data } from "./modal.js";
 export function makeTag(valueId, valueClass, value, div, value2) {
   const tag = document.createElement("p");
   tag.className = valueClass;
@@ -39,11 +39,58 @@ export function renderSignIn() {
     );
     return false;
   }
-  signInCheck();
+  let signInEmailValue = signInEmail.value;
+  let signInPasswordValue = signInPassword.value;
+  if (data == null) {
+    signInEmail.value = "";
+    signInPassword.value = "";
+    makeTag(
+      "incorrectT",
+      "incorrectToast util",
+      "Please enter valid email and password",
+      signInDiv,
+      signInButton
+    );
+    return false;
+  }
+
+  data.forEach((user, index) => {
+    const userEmail = user.email;
+    const userPassword = user.password;
+    if (signInEmailValue == userEmail && signInPasswordValue == userPassword) {
+      signInDiv.style.opacity = "0";
+      signInDiv.style.transform = "translate(-550px)";
+      document.body.textContent = `Thanks ${user.firstName} ${user.lastName} for Login in.`;
+      return false;
+    } else {
+      if (index == 1) {
+        signInEmail.value = "";
+        signInPassword.value = "";
+        makeTag(
+          "incorrectT",
+          "incorrectToast util",
+          "Please enter valid email and password",
+          signInDiv,
+          signInButton
+        );
+        return false;
+      }
+    }
+  });
 }
 
 export function renderSignUp() {
+  let fNameValue = fName.value;
+  let lNameValue = lName.value;
+  let signUpPasswordValue = SignUpPassword.value;
   let signUpEmailValue = signUpEmail.value;
+  let userInfo = {
+    firstName: fNameValue,
+    lastName: lNameValue,
+    email: signUpEmailValue,
+    password: signUpPasswordValue,
+  };
+  localStorageData(userInfo);
   if (
     fName.value == "" ||
     lName.value == "" ||
