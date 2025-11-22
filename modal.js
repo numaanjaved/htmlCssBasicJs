@@ -20,22 +20,21 @@ export function localStorageData(list) {
 }
 
 let data = JSON.parse(localStorage.getItem("user"));
-
-if (data == null) {
-  signInEmail.value = "";
-  signInPassword.value = "";
-  makeTag(
-    "incorrectT",
-    "incorrectToast util",
-    "Please enter valid email and password",
-    signInDiv,
-    signInButton
-  );
-}
-
 export function signInCheck() {
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
+  if (data == null) {
+    signInEmail.value = "";
+    signInPassword.value = "";
+    makeTag(
+      "incorrectT",
+      "incorrectToast util",
+      "Please enter valid email and password",
+      signInDiv,
+      signInButton
+    );
+    return false;
+  }
 
   data.forEach((user, index) => {
     const userEmail = user.email;
