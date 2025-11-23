@@ -10,7 +10,12 @@ export function localStorageData(list) {
   }
 }
 
-export function signUpData(valueFisrt, valueLast, valuePassword, valueEmail) {
+export function signUpData({
+  valueFisrt,
+  valueLast,
+  valuePassword,
+  valueEmail,
+}) {
   let fNameValue = valueFisrt;
   let lNameValue = valueLast;
   let signUpPasswordValue = valuePassword;
@@ -24,7 +29,7 @@ export function signUpData(valueFisrt, valueLast, valuePassword, valueEmail) {
   localStorageData(userInfo);
 }
 
-export function userData(email, password, fun, div, button) {
+export function userData({ email, password, fun, div, button }) {
   email.value = "";
   password.value = "";
   fun(

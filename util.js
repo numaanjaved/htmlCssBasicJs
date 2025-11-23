@@ -12,24 +12,19 @@ export function inputPassword(valueId) {
   return form;
 }
 
-export function makeTagElement(tagName, valueId, classes, value) {
-  const buttonLogin = document.createElement(tagName);
-  buttonLogin.id = valueId;
-  buttonLogin.className = classes;
-  buttonLogin.textContent = value;
-  return buttonLogin;
+export function makeTagElement({ tagName, id, classes, value }) {
+  const element = document.createElement(tagName);
+  element.id = id;
+  element.className = classes;
+  element.textContent = value;
+  return element;
 }
 
-export function formSwitch(
-  translateSignInForm,
-  signInFormOpacity,
-  translateSignUpForm,
-  signUpFormOpacity
-) {
-  signInDiv.style.transform = translateSignInForm;
-  signInDiv.style.opacity = signInFormOpacity;
-  signUpDiv.style.transform = translateSignUpForm;
-  signUpDiv.style.opacity = signUpFormOpacity;
+export function formSwitch({ signInT, signInO, signUpT, signUpO }) {
+  signInDiv.style.transform = signInT;
+  signInDiv.style.opacity = signInO;
+  signUpDiv.style.transform = signUpT;
+  signUpDiv.style.opacity = signUpO;
 }
 
 export function inputTag(valueId, value) {
@@ -40,9 +35,9 @@ export function inputTag(valueId, value) {
   return input;
 }
 
-export function makeTag(valueId, valueClass, value, div, value2) {
+export function makeTag({ valueId, classes, value, div, value2 }) {
   const tag = document.createElement("p");
-  tag.className = valueClass;
+  tag.className = classes;
   tag.id = valueId;
   tag.textContent = value;
   div.insertBefore(tag, value2);

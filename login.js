@@ -1,5 +1,5 @@
 import { renderSignIn } from "./controller.js";
-import { inputPassword, makeTagElement, inputTag,formSwitch } from "./util.js";
+import { inputPassword, makeTagElement, inputTag, formSwitch } from "./util.js";
 
 // body styling
 const body = document.querySelector("body");
@@ -11,12 +11,12 @@ containerSignIn.className = "signIn utilForm tr";
 body.appendChild(containerSignIn);
 
 // container sign in content
-const pSignIn = makeTagElement(
-  "p",
-  "text",
-  "textCenter",
-  "Sign in to start your session"
-);
+const pSignIn = makeTagElement({
+  tagName: "p",
+  id: "text",
+  classes: "textCenter",
+  value: "Sign in to start your session",
+});
 
 // login input email
 const inputEmailSignIn = inputTag("signInE", "Email");
@@ -25,21 +25,26 @@ const inputEmailSignIn = inputTag("signInE", "Email");
 const inputPasswordSignIn = inputPassword("signInP");
 
 // Sign-In button
-const buttonLogin = makeTagElement(
-  "button",
-  "signInB",
-  "outline color bdn",
-  "Sign In"
-);
+const buttonLogin = makeTagElement({
+  tagName: "button",
+  id: "signInB",
+  classes: "outline color bdn",
+  value: "Sign In",
+});
 
-const pTextSignIn = makeTagElement("p", "ptext", "mg", "-OR-");
+const pTextSignIn = makeTagElement({
+  tagName: "p",
+  id: "ptext",
+  classes: "mg",
+  value: "-OR-",
+});
 
-const buttonLoginSignIn = makeTagElement(
-  "button",
-  "signInBtn",
-  "outline color bdn",
-  "Register Now"
-);
+const buttonLoginSignIn = makeTagElement({
+  tagName: "button",
+  id: "signInBtn",
+  classes: "outline color bdn",
+  value: "Register Now",
+});
 
 containerSignIn.append(
   pSignIn,
@@ -59,7 +64,12 @@ export function loginInData(loginData) {
 
 goToSignInForm.addEventListener("click", (e) => {
   e.preventDefault();
-  formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
+  formSwitch({
+    signInT: "translateX(-550px)",
+    signInO: "0",
+    signUpT: "translateX(0px)",
+    signUpO: "1",
+  });
 });
 
 signInButton.addEventListener("click", () => {

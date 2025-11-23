@@ -11,12 +11,12 @@ containerDiv.className = "signUp utilForm mg tr";
 body.appendChild(containerDiv);
 
 // container sign up content
-const pSignUp = makeTagElement(
-  "p",
-  "text",
-  "textCenter",
-  "Resgister new membership"
-);
+const pSignUp = makeTagElement({
+  tagName: "p",
+  id: "text",
+  classes: "textCenter",
+  value: "Resgister new membership",
+});
 
 // register input email
 const inputEmailSignUpFirstName = inputTag("firstName", "First Name");
@@ -29,21 +29,26 @@ const inputEmailSignUpEmail = inputTag("signUpE", "Email");
 const inputPasswordSignUp = inputPassword("signUpP");
 
 // Sign-Up button
-const buttonLoginSignUp = makeTagElement(
-  "button",
-  "signUpB",
-  "outline color bdn",
-  "Sign Up"
-);
+const buttonLoginSignUp = makeTagElement({
+  tagName: "button",
+  id: "signUpB",
+  classes: "outline color bdn",
+  value: "Sign Up",
+});
 
-const pTextSignUp = makeTagElement("p", "ptext", "mg", "-OR-");
+const pTextSignUp = makeTagElement({
+  tagName: "p",
+  id: "ptext",
+  classes: "mg",
+  value: "-OR-",
+});
 
-const buttonSignUp = makeTagElement(
-  "button",
-  "signUpBtn",
-  "outline color bdn",
-  "Login Now"
-);
+const buttonSignUp = makeTagElement({
+  tagName: "button",
+  id: "signUpBtn",
+  classes: "outline color bdn",
+  value: "Login Now",
+});
 containerDiv.append(
   pSignUp,
   inputEmailSignUpFirstName,
@@ -60,7 +65,12 @@ export const signUpDiv = document.querySelector("#signUp");
 
 goToSignUpForm.addEventListener("click", (e) => {
   e.preventDefault();
-  formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
+  formSwitch({
+    signInT: "translateX(0)",
+    signInO: "1",
+    signUpT: "translateX(-550px)",
+    signUpO: "0",
+  });
 });
 
 signUpButton.addEventListener("click", () => {

@@ -18,13 +18,13 @@ const SignUpPassword = document.querySelector("#signUpP");
 
 export function renderSignIn() {
   if (signInEmail.value == "" || signInPassword.value == "") {
-    makeTag(
-      "loginT",
-      "loginToast util",
-      "Please enter email and password",
-      signInDiv,
-      signInButton
-    );
+    makeTag({
+      id: "loginT",
+      classes: "loginToast util",
+      value: "Please enter email and password",
+      div: signInDiv,
+      value2: signInButton,
+    });
     return false;
   }
 
@@ -32,7 +32,13 @@ export function renderSignIn() {
   let signInPasswordValue = signInPassword.value;
 
   if (data == null) {
-    userData(signInEmail, signInPassword, makeTag, signInDiv, signInButton);
+    userData({
+      value: signInEmail,
+      value2: signInPassword,
+      value3: makeTag,
+      value4: signInDiv,
+      value5: signInButton,
+    });
     return false;
   }
 
@@ -48,13 +54,13 @@ export function renderSignIn() {
       if (index == 1) {
         signInEmail.value = "";
         signInPassword.value = "";
-        makeTag(
-          "incorrectT",
-          "incorrectToast util",
-          "Please enter valid email and password",
-          signInDiv,
-          signInButton
-        );
+        makeTag({
+          id: "incorrectT",
+          classes: "incorrectToast util",
+          value: "Please enter valid email and password",
+          div: signInDiv,
+          value2: signInButton,
+        });
         return false;
       }
     }
@@ -64,32 +70,37 @@ export function renderSignIn() {
 export function renderSignUp() {
   let signUpEmailValue = signUpEmail.value;
 
-  signUpData(fName.value, lName.value, SignUpPassword.value, signUpEmail.value);
-  
+  signUpData({
+    fvalue: fName.value,
+    lValue: lName.value,
+    sUpPValue: SignUpPassword.value,
+    sUpEValue: signUpEmail.value,
+  });
+
   if (
     fName.value == "" ||
     lName.value == "" ||
     signUpEmail.value == "" ||
     SignUpPassword.value == ""
   ) {
-    makeTag(
-      "inputT",
-      "inputToast util",
-      "Please fill all fields",
-      signUpDiv,
-      signUpButton
-    );
+    makeTag({
+      id: "inputT",
+      classes: "inputToast util",
+      value: "Please fill all fields",
+      div: signUpDiv,
+      value2: signUpButton,
+    });
     return false;
   }
 
   if (!signUpEmailValue.match(regex)) {
-    makeTag(
-      "emailT",
-      "emailToast util",
-      "Please enter valid email",
-      signUpDiv,
-      document.querySelector("#signUp p")
-    );
+    makeTag({
+      id: "emailT",
+      classes: "emailToast util",
+      value: "Please enter valid email",
+      div: signUpDiv,
+      value2: document.querySelector("#signUp p"),
+    });
     return false;
   }
 
@@ -108,7 +119,12 @@ export function renderSignUp() {
   setTimeout(() => {
     const textSuccess = document.querySelector("#successP");
     textSuccess.remove();
-    formSwitch("translateX(0)", "1", "translateX(-550px)", "0");
+    formSwitch({
+      signInT: "translateX(0)",
+      signInO: "1",
+      signUpT: "translateX(-550px)",
+      signUpO: "0",
+    });
     window.location.reload();
   }, 2000);
 }
