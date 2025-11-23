@@ -1,46 +1,21 @@
-import { signUpButton, regex, goToSignUpForm } from "./view2.js";
+import { makeTag, formSwitch } from "./util.js";
+import { signUpButton } from "./register.js";
 
-import {
-  signInEmail,
-  signInButton,
-  signInPassword,
-  goToSignInForm,
-} from "./view1.js";
+import { signInButton, loginInData } from "./login.js";
 
-import { signUpData, data, formSwitch } from "./modal.js";
+import { signUpData, data, userData } from "./model.js";
 
-export function formFunctionSignUp() {
-  goToSignInForm.addEventListener("click", (e) => {
-    e.preventDefault();
-    formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
-  });
-}
-
-export function formFunctionSignIn() {
-  goToSignUpForm.addEventListener("click", (e) => {
-    e.preventDefault();
-    formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
-  });
-}
 export const signInDiv = document.querySelector("#signIn");
+export const signInEmail = document.querySelector("#signInE");
+export const signInPassword = document.querySelector("#signInP");
+const regex = new RegExp(/^\S+@\S+\.\S+$/);
 
-export const fName = document.querySelector("#firstName");
+const fName = document.querySelector("#firstName");
 export const signUpDiv = document.querySelector("#signUp");
-export const lName = document.querySelector("#lastName");
-export const signUpEmail = document.querySelector("#signUpE");
-export const SignUpPassword = document.querySelector("#signUpP");
+const lName = document.querySelector("#lastName");
+const signUpEmail = document.querySelector("#signUpE");
+const SignUpPassword = document.querySelector("#signUpP");
 
-export function makeTag(valueId, valueClass, value, div, value2) {
-  const tag = document.createElement("p");
-  tag.className = valueClass;
-  tag.id = valueId;
-  tag.textContent = value;
-  div.insertBefore(tag, value2);
-  setTimeout(() => {
-    tag.remove();
-  }, 2000);
-  return false;
-}
 export function renderSignIn() {
   if (signInEmail.value == "" || signInPassword.value == "") {
     makeTag(
@@ -55,15 +30,7 @@ export function renderSignIn() {
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
   if (data == null) {
-    signInEmail.value = "";
-    signInPassword.value = "";
-    makeTag(
-      "incorrectT",
-      "incorrectToast util",
-      "Please enter valid email and password",
-      signInDiv,
-      signInButton
-    );
+    userData(signInEmail, signInPassword, makeTag, signInDiv, signInButton);
     return false;
   }
 
@@ -73,7 +40,7 @@ export function renderSignIn() {
     if (signInEmailValue == userEmail && signInPasswordValue == userPassword) {
       signInDiv.style.opacity = "0";
       signInDiv.style.transform = "translate(-550px)";
-      document.body.textContent = `Thanks ${user.firstName} ${user.lastName} for Login in.`;
+      loginInData(`Thanks ${user.firstName} ${user.lastName} for Login in.`);
       return false;
     } else {
       if (index == 1) {
@@ -94,7 +61,7 @@ export function renderSignIn() {
 
 export function renderSignUp() {
   let signUpEmailValue = signUpEmail.value;
-  signUpData();
+  signUpData(fName.value, lName.value, SignUpPassword.value, signUpEmail.value);
   if (
     fName.value == "" ||
     lName.value == "" ||

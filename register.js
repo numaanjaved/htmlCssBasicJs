@@ -1,5 +1,5 @@
-import { renderSignUp, formFunctionSignIn } from "./controller.js";
-import { inputPassword, makeTagElement, inputTag } from "./view1.js";
+import { renderSignUp } from "./controller.js";
+import { inputPassword, makeTagElement, inputTag, formSwitch } from "./util.js";
 
 // body styling
 const body = document.querySelector("body");
@@ -57,9 +57,12 @@ containerDiv.append(
 export const goToSignUpForm = document.querySelector("#signUpBtn");
 export const signUpButton = document.querySelector("#signUpB");
 export const signUpDiv = document.querySelector("#signUp");
-export const regex = new RegExp(/^\S+@\S+\.\S+$/);
 
-formFunctionSignIn();
+goToSignUpForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
+});
+
 signUpButton.addEventListener("click", () => {
   renderSignUp();
 });

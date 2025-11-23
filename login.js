@@ -1,35 +1,9 @@
-import { renderSignIn, formFunctionSignUp } from "./controller.js";
+import { renderSignIn } from "./controller.js";
+import { inputPassword, makeTagElement, inputTag,formSwitch } from "./util.js";
 
 // body styling
 const body = document.querySelector("body");
 
-export function inputPassword(valueId) {
-  const inputPassword = document.createElement("input");
-  const form = document.createElement("form");
-  inputPassword.id = valueId;
-  inputPassword.setAttribute("autocomplete", true);
-  inputPassword.className = "text-md pd mg outline";
-  inputPassword.placeholder = "Password";
-  inputPassword.type = "password";
-  form.appendChild(inputPassword);
-  return form;
-}
-
-export function makeTagElement(tagName, valueId, classes, value) {
-  const buttonLogin = document.createElement(tagName);
-  buttonLogin.id = valueId;
-  buttonLogin.className = classes;
-  buttonLogin.textContent = value;
-  return buttonLogin;
-}
-
-export function inputTag(valueId, value) {
-  const input = document.createElement("input");
-  input.id = valueId;
-  input.className = "text-md pd outline bd";
-  input.placeholder = value;
-  return input;
-}
 // container for login form
 const containerSignIn = document.createElement("div");
 containerSignIn.id = "signIn";
@@ -78,10 +52,16 @@ containerSignIn.append(
 
 export const goToSignInForm = document.querySelector("#signInBtn");
 export const signInButton = document.querySelector("#signInB");
-export const signInEmail = document.querySelector("#signInE");
-export const signInPassword = document.querySelector("#signInP");
 
-formFunctionSignUp();
+export function loginInData(loginData) {
+  document.body.textContent = loginData;
+}
+
+goToSignInForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
+});
+
 signInButton.addEventListener("click", () => {
   renderSignIn();
 });
