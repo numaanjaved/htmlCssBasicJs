@@ -27,8 +27,10 @@ export function renderSignIn() {
     );
     return false;
   }
+
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
+
   if (data == null) {
     userData(signInEmail, signInPassword, makeTag, signInDiv, signInButton);
     return false;
@@ -61,7 +63,9 @@ export function renderSignIn() {
 
 export function renderSignUp() {
   let signUpEmailValue = signUpEmail.value;
+
   signUpData(fName.value, lName.value, SignUpPassword.value, signUpEmail.value);
+  
   if (
     fName.value == "" ||
     lName.value == "" ||
