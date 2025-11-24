@@ -1,5 +1,5 @@
-import { renderSignUp, gotoFormSignUp } from "./controller.js";
-import { inputPassword, makeTagElement, inputTag } from "./util.js";
+import { renderSignUp } from "./controller.js";
+import { inputPassword, makeTagElement, inputTag, formSwitch } from "./util.js";
 
 // body styling
 const body = document.querySelector("body");
@@ -13,7 +13,7 @@ body.appendChild(containerDiv);
 // container sign up content
 const pSignUp = makeTagElement({
   tagName: "p",
-  id: "text",
+  valueId: "text",
   classes: "textCenter",
   value: "Resgister new membership",
 });
@@ -31,21 +31,16 @@ const inputPasswordSignUp = inputPassword("signUpP");
 // Sign-Up button
 const buttonLoginSignUp = makeTagElement({
   tagName: "button",
-  id: "signUpB",
+  valueId: "signUpB",
   classes: "outline color bdn",
   value: "Sign Up",
 });
 
-const pTextSignUp = makeTagElement({
-  tagName: "p",
-  id: "ptext",
-  classes: "mg",
-  value: "-OR-",
-});
+const pTextSignUp = makeTagElement("p", "ptext", "mg", "-OR-");
 
 const buttonSignUp = makeTagElement({
   tagName: "button",
-  id: "signUpBtn",
+  valueId: "signUpBtn",
   classes: "outline color bdn",
   value: "Login Now",
 });
@@ -62,8 +57,10 @@ containerDiv.append(
 export const goToSignUpForm = document.querySelector("#signUpBtn");
 export const signUpButton = document.querySelector("#signUpB");
 export const signUpDiv = document.querySelector("#signUp");
-
-gotoFormSignUp(goToSignUpForm);
+goToSignUpForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
+});
 
 signUpButton.addEventListener("click", () => {
   renderSignUp();

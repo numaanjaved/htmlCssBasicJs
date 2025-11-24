@@ -10,12 +10,7 @@ export function localStorageData(list) {
   }
 }
 
-export function signUpData({
-  valueFisrt,
-  valueLast,
-  valuePassword,
-  valueEmail,
-}) {
+export function signUpData(valueFisrt, valueLast, valuePassword, valueEmail) {
   let fNameValue = valueFisrt;
   let lNameValue = valueLast;
   let signUpPasswordValue = valuePassword;
@@ -29,74 +24,17 @@ export function signUpData({
   localStorageData(userInfo);
 }
 
-export function formSwitch({
-  signInDiv,
-  signInT,
-  signInO,
-  signUpDiv,
-  signUpT,
-  signUpO,
-}) {
-  signInDiv.style.transform = signInT;
-  signInDiv.style.opacity = signInO;
-  signUpDiv.style.transform = signUpT;
-  signUpDiv.style.opacity = signUpO;
-}
-
-export function userData({ value, value2, value3, value4, value5 }) {
-  value.value = "";
-  value2.value = "";
-  value3({
-    id: "incorrectT",
-    classes: "incorrectToast util",
-    value: "Please enter valid email and password",
-    div: value4,
-    value2: value5,
-  });
-}
-
-export function inputValid({ value, value2, value3, value4, value5 }) {
-  value.value = "";
-  value2.value = "";
-  value3({
-    id: "loginT",
-    classes: "loginToast util",
-    value: "Please enter email and password",
-    div: value4,
-    value2: value5,
-  });
+export function userData(email, password, fun, div, button) {
+  email.value = "";
+  password.value = "";
+  fun(
+    "incorrectT",
+    "incorrectToast util",
+    "Please enter valid email and password",
+    div,
+    button
+  );
   return false;
-}
-
-export function signInValid({
-  signInEmailValue,
-  userEmail,
-  signInPasswordValue,
-  userPassword,
-  signInDiv,
-  loginInData,
-  index,
-  makeTag,
-}) {
-  if (signInEmailValue == userEmail && signInPasswordValue == userPassword) {
-    signInDiv.style.opacity = "0";
-    signInDiv.style.transform = "translate(-550px)";
-    loginInData(`Thanks ${user.firstName} ${user.lastName} for Login in.`);
-    return false;
-  } else {
-    if (index == 1) {
-      signInEmailValue = "";
-      signInPasswordValue = "";
-      makeTag({
-        id: "incorrectT",
-        classes: "incorrectToast util",
-        value: "Please enter valid email and password",
-        div: signInDiv,
-        value2: signInButton,
-      });
-      return false;
-    }
-  }
 }
 
 export let data = JSON.parse(localStorage.getItem("user"));
