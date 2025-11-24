@@ -58,7 +58,12 @@ export function loginInData(loginData) {
 
 goToSignInForm.addEventListener("click", (e) => {
   e.preventDefault();
-  formSwitch("translateX(-550px)", "0", "translateX(0px)", "1");
+  formSwitch({
+    translateSignInForm: "translateX(-550px)",
+    signInFormOpacity: "0",
+    translateSignUpForm: "translateX(0px)",
+    signUpFormOpacity: "1",
+  });
 });
 
 signInButton.addEventListener("click", () => {

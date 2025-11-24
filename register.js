@@ -59,7 +59,12 @@ export const signUpButton = document.querySelector("#signUpB");
 export const signUpDiv = document.querySelector("#signUp");
 goToSignUpForm.addEventListener("click", (e) => {
   e.preventDefault();
-  formSwitch("translateX(0px)", "1", "translateX(-550px)", "0");
+  formSwitch({
+    translateSignInForm: "translateX(0px)",
+    signInFormOpacity: "1",
+    translateSignUpForm: "translateX(-550px)",
+    signUpFormOpacity: "0",
+  });
 });
 
 signUpButton.addEventListener("click", () => {

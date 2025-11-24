@@ -27,13 +27,13 @@ export function signUpData(valueFisrt, valueLast, valuePassword, valueEmail) {
 export function userData(email, password, fun, div, button) {
   email.value = "";
   password.value = "";
-  fun(
-    "incorrectT",
-    "incorrectToast util",
-    "Please enter valid email and password",
-    div,
-    button
-  );
+  fun({
+    valueId: "incorrectT",
+    valueClass: "incorrectToast util",
+    value: "Please enter valid email and password",
+    div: div,
+    vale2: button,
+  });
   return false;
 }
 

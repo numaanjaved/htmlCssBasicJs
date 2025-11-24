@@ -1,4 +1,5 @@
-import { signUpDiv, signInDiv } from "./controller.js";
+import { signInDiv } from "./controller.js";
+import { signUpDiv } from "./register.js";
 
 export function inputPassword(valueId) {
   const inputPassword = document.createElement("input");
@@ -20,16 +21,11 @@ export function makeTagElement(obj) {
   return element;
 }
 
-export function formSwitch(
-  translateSignInForm,
-  signInFormOpacity,
-  translateSignUpForm,
-  signUpFormOpacity
-) {
-  signInDiv.style.transform = translateSignInForm;
-  signInDiv.style.opacity = signInFormOpacity;
-  signUpDiv.style.transform = translateSignUpForm;
-  signUpDiv.style.opacity = signUpFormOpacity;
+export function formSwitch(obj) {
+  signInDiv.style.transform = obj.translateSignInForm;
+  signInDiv.style.opacity = obj.signInFormOpacity;
+  signUpDiv.style.transform = obj.translateSignUpForm;
+  signUpDiv.style.opacity = obj.signUpFormOpacity;
 }
 
 export function inputTag(valueId, value) {
@@ -40,12 +36,12 @@ export function inputTag(valueId, value) {
   return input;
 }
 
-export function makeTag(valueId, valueClass, value, div, value2) {
+export function makeTag(obj) {
   const tag = document.createElement("p");
-  tag.className = valueClass;
-  tag.id = valueId;
-  tag.textContent = value;
-  div.insertBefore(tag, value2);
+  tag.className = obj.valueClass;
+  tag.id = obj.valueId;
+  tag.textContent = obj.value;
+  obj.div.insertBefore(tag, obj.value2);
   setTimeout(() => {
     tag.remove();
   }, 2000);

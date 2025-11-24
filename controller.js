@@ -1,6 +1,6 @@
 import { makeTag, formSwitch } from "./util.js";
-import { signUpButton } from "./register.js";
-import { signInButton, loginInData } from "./login.js";
+
+import { loginInData } from "./login.js";
 
 import { signUpData, data, userData } from "./model.js";
 
@@ -13,15 +13,18 @@ export const signUpDiv = document.querySelector("#signUp");
 const lName = document.querySelector("#lastName");
 const signUpEmail = document.querySelector("#signUpE");
 const SignUpPassword = document.querySelector("#signUpP");
+const signUpButton = document.querySelector("#signUpB");
+const signInButton = document.querySelector("#signInB");
+
 export function renderSignIn() {
   if (signInEmail.value == "" || signInPassword.value == "") {
-    makeTag(
-      "loginT",
-      "loginToast util",
-      "Please enter email and password",
-      signInDiv,
-      signInButton
-    );
+    makeTag({
+      valueId: "loginT",
+      valueClass: "loginToast util",
+      value: "Please enter email and password",
+      div: signInDiv,
+      value2: signInButton,
+    });
     return false;
   }
   let signInEmailValue = signInEmail.value;
@@ -43,13 +46,13 @@ export function renderSignIn() {
       if (index == 1) {
         signInEmail.value = "";
         signInPassword.value = "";
-        makeTag(
-          "incorrectT",
-          "incorrectToast util",
-          "Please enter valid email and password",
-          signInDiv,
-          signInButton
-        );
+        makeTag({
+          valueId: "incorrectT",
+          valueClass: "incorrectToast util",
+          value: "Please enter valid email and password",
+          div: signInDiv,
+          value2: signInButton,
+        });
         return false;
       }
     }
@@ -65,24 +68,24 @@ export function renderSignUp() {
     signUpEmail.value == "" ||
     SignUpPassword.value == ""
   ) {
-    makeTag(
-      "inputT",
-      "inputToast util",
-      "Please fill all fields",
-      signUpDiv,
-      signUpButton
-    );
+    makeTag({
+      valueId: "inputT",
+      valueClass: "inputToast util",
+      value: "Please fill all fields",
+      div: signUpDiv,
+      value2: signUpButton,
+    });
     return false;
   }
 
   if (!signUpEmailValue.match(regex)) {
-    makeTag(
-      "emailT",
-      "emailToast util",
-      "Please enter valid email",
-      signUpDiv,
-      document.querySelector("#signUp p")
-    );
+    makeTag({
+      valueId: "emailT",
+      valueClass: "emailToast util",
+      calue2: "Please enter valid email",
+      div: signUpDiv,
+      value2: document.querySelector("#signUp p"),
+    });
     return false;
   }
 
@@ -101,7 +104,12 @@ export function renderSignUp() {
   setTimeout(() => {
     const textSuccess = document.querySelector("#successP");
     textSuccess.remove();
-    formSwitch("translateX(0)", "1", "translateX(-550px)", "0");
+    formSwitch({
+      translateSignInForm: "translateX(0px)",
+      signInFormOpacity: "1",
+      translateSignUpForm: "translateX(-550px)",
+      signUpFormOpacity: "0",
+    });
     window.location.reload();
   }, 2000);
 }
