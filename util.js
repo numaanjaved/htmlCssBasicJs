@@ -20,13 +20,6 @@ export function makeTagElement({ tagName, id, classes, value }) {
   return element;
 }
 
-export function formSwitch({ signInT, signInO, signUpT, signUpO }) {
-  signInDiv.style.transform = signInT;
-  signInDiv.style.opacity = signInO;
-  signUpDiv.style.transform = signUpT;
-  signUpDiv.style.opacity = signUpO;
-}
-
 export function inputTag(valueId, value) {
   const input = document.createElement("input");
   input.id = valueId;

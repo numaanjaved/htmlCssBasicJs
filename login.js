@@ -1,5 +1,5 @@
-import { renderSignIn } from "./controller.js";
-import { inputPassword, makeTagElement, inputTag, formSwitch } from "./util.js";
+import { signInBtnClick,gotoFormSignIn } from "./controller.js";
+import { inputPassword, makeTagElement, inputTag } from "./util.js";
 
 // body styling
 const body = document.querySelector("body");
@@ -58,20 +58,13 @@ containerSignIn.append(
 export const goToSignInForm = document.querySelector("#signInBtn");
 export const signInButton = document.querySelector("#signInB");
 
+gotoFormSignIn(goToSignInForm)
+
 export function loginInData(loginData) {
   document.body.textContent = loginData;
 }
 
-goToSignInForm.addEventListener("click", (e) => {
-  e.preventDefault();
-  formSwitch({
-    signInT: "translateX(-550px)",
-    signInO: "0",
-    signUpT: "translateX(0px)",
-    signUpO: "1",
-  });
-});
-
-signInButton.addEventListener("click", () => {
-  renderSignIn();
-});
+signInBtnClick()
+// signInButton.addEventListener("click", () => {
+//   renderSignIn();
+// });

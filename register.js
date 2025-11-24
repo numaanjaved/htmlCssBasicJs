@@ -1,5 +1,5 @@
-import { renderSignUp } from "./controller.js";
-import { inputPassword, makeTagElement, inputTag, formSwitch } from "./util.js";
+import { renderSignUp, gotoFormSignUp } from "./controller.js";
+import { inputPassword, makeTagElement, inputTag } from "./util.js";
 
 // body styling
 const body = document.querySelector("body");
@@ -63,15 +63,7 @@ export const goToSignUpForm = document.querySelector("#signUpBtn");
 export const signUpButton = document.querySelector("#signUpB");
 export const signUpDiv = document.querySelector("#signUp");
 
-goToSignUpForm.addEventListener("click", (e) => {
-  e.preventDefault();
-  formSwitch({
-    signInT: "translateX(0)",
-    signInO: "1",
-    signUpT: "translateX(-550px)",
-    signUpO: "0",
-  });
-});
+gotoFormSignUp(goToSignUpForm);
 
 signUpButton.addEventListener("click", () => {
   renderSignUp();
