@@ -2,7 +2,7 @@ import { makeTag, formSwitch } from "./util.js";
 
 import { loginInData } from "./login.js";
 
-import { signUpData, data, userData } from "./model.js";
+import { signUpData, data } from "./model.js";
 
 export const signInDiv = document.querySelector("#signIn");
 export const signInEmail = document.querySelector("#signInE");
@@ -30,7 +30,15 @@ export function renderSignIn() {
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
   if (data == null) {
-    userData(signInEmail, signInPassword, makeTag, signInDiv, signInButton);
+    signInEmail.value = "";
+    signInPassword.value = "";
+    makeTag({
+      valueId: "incorrectT",
+      valueClass: "incorrectToast util",
+      value: "Please enter valid email and password",
+      div: signInDiv,
+      value2: signInButton,
+    });
     return false;
   }
 
@@ -43,7 +51,7 @@ export function renderSignIn() {
       loginInData(`Thanks ${user.firstName} ${user.lastName} for Login in.`);
       return false;
     } else {
-      if (index == 1) {
+      if (index == 0) {
         signInEmail.value = "";
         signInPassword.value = "";
         makeTag({
@@ -53,7 +61,6 @@ export function renderSignIn() {
           div: signInDiv,
           value2: signInButton,
         });
-        return false;
       }
     }
   });
@@ -82,7 +89,7 @@ export function renderSignUp() {
     makeTag({
       valueId: "emailT",
       valueClass: "emailToast util",
-      calue2: "Please enter valid email",
+      value: "Please enter valid email",
       div: signUpDiv,
       value2: document.querySelector("#signUp p"),
     });

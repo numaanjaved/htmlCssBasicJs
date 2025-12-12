@@ -24,17 +24,4 @@ export function signUpData(valueFisrt, valueLast, valuePassword, valueEmail) {
   localStorageData(userInfo);
 }
 
-export function userData(email, password, fun, div, button) {
-  email.value = "";
-  password.value = "";
-  fun({
-    valueId: "incorrectT",
-    valueClass: "incorrectToast util",
-    value: "Please enter valid email and password",
-    div: div,
-    vale2: button,
-  });
-  return false;
-}
-
 export let data = JSON.parse(localStorage.getItem("user"));
