@@ -1,20 +1,69 @@
-import { makeTag, formSwitch } from "./util.js";
+import { makeTag, makeTagElement } from "./util.js";
 
 import { loginInData } from "./login.js";
 
-import { signUpData, data } from "./model.js";
-
+const logoutbtn = makeTagElement({
+  tagName: "button",
+  valueId: "signOutbtn",
+  classes: "outline color bdn logout",
+  value: "Logout",
+});
+document.body.appendChild(logoutbtn);
 export const signInDiv = document.querySelector("#signIn");
 export const signInEmail = document.querySelector("#signInE");
 export const signInPassword = document.querySelector("#signInP");
-const regex = new RegExp(/^\S+@\S+\.\S+$/);
-const fName = document.querySelector("#firstName");
+
 export const signUpDiv = document.querySelector("#signUp");
-const lName = document.querySelector("#lastName");
-const signUpEmail = document.querySelector("#signUpE");
-const SignUpPassword = document.querySelector("#signUpP");
-const signUpButton = document.querySelector("#signUpB");
+
 const signInButton = document.querySelector("#signInB");
+
+const signoutbtn = document.querySelector(".logout");
+
+signoutbtn.addEventListener("click", () => {
+  setCookie("email", null, null);
+  signInDiv.style.opacity = "1";
+  signInDiv.style.transform = "translate(0px)";
+});
+
+function setCookie(cName, cValue, exdays) {
+  const date = new Date();
+  date.setTime(date.getTime() + exdays * 60 * 1000);
+  let expires = `expires=${date.toUTCString()}`;
+  document.cookie = `${encodeURIComponent(cName)}=${encodeURIComponent(
+    cValue
+  )}; ${expires}; path="/"`;
+}
+
+function getCookie(cName) {
+  let name = cName + "=";
+  const cookies = decodeURIComponent(document.cookie);
+  const data = cookies.split(";");
+  for (let i = 0; i < data.length; i++) {
+    let c = data[i];
+    while (c.charAt(0) === 0) {
+      return c.substring(1);
+    }
+
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+function cookieData() {
+  let isLoggnedIn = true;
+  if (isLoggnedIn) {
+    let Value = getCookie("email");
+    if (Value !== "") {
+      loginInData("welcome again");
+      signoutbtn.style.opacity = "1";
+    } else {
+      signInDiv.style.opacity = "1";
+      signInDiv.style.transform = "translate(0px)";
+    }
+  }
+}
+setInterval(() => cookieData(), 10000);
 
 export function renderSignIn() {
   if (signInEmail.value == "" || signInPassword.value == "") {
@@ -29,29 +78,11 @@ export function renderSignIn() {
   }
   let signInEmailValue = signInEmail.value;
   let signInPasswordValue = signInPassword.value;
-  if (data == null) {
-    signInEmail.value = "";
-    signInPassword.value = "";
-    makeTag({
-      valueId: "incorrectT",
-      valueClass: "incorrectToast util",
-      value: "Please enter valid email and password",
-      div: signInDiv,
-      value2: signInButton,
-    });
-    return false;
-  }
 
-  data.forEach((user, index) => {
-    const userEmail = user.email;
-    const userPassword = user.password;
-    if (signInEmailValue == userEmail && signInPasswordValue == userPassword) {
-      signInDiv.style.opacity = "0";
-      signInDiv.style.transform = "translate(-550px)";
-      loginInData(`Thanks ${user.firstName} ${user.lastName} for Login in.`);
-      return false;
-    } else {
-      if (index == 0) {
+  fetch("data.json")
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.length === 0) {
         signInEmail.value = "";
         signInPassword.value = "";
         makeTag({
@@ -61,62 +92,35 @@ export function renderSignIn() {
           div: signInDiv,
           value2: signInButton,
         });
+        return false;
       }
-    }
-  });
-}
 
-export function renderSignUp() {
-  let signUpEmailValue = signUpEmail.value;
-  signUpData(fName.value, lName.value, SignUpPassword.value, signUpEmail.value);
-  if (
-    fName.value == "" ||
-    lName.value == "" ||
-    signUpEmail.value == "" ||
-    SignUpPassword.value == ""
-  ) {
-    makeTag({
-      valueId: "inputT",
-      valueClass: "inputToast util",
-      value: "Please fill all fields",
-      div: signUpDiv,
-      value2: signUpButton,
-    });
-    return false;
-  }
-
-  if (!signUpEmailValue.match(regex)) {
-    makeTag({
-      valueId: "emailT",
-      valueClass: "emailToast util",
-      value: "Please enter valid email",
-      div: signUpDiv,
-      value2: document.querySelector("#signUp p"),
-    });
-    return false;
-  }
-
-  fName.value = "";
-  lName.value = "";
-  signUpEmail.value = "";
-  SignUpPassword.value = "";
-
-  const successText = document.createElement("p");
-  successText.id = "successP";
-  successText.className = "util";
-  successText.style.textAlign = "center";
-  successText.textContent = "Congrulation you successfully registered";
-  signUpDiv.insertBefore(successText, document.querySelector("#signUp p"));
-
-  setTimeout(() => {
-    const textSuccess = document.querySelector("#successP");
-    textSuccess.remove();
-    formSwitch({
-      translateSignInForm: "translateX(0px)",
-      signInFormOpacity: "1",
-      translateSignUpForm: "translateX(-550px)",
-      signUpFormOpacity: "0",
-    });
-    window.location.reload();
-  }, 2000);
+      data.forEach((user, index) => {
+        const userEmail = user.email;
+        const userPassword = user.password;
+        if (
+          signInEmailValue == userEmail &&
+          signInPasswordValue == userPassword
+        ) {
+          signInDiv.style.opacity = "0";
+          signInDiv.style.transform = "translate(-550px)";
+          loginInData(`Thanks for Login in.`);
+          setCookie("email", signInEmailValue, 1);
+          return false;
+        } else {
+          if (index == 0) {
+            signInEmail.value = "";
+            signInPassword.value = "";
+            makeTag({
+              valueId: "incorrectT",
+              valueClass: "incorrectToast util",
+              value: "Please enter valid email and password",
+              div: signInDiv,
+              value2: signInButton,
+            });
+          }
+        }
+      });
+    })
+    .catch((error) => console.log(error));
 }

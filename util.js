@@ -1,6 +1,3 @@
-import { signInDiv } from "./controller.js";
-import { signUpDiv } from "./register.js";
-
 export function inputPassword(valueId) {
   const inputPassword = document.createElement("input");
   const form = document.createElement("form");
@@ -19,13 +16,6 @@ export function makeTagElement(obj) {
   element.className = obj.classes;
   element.textContent = obj.value;
   return element;
-}
-
-export function formSwitch(obj) {
-  signInDiv.style.transform = obj.translateSignInForm;
-  signInDiv.style.opacity = obj.signInFormOpacity;
-  signUpDiv.style.transform = obj.translateSignUpForm;
-  signUpDiv.style.opacity = obj.signUpFormOpacity;
 }
 
 export function inputTag(valueId, value) {
