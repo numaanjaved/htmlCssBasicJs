@@ -23,6 +23,7 @@ signoutbtn.addEventListener("click", () => {
   setCookie("email", null, null);
   signInDiv.style.opacity = "1";
   signInDiv.style.transform = "translate(0px)";
+  signoutbtn.style.opacity = "0";
 });
 
 function setCookie(cName, cValue, exdays) {
@@ -57,13 +58,15 @@ function cookieData() {
     if (Value !== "") {
       loginInData("welcome again");
       signoutbtn.style.opacity = "1";
+      signInDiv.style.opacity = "0";
+      signInDiv.style.transform = "translate(-555px)";
     } else {
       signInDiv.style.opacity = "1";
       signInDiv.style.transform = "translate(0px)";
     }
   }
 }
-setInterval(() => cookieData(), 10000);
+document.addEventListener("DOMContentLoaded", () => cookieData());
 
 export function renderSignIn() {
   if (signInEmail.value == "" || signInPassword.value == "") {
