@@ -28,7 +28,7 @@ signoutbtn.addEventListener("click", () => {
 
 function setCookie(cName, cValue, exdays) {
   const date = new Date();
-  date.setTime(date.getTime() + exdays * 60 * 1000);
+  date.setTime(date.getTime() + exdays * 24 *60 * 60 * 1000);
   let expires = `expires=${date.toUTCString()}`;
   document.cookie = `${encodeURIComponent(cName)}=${encodeURIComponent(
     cValue
